@@ -7,7 +7,7 @@
 <style>
 
 body{
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     margin:0;
     background:#f0f0f0;
 }
@@ -115,8 +115,9 @@ footer{
     top: -40px;
     right: 0;
     color: white;
-    font-size: 30px;
+    font-size: 35px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 </style>
@@ -144,7 +145,7 @@ footer{
 <div class="card-content">
 <h3>Paris, France</h3>
 <p>Experience the romantic atmosphere of the Eiffel Tower and the Louvre.</p>
-<button onclick="playVideo('WjDeH6L6u_k')">Watch Video</button>
+<button onclick="playVideo('aqz-KE-bpKQ')">Watch Video</button>
 </div>
 </div>
 
@@ -153,7 +154,7 @@ footer{
 <div class="card-content">
 <h3>Tokyo, Japan</h3>
 <p>A dazzling blend of futuristic neon and serene ancient traditions.</p>
-<button onclick="playVideo('j65f80-E3mY')">Watch Video</button>
+<button onclick="playVideo('NjH7H_N7Vf0')">Watch Video</button>
 </div>
 </div>
 
@@ -171,7 +172,7 @@ footer{
 <div class="card-content">
 <h3>Rome, Italy</h3>
 <p>Walk through history in this eternal city of ruins and masterpieces.</p>
-<button onclick="playVideo('DEiS7_X8_0E')">Watch Video</button>
+<button onclick="playVideo('359_o4WdJcI')">Watch Video</button>
 </div>
 </div>
 
@@ -180,7 +181,7 @@ footer{
 <div class="card-content">
 <h3>Great Wall, China</h3>
 <p>A monumental wonder stretching across the mountain ridges.</p>
-<button onclick="playVideo('9f3-80xXjXk')">Watch Video</button>
+<button onclick="playVideo('O5_9yVvX7_M')">Watch Video</button>
 </div>
 </div>
 
@@ -189,7 +190,7 @@ footer{
 <div class="card-content">
 <h3>Barcelona, Spain</h3>
 <p>Discover the unique architectural gems of Antoni Gaudí.</p>
-<button onclick="playVideo('L_XJ_S7S59I')">Watch Video</button>
+<button onclick="playVideo('vXv_m8X0u5U')">Watch Video</button>
 </div>
 </div>
 
@@ -198,7 +199,7 @@ footer{
 <div class="card-content">
 <h3>Sydney, Australia</h3>
 <p>Iconic landmarks and golden beaches in a stunning harbor city.</p>
-<button onclick="playVideo('p_M-H7_Yp8Y')">Watch Video</button>
+<button onclick="playVideo('_H6m0O7P7v8')">Watch Video</button>
 </div>
 </div>
 
@@ -207,7 +208,7 @@ footer{
 <div class="card-content">
 <h3>Dubai, UAE</h3>
 <p>The pinnacle of luxury and futuristic architecture in the desert.</p>
-<button onclick="playVideo('I-V6X_9F_5w')">Watch Video</button>
+<button onclick="playVideo('r6KOf_R9Gyo')">Watch Video</button>
 </div>
 </div>
 
@@ -225,7 +226,7 @@ footer{
 <div class="card-content">
 <h3>Zermatt, Switzerland</h3>
 <p>Breath-taking views of the majestic Matterhorn in the Alps.</p>
-<button onclick="playVideo('3_X_P_T_M8s')">Watch Video</button>
+<button onclick="playVideo('_vO7GqK_G7E')">Watch Video</button>
 </div>
 </div>
 
@@ -237,16 +238,16 @@ footer{
 <div id="videoModal" class="modal" onclick="closeVideo()">
     <div class="modal-content" onclick="event.stopPropagation()">
         <span class="close-modal" onclick="closeVideo()">&times;</span>
-        <iframe id="travelVideoFrame" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe id="travelVideoFrame" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
 
 <footer>
 <p>© 2026 World Travel Recommendation Site</p>
-<div style="margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 14px; color: #aaa;">
+<div style="margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 14px; color: #ccc;">
     <span>Visitors:</span>
-    <a href="https://hits.seeyoufarm.com">
-        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fuser%2Fbakone&count_bg=%231E88E5&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Total&edge_flat=false" alt="Visitor Counter" style="vertical-align: middle;"/>
+    <a href="https://github.com/dwyl/hits">
+        <img src="https://hits.dwyl.com/Choi-HB/product-bakone.svg" alt="Visitor Counter" style="vertical-align: middle;"/>
     </a>
 </div>
 </footer>
@@ -286,8 +287,8 @@ function recommend(){
 function playVideo(videoId) {
     const modal = document.getElementById("videoModal");
     const frame = document.getElementById("travelVideoFrame");
-    // 유튜브 임베드 URL (자동재생 포함)
-    frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    // 안정적인 유튜브 임베드 URL (자동재생, 추천영상 끄기 설정 추가)
+    frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
     modal.style.display = "flex";
 }
 
@@ -295,7 +296,7 @@ function closeVideo() {
     const modal = document.getElementById("videoModal");
     const frame = document.getElementById("travelVideoFrame");
     modal.style.display = "none";
-    frame.src = ""; // 영상 멈춤
+    frame.src = ""; // 영상 및 사운드 정지
 }
 
 </script>
