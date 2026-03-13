@@ -99,7 +99,7 @@ footer{
 
 <div class="cards">
 
-<div class="card">
+<div class="card" id="Paris">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg">
 <div class="card-content">
 <h3>Paris, France</h3>
@@ -108,7 +108,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="Tokyo">
 <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Tokyo, Japan</h3>
@@ -117,7 +117,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="NewYork">
 <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>New York, USA</h3>
@@ -126,7 +126,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="Rome">
 <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Rome, Italy</h3>
@@ -135,7 +135,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="GreatWall">
 <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Great Wall, China</h3>
@@ -144,7 +144,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="Barcelona">
 <img src="https://images.unsplash.com/photo-1539186607619-df476afe6ff1?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Barcelona, Spain</h3>
@@ -153,7 +153,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="Sydney">
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Sydney_Opera_House_-_Dec_2008.jpg">
 <div class="card-content">
 <h3>Sydney, Australia</h3>
@@ -162,7 +162,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="Dubai">
 <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Dubai, UAE</h3>
@@ -171,7 +171,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="London">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Tower_Bridge_from_Shad_Thames.jpg">
 <div class="card-content">
 <h3>London, UK</h3>
@@ -180,7 +180,7 @@ footer{
 </div>
 </div>
 
-<div class="card">
+<div class="card" id="Zermatt">
 <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Zermatt, Switzerland</h3>
@@ -197,7 +197,7 @@ footer{
 <p>© 2026 World Travel Recommendation Site</p>
 <div style="margin-top: 10px;">
     <a href="https://hits.seeyoufarm.com">
-        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fuser%2Fbakone&count_bg=%231E88E5&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Hits"/>
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fproduct-bakone.vercel.app&count_bg=%231E88E5&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Hits"/>
     </a>
 </div>
 </footer>
@@ -207,21 +207,37 @@ footer{
 function recommend(){
 
 let places=[
-"🇫🇷 Paris",
-"🇯🇵 Tokyo",
-"🇺🇸 New York",
-"🇮🇹 Rome",
-"🇨🇳 Great Wall",
-"🇪🇸 Barcelona",
-"🇦🇺 Sydney",
-"🇦🇪 Dubai",
-"🇬🇧 London",
-"🇨🇭 Zermatt"
+{ name: "🇫🇷 Paris", id: "Paris" },
+{ name: "🇯🇵 Tokyo", id: "Tokyo" },
+{ name: "🇺🇸 New York", id: "NewYork" },
+{ name: "🇮🇹 Rome", id: "Rome" },
+{ name: "🇨🇳 Great Wall", id: "GreatWall" },
+{ name: "🇪🇸 Barcelona", id: "Barcelona" },
+{ name: "🇦🇺 Sydney", id: "Sydney" },
+{ name: "🇦🇪 Dubai", id: "Dubai" },
+{ name: "🇬🇧 London", id: "London" },
+{ name: "🇨🇭 Zermatt", id: "Zermatt" }
 ];
 
-let random=places[Math.floor(Math.random()*places.length)];
+let randomPlace = places[Math.floor(Math.random()*places.length)];
 
-document.getElementById("result").innerText="Recommended Destination: "+random;
+document.getElementById("result").innerText="Recommended Destination: " + randomPlace.name;
+
+// Scroll to the specific card
+const element = document.getElementById(randomPlace.id);
+if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Optional: Highlight effect
+    element.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+    element.style.transform = "scale(1.05)";
+    element.style.boxShadow = "0 10px 20px rgba(30,136,229,0.3)";
+    
+    setTimeout(() => {
+        element.style.transform = "scale(1)";
+        element.style.boxShadow = "0 5px 10px rgba(0,0,0,0.1)";
+    }, 1000);
+}
 
 }
 
