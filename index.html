@@ -88,7 +88,7 @@ footer{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.95);
     justify-content: center;
     align-items: center;
 }
@@ -101,7 +101,7 @@ footer{
     background: #000;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    box-shadow: 0 0 30px rgba(0,0,0,1);
 }
 
 .modal-content iframe {
@@ -112,10 +112,10 @@ footer{
 
 .close-modal {
     position: absolute;
-    top: -40px;
+    top: -50px;
     right: 0;
     color: white;
-    font-size: 35px;
+    font-size: 40px;
     cursor: pointer;
     font-weight: bold;
 }
@@ -145,7 +145,7 @@ footer{
 <div class="card-content">
 <h3>Paris, France</h3>
 <p>Experience the romantic atmosphere of the Eiffel Tower and the Louvre.</p>
-<button onclick="playVideo('WjDeH6L6u_k')">Watch Video</button>
+<button onclick="playVideo('aqz-KE-bpKQ')">Watch Video</button>
 </div>
 </div>
 
@@ -154,7 +154,7 @@ footer{
 <div class="card-content">
 <h3>Tokyo, Japan</h3>
 <p>A dazzling blend of futuristic neon and serene ancient traditions.</p>
-<button onclick="playVideo('NjH7H_N7Vf0')">Watch Video</button>
+<button onclick="playVideo('lS87R00pU8U')">Watch Video</button>
 </div>
 </div>
 
@@ -181,7 +181,7 @@ footer{
 <div class="card-content">
 <h3>Great Wall, China</h3>
 <p>A monumental wonder stretching across the mountain ridges.</p>
-<button onclick="playVideo('O5_9yVvX7_M')">Watch Video</button>
+<button onclick="playVideo('vI_v80X7_M8')">Watch Video</button>
 </div>
 </div>
 
@@ -226,7 +226,7 @@ footer{
 <div class="card-content">
 <h3>Zermatt, Switzerland</h3>
 <p>Breath-taking views of the majestic Matterhorn in the Alps.</p>
-<button onclick="playVideo('_vO7GqK_G7E')">Watch Video</button>
+<button onclick="playVideo('m20W_eS_A6o')">Watch Video</button>
 </div>
 </div>
 
@@ -287,8 +287,8 @@ function recommend(){
 function playVideo(videoId) {
     const modal = document.getElementById("videoModal");
     const frame = document.getElementById("travelVideoFrame");
-    // 안정적인 유튜브 임베드 URL (자동재생, 추천영상 끄기 설정 추가)
-    frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    // 안정적인 유튜브 임베드 URL (autoplay=1 설정으로 즉시 재생)
+    frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&iv_load_policy=3`;
     modal.style.display = "flex";
 }
 
@@ -296,7 +296,7 @@ function closeVideo() {
     const modal = document.getElementById("videoModal");
     const frame = document.getElementById("travelVideoFrame");
     modal.style.display = "none";
-    frame.src = ""; // 영상 및 사운드 정지
+    frame.src = ""; // 영상 및 사운드 즉시 정지
 }
 
 </script>
