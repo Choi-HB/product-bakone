@@ -79,6 +79,44 @@ footer{
     margin-top:40px;
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-content video {
+    width: 100%;
+    display: block;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
 </style>
 
 </head>
@@ -103,8 +141,8 @@ footer{
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg">
 <div class="card-content">
 <h3>Paris, France</h3>
-<p>A world-class tourist city famous for the Eiffel Tower and its romantic atmosphere. It boasts rich art and history, including the Louvre Museum and the Arc de Triomphe.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=paris+travel')">Watch Travel Video</button>
+<p>A world-class tourist city famous for the Eiffel Tower and its romantic atmosphere.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/4311894/4311894-uhd_2560_1440_30fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -112,8 +150,8 @@ footer{
 <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Tokyo, Japan</h3>
-<p>A charming travel destination where cutting-edge city life and traditional culture coexist. It offers a unique charm with brilliant neon signs and quiet shrines.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=tokyo+travel')">Watch Travel Video</button>
+<p>A charming travel destination where cutting-edge city life and traditional culture coexist.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/3843513/3843513-hd_1920_1080_30fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -121,8 +159,8 @@ footer{
 <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>New York, USA</h3>
-<p>The center of the world's economy and culture, famous for its brilliant cityscapes. You can feel the endless vitality of Times Square and Central Park.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=new+york+travel')">Watch Travel Video</button>
+<p>The center of the world's economy and culture, famous for its brilliant cityscapes.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/4014909/4014909-uhd_2560_1440_30fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -130,8 +168,8 @@ footer{
 <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Rome, Italy</h3>
-<p>A historical city full of ancient Roman ruins and art. The entire city is like a living museum, featuring the Colosseum and Vatican City.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=rome+travel')">Watch Travel Video</button>
+<p>A historical city full of ancient Roman ruins and art. The entire city is like a living museum.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/3241513/3241513-hd_1920_1080_25fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -139,8 +177,8 @@ footer{
 <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Great Wall, China</h3>
-<p>One of the most famous historical structures in the world. The endless walls stretching along vast mountain ranges demonstrate the greatness of human civilization.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=great+wall+travel')">Watch Travel Video</button>
+<p>The endless walls stretching along vast mountain ranges demonstrate human greatness.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/3120614/3120614-hd_1920_1080_25fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -148,8 +186,8 @@ footer{
 <img src="https://images.unsplash.com/photo-1539186607619-df476afe6ff1?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Barcelona, Spain</h3>
-<p>Famous as the city of the genius architect Gaudí. It is full of unique architectural art, including the Sagrada Família, which is still under construction, and Park Güell.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=barcelona+travel')">Watch Travel Video</button>
+<p>Famous as the city of the genius architect Gaudí. Full of unique architectural art.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/2422596/2422596-hd_1920_1080_24fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -157,8 +195,8 @@ footer{
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Sydney_Opera_House_-_Dec_2008.jpg">
 <div class="card-content">
 <h3>Sydney, Australia</h3>
-<p>The beautiful harbor city of Sydney is famous for the Opera House and Harbour Bridge. You can enjoy surfing at Bondi Beach and the city's relaxed atmosphere at the same time.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=sydney+travel')">Watch Travel Video</button>
+<p>The beautiful harbor city famous for the Opera House and Harbour Bridge.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/4006190/4006190-uhd_2560_1440_24fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -166,8 +204,8 @@ footer{
 <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Dubai, UAE</h3>
-<p>Experience the world's tallest building, the Burj Khalifa, and a brilliant futuristic city. Known as a miracle in the desert, this place shows constant innovation.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=dubai+travel')">Watch Travel Video</button>
+<p>Experience the world's tallest building, the Burj Khalifa, and a futuristic city.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/2747192/2747192-hd_1920_1080_30fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -175,8 +213,8 @@ footer{
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Tower_Bridge_from_Shad_Thames.jpg">
 <div class="card-content">
 <h3>London, UK</h3>
-<p>A city where historical landmarks like Big Ben and the London Eye coexist with a modern sense. A stroll along the Thames River offers a special romance.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=london+travel')">Watch Travel Video</button>
+<p>A city where historical landmarks and a modern sense coexist. Special romance.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/2354784/2354784-hd_1920_1080_24fps.mp4')">Watch Video</button>
 </div>
 </div>
 
@@ -184,13 +222,24 @@ footer{
 <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80">
 <div class="card-content">
 <h3>Zermatt, Switzerland</h3>
-<p>The jewel of the Alps where you can enjoy the majestic scenery of the Matterhorn and clean nature. Experience true relaxation in a clean, car-free village.</p>
-<button onclick="window.open('https://www.youtube.com/results?search_query=zermatt+travel')">Watch Travel Video</button>
+<p>The jewel of the Alps where you can enjoy the majestic scenery of the Matterhorn.</p>
+<button onclick="playVideo('https://videos.pexels.com/video-files/1908756/1908756-hd_1920_1080_25fps.mp4')">Watch Video</button>
 </div>
 </div>
 
 </div>
 
+</div>
+
+<!-- Video Modal -->
+<div id="videoModal" class="modal" onclick="closeVideo()">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="travelVideo" controls autoplay loop>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 </div>
 
 <footer>
@@ -206,40 +255,49 @@ footer{
 <script>
 
 function recommend(){
+    let places=[
+        { name: "🇫🇷 Paris", id: "Paris" },
+        { name: "🇯🇵 Tokyo", id: "Tokyo" },
+        { name: "🇺🇸 New York", id: "NewYork" },
+        { name: "🇮🇹 Rome", id: "Rome" },
+        { name: "🇨🇳 Great Wall", id: "GreatWall" },
+        { name: "🇪🇸 Barcelona", id: "Barcelona" },
+        { name: "🇦🇺 Sydney", id: "Sydney" },
+        { name: "🇦🇪 Dubai", id: "Dubai" },
+        { name: "🇬🇧 London", id: "London" },
+        { name: "🇨🇭 Zermatt", id: "Zermatt" }
+    ];
 
-let places=[
-{ name: "🇫🇷 Paris", id: "Paris" },
-{ name: "🇯🇵 Tokyo", id: "Tokyo" },
-{ name: "🇺🇸 New York", id: "NewYork" },
-{ name: "🇮🇹 Rome", id: "Rome" },
-{ name: "🇨🇳 Great Wall", id: "GreatWall" },
-{ name: "🇪🇸 Barcelona", id: "Barcelona" },
-{ name: "🇦🇺 Sydney", id: "Sydney" },
-{ name: "🇦🇪 Dubai", id: "Dubai" },
-{ name: "🇬🇧 London", id: "London" },
-{ name: "🇨🇭 Zermatt", id: "Zermatt" }
-];
+    let randomPlace = places[Math.floor(Math.random()*places.length)];
+    document.getElementById("result").innerText="Recommended Destination: " + randomPlace.name;
 
-let randomPlace = places[Math.floor(Math.random()*places.length)];
-
-document.getElementById("result").innerText="Recommended Destination: " + randomPlace.name;
-
-// Scroll to the specific card
-const element = document.getElementById(randomPlace.id);
-if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    
-    // Optional: Highlight effect
-    element.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-    element.style.transform = "scale(1.05)";
-    element.style.boxShadow = "0 10px 20px rgba(30,136,229,0.3)";
-    
-    setTimeout(() => {
-        element.style.transform = "scale(1)";
-        element.style.boxShadow = "0 5px 10px rgba(0,0,0,0.1)";
-    }, 1000);
+    const element = document.getElementById(randomPlace.id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        element.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+        element.style.transform = "scale(1.05)";
+        element.style.boxShadow = "0 10px 20px rgba(30,136,229,0.3)";
+        setTimeout(() => {
+            element.style.transform = "scale(1)";
+            element.style.boxShadow = "0 5px 10px rgba(0,0,0,0.1)";
+        }, 1000);
+    }
 }
 
+function playVideo(url) {
+    const modal = document.getElementById("videoModal");
+    const video = document.getElementById("travelVideo");
+    video.src = url;
+    modal.style.display = "flex";
+    video.play();
+}
+
+function closeVideo() {
+    const modal = document.getElementById("videoModal");
+    const video = document.getElementById("travelVideo");
+    modal.style.display = "none";
+    video.pause();
+    video.src = "";
 }
 
 </script>
