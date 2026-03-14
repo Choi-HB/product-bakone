@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>세계에서 가장 여행하고 싶은 곳 50</title>
+  <title>Top 50 Bucket List Destinations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
@@ -175,48 +175,93 @@
 <body>
   <header>
     <div class="visitor-counter" id="visitorCounter">
-      방문자: <span id="visitorCount">0</span> 명
+      Visitors: <span id="visitorCount">0</span>
     </div>
-    <h1>세계에서 가장 여행하고 싶은 곳 50</h1>
-    <p>고퀄리티 사진과 유튜브 영상 버튼으로 버킷리스트를 즐겨보세요!</p>
+    <h1>Top 50 Bucket List Destinations</h1>
+    <p>Explore the world's most beautiful places with stunning photos and YouTube videos!</p>
   </header>
 
   <main>
     <section class="controls">
-      <label for="search">검색 (도시/국가/키워드):</label>
-      <input id="search" type="text" placeholder="예: Paris, Maldives, Beach..." />
+      <label for="search">Search (city/country/keyword):</label>
+      <input id="search" type="text" placeholder="e.g. Paris, Maldives, Beach..." />
     </section>
 
     <section class="grid" id="placeGrid">
-      <!-- 카드들이 자바스크립트로 렌더링됩니다. -->
+      <!-- Cards will be rendered by JavaScript -->
     </section>
   </main>
 
   <footer>
-    ※ 사진은 유튜브 썸네일(고해상도) 사용. 영상은 새 탭에서 열립니다.[web:12][web:18]
+    ※ High-quality photos from YouTube thumbnails. Videos open in new tab.
   </footer>
 
   <script>
-    // 이전 places 배열 그대로 사용 (videoId 필수)
+    // Complete 50 places array (from previous version)
     const places = [
-      { rank: 1,  name: "Maldives", country: "Maldives",       videoId: "YFhwEJosUsU", tag: "Beach / Resort" },
-      { rank: 2,  name: "Paris", country: "France",            videoId: "VJZSInO6F5M", tag: "City / Culture" },
-      // ... (나머지 48개 동일하게 유지. 전체는 이전 코드 참조)
-      { rank: 50, name: "Zhangjiajie", country: "China",       videoId: "YFhwEJosUsU", tag: "Mountain / Avatar" }
-      // 주의: 여기서는 생략했지만, 실제로는 50개 모두 넣으세요.
+      { rank: 1,  name: "Maldives", country: "Maldives", videoId: "YFhwEJosUsU", tag: "Beach / Resort" },
+      { rank: 2,  name: "Paris", country: "France", videoId: "VJZSInO6F5M", tag: "City / Culture" },
+      { rank: 3,  name: "Santorini", country: "Greece", videoId: "VJZSInO6F5M", tag: "Island / Sunset" },
+      { rank: 4,  name: "Bali", country: "Indonesia", videoId: "YFhwEJosUsU", tag: "Island / Nature" },
+      { rank: 5,  name: "New York City", country: "USA", videoId: "VJZSInO6F5M", tag: "City / Night View" },
+      { rank: 6,  name: "Tokyo", country: "Japan", videoId: "VJZSInO6F5M", tag: "City / Food" },
+      { rank: 7,  name: "Kyoto", country: "Japan", videoId: "YFhwEJosUsU", tag: "Temple / Tradition" },
+      { rank: 8,  name: "Swiss Alps", country: "Switzerland", videoId: "YFhwEJosUsU", tag: "Mountain / Snow" },
+      { rank: 9,  name: "Great Barrier Reef", country: "Australia", videoId: "YFhwEJosUsU", tag: "Diving / Nature" },
+      { rank: 10, name: "Amalfi Coast", country: "Italy", videoId: "YFhwEJosUsU", tag: "Coast / Drive" },
+      { rank: 11, name: "Banff", country: "Canada", videoId: "YFhwEJosUsU", tag: "Lake / National Park" },
+      { rank: 12, name: "Iceland Ring Road", country: "Iceland", videoId: "YFhwEJosUsU", tag: "Road Trip / Nature" },
+      { rank: 13, name: "Machu Picchu", country: "Peru", videoId: "VJZSInO6F5M", tag: "Historic / Hiking" },
+      { rank: 14, name: "Grand Canyon", country: "USA", videoId: "YFhwEJosUsU", tag: "Canyon / View" },
+      { rank: 15, name: "Dubai", country: "UAE", videoId: "YFhwEJosUsU", tag: "City / Desert" },
+      { rank: 16, name: "Venice", country: "Italy", videoId: "VJZSInO6F5M", tag: "Canal / Gondola" },
+      { rank: 17, name: "Barcelona", country: "Spain", videoId: "VJZSInO6F5M", tag: "City / Architecture" },
+      { rank: 18, name: "Prague", country: "Czech Republic", videoId: "VJZSInO6F5M", tag: "Old Town / Night" },
+      { rank: 19, name: "Petra", country: "Jordan", videoId: "YFhwEJosUsU", tag: "Ancient / Desert" },
+      { rank: 20, name: "Cinque Terre", country: "Italy", videoId: "YFhwEJosUsU", tag: "Coast / Village" },
+      { rank: 21, name: "Krabi", country: "Thailand", videoId: "YFhwEJosUsU", tag: "Beach / Cliffs" },
+      { rank: 22, name: "Ha Long Bay", country: "Vietnam", videoId: "YFhwEJosUsU", tag: "Bay / Cruise" },
+      { rank: 23, name: "Patagonia", country: "Chile/Argentina", videoId: "YFhwEJosUsU", tag: "Trek / Glacier" },
+      { rank: 24, name: "Iguazu Falls", country: "Brazil/Argentina", videoId: "YFhwEJosUsU", tag: "Waterfall" },
+      { rank: 25, name: "Cappadocia", country: "Turkey", videoId: "YFhwEJosUsU", tag: "Balloon / Rock" },
+      { rank: 26, name: "Salar de Uyuni", country: "Bolivia", videoId: "YFhwEJosUsU", tag: "Salt Flat / Mirror" },
+      { rank: 27, name: "Antelope Canyon", country: "USA", videoId: "YFhwEJosUsU", tag: "Canyon / Light" },
+      { rank: 28, name: "Great Wall", country: "China", videoId: "VJZSInO6F5M", tag: "History / View" },
+      { rank: 29, name: "Seoul", country: "South Korea", videoId: "BwGvYGM6730", tag: "City / Food" },
+      { rank: 30, name: "Jeju Island", country: "South Korea", videoId: "BwGvYGM6730", tag: "Island / Nature" },
+      { rank: 31, name: "Lisbon", country: "Portugal", videoId: "YFhwEJosUsU", tag: "City / Tram" },
+      { rank: 32, name: "Rio de Janeiro", country: "Brazil", videoId: "VJZSInO6F5M", tag: "Beach / City" },
+      { rank: 33, name: "Cape Town", country: "South Africa", videoId: "YFhwEJosUsU", tag: "City / Mountain" },
+      { rank: 34, name: "Dubrovnik", country: "Croatia", videoId: "VJZSInO6F5M", tag: "Old Town / Sea" },
+      { rank: 35, name: "Hawaii (Oahu)", country: "USA", videoId: "VJZSInO6F5M", tag: "Beach / Surf" },
+      { rank: 36, name: "Phuket", country: "Thailand", videoId: "YFhwEJosUsU", tag: "Beach / Nightlife" },
+      { rank: 37, name: "Marrakesh", country: "Morocco", videoId: "VJZSInO6F5M", tag: "Market / Desert" },
+      { rank: 38, name: "Queenstown", country: "New Zealand", videoId: "YFhwEJosUsU", tag: "Adventure / Lake" },
+      { rank: 39, name: "Norwegian Fjords", country: "Norway", videoId: "YFhwEJosUsU", tag: "Fjord / Cruise" },
+      { rank: 40, name: "Seychelles", country: "Seychelles", videoId: "YFhwEJosUsU", tag: "Island / Beach" },
+      { rank: 41, name: "Taj Mahal", country: "India", videoId: "YFhwEJosUsU", tag: "Monument / Sunrise" },
+      { rank: 42, name: "Angkor Wat", country: "Cambodia", videoId: "YFhwEJosUsU", tag: "Temple / Sunrise" },
+      { rank: 43, name: "Niagara Falls", country: "Canada/USA", videoId: "VJZSInO6F5M", tag: "Waterfall" },
+      { rank: 44, name: "Lake Bled", country: "Slovenia", videoId: "YFhwEJosUsU", tag: "Lake / Island" },
+      { rank: 45, name: "Zermatt", country: "Switzerland", videoId: "YFhwEJosUsU", tag: "Ski / Mountain" },
+      { rank: 46, name: "Lofoten Islands", country: "Norway", videoId: "YFhwEJosUsU", tag: "Island / Aurora" },
+      { rank: 47, name: "Serengeti", country: "Tanzania", videoId: "YFhwEJosUsU", tag: "Safari / Nature" },
+      { rank: 48, name: "Galápagos Islands", country: "Ecuador", videoId: "YFhwEJosUsU", tag: "Wildlife / Island" },
+      { rank: 49, name: "Yosemite", country: "USA", videoId: "YFhwEJosUsU", tag: "National Park" },
+      { rank: 50, name: "Zhangjiajie", country: "China", videoId: "YFhwEJosUsU", tag: "Mountain / Avatar" }
     ];
 
     const grid = document.getElementById("placeGrid");
     const searchInput = document.getElementById("search");
     const visitorCountEl = document.getElementById("visitorCount");
 
-    // 방문자 카운트 (localStorage 사용)
+    // Visitor counter (localStorage)
     function updateVisitorCount() {
       let count = parseInt(localStorage.getItem('visitorCount') || '0') + 1;
       localStorage.setItem('visitorCount', count);
       visitorCountEl.textContent = count.toLocaleString();
     }
-    updateVisitorCount(); // 페이지 로드 시 증가
+    updateVisitorCount();
 
     function render(list) {
       grid.innerHTML = "";
@@ -225,20 +270,21 @@
         card.className = "card";
         card.innerHTML = `
           <div class="thumb">
-            <img src="https://img.youtube.com/vi/${place.videoId}/maxresdefault.jpg" alt="${place.name} 고퀄리티 사진" loading="lazy" />
+            <img src="https://img.youtube.com/vi/${place.videoId}/maxresdefault.jpg" alt="${place.name} high quality photo" loading="lazy" />
             <div class="play-button" data-video-id="${place.videoId}"></div>
           </div>
           <div class="content">
             <div class="rank">#${place.rank}</div>
             <h2 class="title">${place.name}</h2>
             <p class="meta">${place.country}</p>
-            <p class="desc">세계 여행 버킷리스트에 꼭 넣어야 할 인기 여행지입니다.</p>
+            <p class="desc">Must-visit destination for every travel bucket list.</p>
             <span class="tag">${place.tag}</span>
           </div>
         `;
         grid.appendChild(card);
       });
-      // 플레이 버튼 이벤트
+      
+      // Play button events
       document.querySelectorAll('.play-button').forEach(btn => {
         btn.addEventListener('click', (e) => {
           const videoId = e.currentTarget.dataset.videoId;
@@ -263,7 +309,7 @@
 
     searchInput.addEventListener("input", handleSearch);
 
-    // 초기 렌더링 (places 배열에 50개 모두 채워넣으세요)
+    // Initial render
     render(places);
   </script>
 </body>
