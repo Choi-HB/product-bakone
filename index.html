@@ -482,7 +482,22 @@ const card=document.createElement("div");
 card.className="card";
 
 const img=document.createElement("img");
-img.src=`https://picsum.photos/seed/travel${i}/500/350`;
+
+const city = p.name.split(",")[0];
+
+// Wikipedia API에서 실제 도시 이미지 가져오기
+fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${city}`)
+.then(res=>res.json())
+.then(data=>{
+    if(data.thumbnail){
+        img.src = data.thumbnail.source;
+    }else{
+        img.src = `https://picsum.photos/seed/${city}${i}/600/400`;
+    }
+})
+.catch(()=>{
+    img.src = `https://picsum.photos/seed/${city}${i}/600/400`;
+});
 
 const content=document.createElement("div");
 content.className="card-content";
