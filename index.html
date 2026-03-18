@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -559,3 +560,72 @@ document.getElementById("counter").innerText="Visitor Count: "+visits;
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ultimate Dream Travel - 50 Amazing Places to Visit in the World</title>
+<meta name="description" content="Explore 50 of the most amazing travel destinations around the world. From Paris to Tokyo, find your next dream vacation with Ultimate Dream Travel.">
+<meta name="keywords" content="travel, destinations, world travel, bucket list, vacation ideas, tourism">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+</nav>
+
+<header>
+<h1>Ultimate Dream Travel</h1>
+<p>Curated list of 50 Amazing Places Around the World</p>
+<div id="counter"></div>
+</header>
+
+<main>
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search a city or destination...">
+    </div>
+
+    <div class="filter-buttons">
+        <button class="active" onclick="filterRegion('all', this)">All</button>
+        <button onclick="filterRegion('Asia', this)">Asia</button>
+        <button onclick="filterRegion('Europe', this)">Europe</button>
+        <button onclick="filterRegion('America', this)">America</button>
+        <button onclick="filterRegion('Other', this)">Other</button>
+    </div>
+
+    <div class="container" id="places"></div>
+</main>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<footer>
+    <div class="policy-links">
+        <a href="index.html">Home</a> |
+        <a href="about.html">About Us</a> |
+        <a href="contact.html">Contact Us</a> |
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms of Service</a>
+    </div>
+    <p>© 2026 Ultimate Dream Travel. All rights reserved.</p>
+    <p>Providing unique travel insights and destination guides for global explorers.</p>
+</footer>
+
+<script src="main.js"></script>
+
+</body>
+</html>
+>>>>>>> 5c6628f (Refactor site structure and add mandatory policy pages for AdSense approval)
