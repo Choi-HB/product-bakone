@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@perplexity-cli/perplexity-cli": "^0.1.6"
+  }
+}
