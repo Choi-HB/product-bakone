@@ -345,13 +345,6 @@ if(search) {
     });
 }
 
-// Simple visitor counter using localStorage
-let visits=localStorage.getItem("visits")||0;
-visits++;
-localStorage.setItem("visits",visits);
-const counterEl = document.getElementById("counter");
-if(counterEl) counterEl.innerText="Visitor Count: "+visits;
-
 // Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById("modal");
