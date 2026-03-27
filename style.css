@@ -131,6 +131,14 @@ height:220px;
 object-fit:cover;
 }
 
+.image-copyright {
+    font-size: 10px;
+    color: #999;
+    padding: 5px 15px 0 15px;
+    text-align: right;
+    font-style: italic;
+}
+
 .card-content{
 padding:22px;
 }

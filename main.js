@@ -281,6 +281,10 @@ fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${city}`)
 });
 img.alt = p.name;
 
+const copyright = document.createElement("div");
+copyright.className = "image-copyright";
+copyright.innerText = "© Wikipedia / Creative Commons";
+
 const content=document.createElement("div");
 content.className="card-content";
 
@@ -308,6 +312,7 @@ content.appendChild(title);
 content.appendChild(footer);
 
 card.appendChild(img);
+card.appendChild(copyright);
 card.appendChild(content);
 
 container.appendChild(card);
