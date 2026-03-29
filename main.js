@@ -184,8 +184,8 @@ function travelToDestination(id, imgSrc) {
         if (!isStudioOpen) return;
         ca.style.aspectRatio = `${img.naturalWidth}/${img.naturalHeight}`;
         ca.style.backgroundImage = `url('${imgSrc}')`;
-        s.style.display = "block";
-        s.scrollIntoView({ behavior: 'smooth' });
+        s.style.display = "flex"; // Changed from block to flex for modal centering
+        document.body.style.overflow = "hidden"; // Lock background scroll
     };
     img.src = imgSrc;
 }
@@ -195,6 +195,7 @@ function closeStudio() {
     document.getElementById("studio-section").style.display = "none";
     document.getElementById("loading-overlay").style.display = "none";
     document.getElementById("adjust-controls").style.display = "none";
+    document.body.style.overflow = "auto"; // Unlock background scroll
     currentUserImg = null;
 }
 

@@ -40,12 +40,12 @@
 </header>
 
 <!-- Virtual Studio Section -->
-<section id="studio-section" style="display:none; padding: 40px 20px; background: #e5e7eb; text-align: center;">
-    <div style="max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+<section id="studio-section">
+    <div class="studio-container">
         <h2 data-i18n="studio-title">📸 가상 포토 스튜디오</h2>
         <p><span data-i18n="studio-selected">선택된 여행지:</span> <strong id="selected-city-name">-</strong></p>
         
-        <div id="composition-area" style="position: relative; width: 100%; max-width: 100%; height: auto; min-height: 300px; max-height: 70vh; background: #eee; border-radius: 15px; overflow: hidden; margin-top: 20px; background-size: contain; background-position: center; background-repeat: no-repeat; margin-left: auto; margin-right: auto; transition: aspect-ratio 0.3s;">
+        <div id="composition-area" style="position: relative; width: 100%; max-width: 100%; height: auto; min-height: 300px; max-height: 60vh; background: #eee; border-radius: 15px; overflow: hidden; margin-top: 20px; background-size: contain; background-position: center; background-repeat: no-repeat; margin-left: auto; margin-right: auto; transition: aspect-ratio 0.3s;">
             <!-- User photo will be placed here -->
             <canvas id="user-canvas" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scale(1); max-height: 95%; pointer-events: none; transition: transform 0.1s ease-out; filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));"></canvas>
             
@@ -60,19 +60,19 @@
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-size">📏 크기:</label>
-                    <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()" style="width: 100px;">
+                    <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()" style="width: 80px;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-horiz">↔️ 좌우:</label>
-                    <input type="range" id="user-pos-x" min="0" max="100" step="1" value="50" oninput="updateUserTransform()" style="width: 100px;">
+                    <input type="range" id="user-pos-x" min="0" max="100" step="1" value="50" oninput="updateUserTransform()" style="width: 80px;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-vert">↕️ 상하:</label>
-                    <input type="range" id="user-pos-y" min="-50" max="100" step="1" value="0" oninput="updateUserTransform()" style="width: 100px;">
+                    <input type="range" id="user-pos-y" min="-50" max="100" step="1" value="0" oninput="updateUserTransform()" style="width: 80px;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-precision">✨ 정밀도:</label>
-                    <input type="range" id="user-threshold" min="0.2" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()" style="width: 100px;">
+                    <input type="range" id="user-threshold" min="0.2" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()" style="width: 80px;">
                 </div>
                 <button onclick="resetTransform()" style="padding: 5px 12px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px;" data-i18n="btn-reset">초기화</button>
             </div>
@@ -88,6 +88,7 @@
         <p style="font-size: 12px; color: #666; margin-top: 15px;" data-i18n="studio-tip">* 인물 사진이 선명할수록 배경 제거 결과가 좋습니다.</p>
     </div>
 </section>
+
 
 <main>
     <div class="search-bar">
