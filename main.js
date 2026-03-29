@@ -93,7 +93,7 @@ Clear water is perfect for swimming.`},
 {name:"Hanoi, Vietnam",region:"Asia",desc:`Hanoi is rich in culture.
 The old quarter has narrow streets.
 French colonial buildings remain.
-Street food like pho is delicious.
+Street food like x-pho is delicious.
 Lakes and temples add beauty.`},
 {name:"Kathmandu, Nepal",region:"Asia",desc:`Kathmandu sits in the Himalayas.
 Ancient temples fill the city.
@@ -256,9 +256,17 @@ The city is famous for its vibrant atmosphere and desert gateway location.`}
 
 const container=document.getElementById("places");
 let net = null;
+let currentUserImg = null;
+let isStudioOpen = false;
 
 async function loadModel() {
-    net = await bodyPix.load();
+    if (net) return;
+    net = await bodyPix.load({
+        architecture: 'MobileNetV1',
+        outputStride: 16,
+        multiplier: 0.75,
+        quantBytes: 2
+    });
     console.log("BodyPix Model Loaded");
 }
 loadModel();
@@ -320,8 +328,6 @@ container.appendChild(card);
 
 render(places);
 
-let isStudioOpen = false;
-
 function travelToDestination(name, imgSrc) {
     isStudioOpen = true;
     const studio = document.getElementById("studio-section");
@@ -364,67 +370,75 @@ function closeStudio() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
     resetTransform();
+    currentUserImg = null;
 }
 
 async function processUserPhoto(input) {
     if (input.files && input.files[0]) {
         if (!isStudioOpen) return;
 
-        const overlay = document.getElementById("loading-overlay");
-        overlay.style.display = "flex";
-        
         const reader = new FileReader();
         reader.onload = async function(e) {
-            if (!isStudioOpen) return;
-
             const img = new Image();
             img.onload = async () => {
-                if (!isStudioOpen) return;
-
-                const canvas = document.getElementById("user-canvas");
-                
-                if (!net) {
-                    await loadModel();
-                    if (!isStudioOpen) return;
-                }
-                
-                const segmentation = await net.segmentPerson(img, {
-                    flipHorizontal: false,
-                    internalResolution: 'medium',
-                    segmentationThreshold: 0.7
-                });
-
-                if (!isStudioOpen) {
-                    overlay.style.display = "none";
-                    return;
-                }
-
-                const width = img.width;
-                const height = img.height;
-                canvas.width = width;
-                canvas.height = height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-
-                const imageData = ctx.getImageData(0, 0, width, height);
-                const pixelData = imageData.data;
-
-                for (let i = 0; i < pixelData.length; i += 4) {
-                    if (segmentation.data[i / 4] === 0) {
-                        pixelData[i + 3] = 0;
-                    }
-                }
-
-                ctx.putImageData(imageData, 0, 0);
-                overlay.style.display = "none";
-                document.getElementById("download-comp-btn").style.display = "inline-block";
-                document.getElementById("adjust-controls").style.display = "block";
-                resetTransform(); // Reset sliders to default for new photo
+                currentUserImg = img;
+                await performBackgroundRemoval(img);
             };
             img.src = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+async function reprocessPhoto() {
+    if (currentUserImg && isStudioOpen) {
+        await performBackgroundRemoval(currentUserImg);
+    }
+}
+
+async function performBackgroundRemoval(img) {
+    const overlay = document.getElementById("loading-overlay");
+    overlay.style.display = "flex";
+    
+    const canvas = document.getElementById("user-canvas");
+    const threshold = parseFloat(document.getElementById("user-threshold").value) || 0.6;
+    
+    if (!net) {
+        await loadModel();
+        if (!isStudioOpen) return;
+    }
+    
+    const segmentation = await net.segmentPerson(img, {
+        flipHorizontal: false,
+        internalResolution: 'high',
+        segmentationThreshold: threshold
+    });
+
+    if (!isStudioOpen) {
+        overlay.style.display = "none";
+        return;
+    }
+
+    const width = img.width;
+    const height = img.height;
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+
+    const imageData = ctx.getImageData(0, 0, width, height);
+    const pixelData = imageData.data;
+
+    for (let i = 0; i < pixelData.length; i += 4) {
+        if (segmentation.data[i / 4] === 0) {
+            pixelData[i + 3] = 0;
+        }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    overlay.style.display = "none";
+    document.getElementById("download-comp-btn").style.display = "inline-block";
+    document.getElementById("adjust-controls").style.display = "block";
 }
 
 function updateUserTransform() {
@@ -433,21 +447,23 @@ function updateUserTransform() {
     const posY = document.getElementById("user-pos-y").value;
     const canvas = document.getElementById("user-canvas");
     
-    // Position: posX and posY are used for left and bottom offsets
-    canvas.style.left = `${posX}%`;
-    canvas.style.bottom = `${posY}%`;
-    // Transform: centerX with translateX and apply scale
-    canvas.style.transform = `translateX(-50%) scale(${scale})`;
+    if (canvas) {
+        canvas.style.left = `${posX}%`;
+        canvas.style.bottom = `${posY}%`;
+        canvas.style.transform = `translateX(-50%) scale(${scale})`;
+    }
 }
 
 function resetTransform() {
     const scale = document.getElementById("user-scale");
     const posX = document.getElementById("user-pos-x");
     const posY = document.getElementById("user-pos-y");
+    const threshold = document.getElementById("user-threshold");
     
     if (scale) scale.value = 1.0;
     if (posX) posX.value = 50;
     if (posY) posY.value = 0;
+    if (threshold) threshold.value = 0.6;
     
     updateUserTransform();
 }
