@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987431890843095"
      crossorigin="anonymous"></script>
-<title>Ultimate Dream Travel - Virtual Travel Studio</title>
-<meta name="description" content="Explore 50 of the most amazing travel destinations and take virtual photos.">
+<title id="site-title">얼티밋 드림 트래블 - 가상 여행 스튜디오</title>
+<meta name="description" content="50곳의 멋진 세계 여행지를 탐험하고 가상 사진을 찍어보세요.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
@@ -18,22 +18,32 @@
 <body>
 
 <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="privacy.html">Privacy Policy</a>
+    <div class="nav-links">
+        <a href="index.html" data-i18n="nav-home">홈</a>
+        <a href="about.html" data-i18n="nav-about">소개</a>
+        <a href="contact.html" data-i18n="nav-contact">문의</a>
+        <a href="privacy.html" data-i18n="nav-privacy">개인정보보호</a>
+    </div>
+    <div class="lang-selector">
+        <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+        </select>
+    </div>
 </nav>
 
 <header>
-<h1>Ultimate Dream Travel</h1>
-<p>Virtual Photo Studio - Travel Anywhere in a Click!</p>
+<h1 data-i18n="header-title">얼티밋 드림 트래블</h1>
+<p data-i18n="header-subtitle">가상 포토 스튜디오 - 클릭 한 번으로 세계 여행!</p>
 </header>
 
 <!-- Virtual Studio Section -->
 <section id="studio-section" style="display:none; padding: 40px 20px; background: #e5e7eb; text-align: center;">
     <div style="max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        <h2>📸 Virtual Photo Studio</h2>
-        <p>Selected Destination: <strong id="selected-city-name">None</strong></p>
+        <h2 data-i18n="studio-title">📸 가상 포토 스튜디오</h2>
+        <p><span data-i18n="studio-selected">선택된 여행지:</span> <strong id="selected-city-name">-</strong></p>
         
         <div id="composition-area" style="position: relative; width: 100%; max-width: 100%; height: auto; min-height: 300px; max-height: 70vh; background: #eee; border-radius: 15px; overflow: hidden; margin-top: 20px; background-size: contain; background-position: center; background-repeat: no-repeat; margin-left: auto; margin-right: auto; transition: aspect-ratio 0.3s;">
             <!-- User photo will be placed here -->
@@ -41,7 +51,7 @@
             
             <div id="loading-overlay" style="display:none; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(255,255,255,0.8); align-items: center; justify-content: center; flex-direction: column;">
                 <div class="spinner"></div>
-                <p style="margin-top: 10px; font-weight: 500;">Removing Background... (AI)</p>
+                <p style="margin-top: 10px; font-weight: 500;" data-i18n="studio-processing">배경 제거 중... (AI)</p>
             </div>
         </div>
 
@@ -49,47 +59,47 @@
         <div id="adjust-controls" style="margin-top: 20px; display: none; background: #f9fafb; padding: 15px; border-radius: 12px; border: 1px solid #e5e7eb;">
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;">📏 Size:</label>
+                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-size">📏 크기:</label>
                     <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()" style="width: 100px;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;">↔️ Horiz:</label>
+                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-horiz">↔️ 좌우:</label>
                     <input type="range" id="user-pos-x" min="0" max="100" step="1" value="50" oninput="updateUserTransform()" style="width: 100px;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;">↕️ Vert:</label>
+                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-vert">↕️ 상하:</label>
                     <input type="range" id="user-pos-y" min="-50" max="100" step="1" value="0" oninput="updateUserTransform()" style="width: 100px;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;">✨ Precision:</label>
-                    <input type="range" id="user-threshold" min="0.2" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()" title="Adjust if background removal is too aggressive or not enough" style="width: 100px;">
+                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-precision">✨ 정밀도:</label>
+                    <input type="range" id="user-threshold" min="0.2" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()" style="width: 100px;">
                 </div>
-                <button onclick="resetTransform()" style="padding: 5px 12px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px;">Reset</button>
+                <button onclick="resetTransform()" style="padding: 5px 12px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px;" data-i18n="btn-reset">초기화</button>
             </div>
         </div>
 
         <div style="margin-top: 25px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <button onclick="document.getElementById('user-photo-upload').click()" style="background: #6366f1; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;">👤 Upload My Photo</button>
+            <button onclick="document.getElementById('user-photo-upload').click()" style="background: #6366f1; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;" data-i18n="btn-upload">👤 내 사진 업로드</button>
             <input type="file" id="user-photo-upload" accept="image/*" style="display:none" onchange="processUserPhoto(this)">
             
-            <button id="download-comp-btn" onclick="captureComposition()" style="background: #10b981; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer; display:none;">💾 Save Photo</button>
-            <button onclick="closeStudio()" style="background: #6b7280; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;">❌ Exit Studio</button>
+            <button id="download-comp-btn" onclick="captureComposition()" style="background: #10b981; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer; display:none;" data-i18n="btn-save">💾 사진 저장</button>
+            <button onclick="closeStudio()" style="background: #6b7280; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;" data-i18n="btn-exit">❌ 스튜디오 종료</button>
         </div>
-        <p style="font-size: 12px; color: #666; margin-top: 15px;">* AI background removal works best with a clear photo of a person.</p>
+        <p style="font-size: 12px; color: #666; margin-top: 15px;" data-i18n="studio-tip">* 인물 사진이 선명할수록 배경 제거 결과가 좋습니다.</p>
     </div>
 </section>
 
 <main>
     <div class="search-bar">
-        <input type="text" id="search" placeholder="Search a city or destination...">
+        <input type="text" id="search" placeholder="도시 또는 목적지 검색..." data-i18n-placeholder="search-placeholder">
     </div>
 
     <div class="filter-buttons">
-        <button class="active" onclick="filterRegion('all', this)">All</button>
-        <button onclick="filterRegion('Asia', this)">Asia</button>
-        <button onclick="filterRegion('Europe', this)">Europe</button>
-        <button onclick="filterRegion('America', this)">America</button>
-        <button onclick="filterRegion('Other', this)">Other</button>
+        <button class="active" onclick="filterRegion('all', this)" data-i18n="filter-all">전체</button>
+        <button onclick="filterRegion('Asia', this)" data-i18n="filter-asia">아시아</button>
+        <button onclick="filterRegion('Europe', this)" data-i18n="filter-europe">유럽</button>
+        <button onclick="filterRegion('America', this)" data-i18n="filter-america">아메리카</button>
+        <button onclick="filterRegion('Other', this)" data-i18n="filter-other">기타</button>
     </div>
 
     <div class="container" id="places"></div>
@@ -99,34 +109,26 @@
     <div class="modal-content">
         <h2 id="modalTitle"></h2>
         <p id="modalDesc"></p>
-        <button class="close-btn" onclick="closeModal()">Close</button>
+        <button class="close-btn" onclick="closeModal()" data-i18n="btn-close">닫기</button>
     </div>
 </div>
 
 <footer>
     <div class="policy-links">
-        <a href="index.html">Home</a> |
-        <a href="about.html">About Us</a> |
-        <a href="contact.html">Contact Us</a> |
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms of Service</a>
+        <a href="index.html" data-i18n="nav-home">홈</a> |
+        <a href="about.html" data-i18n="nav-about">소개</a> |
+        <a href="contact.html" data-i18n="nav-contact">문의</a> |
+        <a href="privacy.html" data-i18n="nav-privacy">개인정보보호</a> |
+        <a href="terms.html" data-i18n="nav-terms">이용약관</a>
     </div>
     <p>© 2026 Ultimate Dream Travel. All rights reserved.</p>
 </footer>
 
 <style>
-.spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #6366f1;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.lang-selector select { padding: 5px 10px; border-radius: 5px; border: 1px solid #ddd; font-family: inherit; }
+.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #6366f1; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 </style>
 
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
