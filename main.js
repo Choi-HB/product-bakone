@@ -400,45 +400,71 @@ async function performBackgroundRemoval(img) {
     const overlay = document.getElementById("loading-overlay");
     overlay.style.display = "flex";
     
-    const canvas = document.getElementById("user-canvas");
-    const threshold = parseFloat(document.getElementById("user-threshold").value) || 0.6;
-    
-    if (!net) {
-        await loadModel();
-        if (!isStudioOpen) return;
-    }
-    
-    const segmentation = await net.segmentPerson(img, {
-        flipHorizontal: false,
-        internalResolution: 'high',
-        segmentationThreshold: threshold
-    });
-
-    if (!isStudioOpen) {
-        overlay.style.display = "none";
-        return;
-    }
-
-    const width = img.width;
-    const height = img.height;
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0);
-
-    const imageData = ctx.getImageData(0, 0, width, height);
-    const pixelData = imageData.data;
-
-    for (let i = 0; i < pixelData.length; i += 4) {
-        if (segmentation.data[i / 4] === 0) {
-            pixelData[i + 3] = 0;
+    try {
+        const canvas = document.getElementById("user-canvas");
+        const threshold = parseFloat(document.getElementById("user-threshold").value) || 0.6;
+        
+        if (!net) {
+            await loadModel();
+            if (!isStudioOpen) return;
         }
-    }
+        
+        // 1. Resize logic to prevent memory overflow
+        // If image is too large, we scale it down for the AI to handle safely
+        const maxDimension = 1000;
+        let targetWidth = img.width;
+        let targetHeight = img.height;
+        
+        if (targetWidth > maxDimension || targetHeight > maxDimension) {
+            const scale = maxDimension / Math.max(targetWidth, targetHeight);
+            targetWidth *= scale;
+            targetHeight *= scale;
+        }
 
-    ctx.putImageData(imageData, 0, 0);
-    overlay.style.display = "none";
-    document.getElementById("download-comp-btn").style.display = "inline-block";
-    document.getElementById("adjust-controls").style.display = "block";
+        // Create a temporary off-screen canvas for resizing
+        const offscreen = document.createElement('canvas');
+        offscreen.width = targetWidth;
+        offscreen.height = targetHeight;
+        const offCtx = offscreen.getContext('2d');
+        offCtx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+        // 2. Perform AI Background Removal with safer settings
+        const segmentation = await net.segmentPerson(offscreen, {
+            flipHorizontal: false,
+            internalResolution: 'medium', // Changed from 'high' for stability
+            segmentationThreshold: threshold
+        });
+
+        if (!isStudioOpen) {
+            overlay.style.display = "none";
+            return;
+        }
+
+        // 3. Update the main canvas
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(offscreen, 0, 0);
+
+        const imageData = ctx.getImageData(0, 0, targetWidth, targetHeight);
+        const pixelData = imageData.data;
+
+        for (let i = 0; i < pixelData.length; i += 4) {
+            if (segmentation.data[i / 4] === 0) {
+                pixelData[i + 3] = 0; // Make background transparent
+            }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+        overlay.style.display = "none";
+        document.getElementById("download-comp-btn").style.display = "inline-block";
+        document.getElementById("adjust-controls").style.display = "block";
+        
+    } catch (error) {
+        console.error("AI Processing Error:", error);
+        overlay.style.display = "none";
+        alert("Failed to process image. The photo might be too large or the device memory is low. Please try a smaller photo.");
+    }
 }
 
 function updateUserTransform() {
