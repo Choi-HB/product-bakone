@@ -357,3 +357,64 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+
+function setBackground(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.body.style.backgroundImage = `url('${e.target.result}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.getElementById('bg-reset-btn').style.display = 'inline-block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function resetBackground() {
+    document.body.style.backgroundImage = 'none';
+    document.body.style.backgroundColor = '#f4f7fb';
+    document.getElementById('bg-reset-btn').style.display = 'none';
+    document.getElementById('bg-upload').value = '';
+}
+
+function takeScreenshot() {
+    const btn = document.getElementById("screenshot-btn");
+    const originalText = btn.innerText;
+    btn.innerText = "📸 Capturing...";
+    btn.disabled = true;
+
+    // Use html2canvas to capture the main content area
+    html2canvas(document.body, {
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: document.body.style.backgroundImage ? null : "#f4f7fb",
+        scale: 1, 
+        logging: false,
+        onclone: (clonedDoc) => {
+            // Ensure background image is visible in clone
+            if (document.body.style.backgroundImage) {
+                clonedDoc.body.style.backgroundImage = document.body.style.backgroundImage;
+                clonedDoc.body.style.backgroundSize = 'cover';
+                clonedDoc.body.style.backgroundAttachment = 'scroll'; // Important for capture
+            }
+        }
+    }).then(canvas => {
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.download = "webpage-thumbnail.png";
+        link.href = image;
+        link.click();
+
+        btn.innerText = originalText;
+        btn.disabled = false;
+        alert("Thumbnail has been captured and downloaded!");
+    }).catch(err => {
+        console.error("Screenshot failed:", err);
+        btn.innerText = originalText;
+        btn.disabled = false;
+        alert("Failed to capture thumbnail. Please try again.");
+    });
+}

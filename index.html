@@ -68,6 +68,10 @@
         <button onclick="filterRegion('Europe', this)">Europe</button>
         <button onclick="filterRegion('America', this)">America</button>
         <button onclick="filterRegion('Other', this)">Other</button>
+        <button id="bg-upload-btn" onclick="document.getElementById('bg-upload').click()" style="background: #6366f1; color: white; border-color: #6366f1;">🖼️ Set BG</button>
+        <input type="file" id="bg-upload" accept="image/*" style="display:none" onchange="setBackground(this)">
+        <button id="bg-reset-btn" onclick="resetBackground()" style="background: #6b7280; color: white; border-color: #6b7280; display:none;">🔄 Reset</button>
+        <button id="screenshot-btn" onclick="takeScreenshot()" style="background: #10b981; color: white; border-color: #10b981;">📷 Capture Thumbnail</button>
     </div>
 
     <div class="container" id="places"></div>
@@ -93,6 +97,7 @@
     <p>Providing unique travel insights and destination guides for global explorers.</p>
 </footer>
 
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script src="main.js"></script>
 
 </body>
