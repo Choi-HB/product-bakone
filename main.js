@@ -320,7 +320,10 @@ container.appendChild(card);
 
 render(places);
 
+let isStudioOpen = false;
+
 function travelToDestination(name, imgSrc) {
+    isStudioOpen = true;
     const studio = document.getElementById("studio-section");
     const compArea = document.getElementById("composition-area");
     const cityLabel = document.getElementById("selected-city-name");
@@ -332,27 +335,54 @@ function travelToDestination(name, imgSrc) {
 }
 
 function closeStudio() {
+    isStudioOpen = false; // This will trigger cancellation in processUserPhoto
     document.getElementById("studio-section").style.display = "none";
+    document.getElementById("loading-overlay").style.display = "none";
+    document.getElementById("user-photo-upload").value = ""; // Reset file input
+    
+    // Clear the canvas to free memory/prevent ghosts
+    const canvas = document.getElementById("user-canvas");
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 }
 
 async function processUserPhoto(input) {
     if (input.files && input.files[0]) {
+        if (!isStudioOpen) return;
+
         const overlay = document.getElementById("loading-overlay");
         overlay.style.display = "flex";
         
         const reader = new FileReader();
         reader.onload = async function(e) {
+            if (!isStudioOpen) return;
+
             const img = new Image();
             img.onload = async () => {
+                if (!isStudioOpen) return;
+
                 const canvas = document.getElementById("user-canvas");
                 
-                if (!net) await loadModel();
+                // 1. Check if model is loaded
+                if (!net) {
+                    await loadModel();
+                    if (!isStudioOpen) return;
+                }
                 
+                // 2. Perform AI Background Removal
                 const segmentation = await net.segmentPerson(img, {
                     flipHorizontal: false,
                     internalResolution: 'medium',
                     segmentationThreshold: 0.7
                 });
+
+                // 3. Check again if user exited during AI processing
+                if (!isStudioOpen) {
+                    overlay.style.display = "none";
+                    return;
+                }
 
                 const width = img.width;
                 const height = img.height;
@@ -366,7 +396,7 @@ async function processUserPhoto(input) {
 
                 for (let i = 0; i < pixelData.length; i += 4) {
                     if (segmentation.data[i / 4] === 0) {
-                        pixelData[i + 3] = 0;
+                        pixelData[i + 3] = 0; // Make background transparent
                     }
                 }
 
