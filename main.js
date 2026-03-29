@@ -72,7 +72,7 @@ const i18n = {
         "studio-title": "📸 仮想フォトスタジオ",
         "studio-selected": "選択された目的地:",
         "studio-processing": "背景を削除中... (AI)",
-        "studio-tip": "* 人物写真が鮮明であるほど、背景削除の結果が良くなります。",
+        "studio-tip": "* 人物写真가鮮明であるほど、背景削除の結果が良くなります。",
         "ctrl-size": "📏 サイズ:",
         "ctrl-horiz": "↔️ 左右:",
         "ctrl-vert": "↕️ 上下:",
@@ -153,7 +153,7 @@ const places = [
     {
         id: "seoul",
         region: "Asia",
-        name: { ko: "서울, 대한민국", en: "Seoul, South Korea", ja: "ソウル、韓国", zh: "首尔，韩国" },
+        name: { ko: "서울, 대한민국", en: "Seoul, South Korea", ja: "서울, 韓国", zh: "首尔，韩国" },
         desc: { 
             ko: "전통 궁궐과 첨단 기술이 공존하는 활기찬 도시입니다.",
             en: "A vibrant city where traditional palaces and high-tech coexist.",
@@ -185,13 +185,23 @@ const places = [
     }
 ];
 
-// Fallback for missing cities
+// Generate sample destinations for demonstration
 for(let i=0; i<45; i++) {
     places.push({
         id: `place-${i}`,
         region: i%2==0 ? "Europe" : "America",
-        name: { ko: `여행지 ${i+6}`, en: `Destination ${i+6}`, ja: `目的地 ${i+6}`, zh: `目的地 ${i+6}` },
-        desc: { ko: "상세 설명 준비 중입니다.", en: "Detailed description coming soon.", ja: "詳細説明を準備中です。", zh: "详细说明正在准备中。" }
+        name: { 
+            ko: `추천 여행지 ${i+6}`, 
+            en: `Dream Destination ${i+6}`, 
+            ja: `おすすめ目的地 ${i+6}`, 
+            zh: `推荐目的地 ${i+6}` 
+        },
+        desc: { 
+            ko: "상세 설명 준비 중입니다.", 
+            en: "Detailed description coming soon.", 
+            ja: "詳細説明を準備中です。", 
+            zh: "详细说明正在准备中。" 
+        }
     });
 }
 
@@ -216,18 +226,26 @@ function changeLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
     
+    // Update all i18n marked elements
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (i18n[lang][key]) el.innerText = i18n[lang][key];
     });
 
+    // Update placeholders
     document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
         const key = el.getAttribute("data-i18n-placeholder");
         if (i18n[lang][key]) el.placeholder = i18n[lang][key];
     });
 
+    // Sync select dropdown
+    const langSelect = document.getElementById("lang-select");
+    if(langSelect) langSelect.value = lang;
+
+    // Refresh travel cards
     render(places);
     
+    // Refresh studio text if active
     const selectedCity = document.getElementById("selected-city-name");
     if (selectedCity && selectedCity.getAttribute("data-place-id")) {
         const placeId = selectedCity.getAttribute("data-place-id");
@@ -237,12 +255,16 @@ function changeLanguage(lang) {
 }
 
 function render(data){
+    if(!container) return;
     container.innerHTML="";
-    data.forEach((p,i)=>{
+
+    data.forEach((p)=>{
         const card=document.createElement("div");
         card.className="card";
+
         const img=document.createElement("img");
         const cityNameEn = p.name.en.split(",")[0];
+
         fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${cityNameEn}`)
         .then(res=>res.json())
         .then(wikiData=>{
@@ -250,53 +272,7 @@ function render(data){
             else img.src = `https://picsum.photos/seed/${p.id}/600/400`;
         })
         .catch(()=> img.src = `https://picsum.photos/seed/${p.id}/600/400`);
-        img.alt = p.name[currentLang];
-        const content=document.createElement("div");
-        content.className="card-content";
-        const title=document.createElement("h3");
-        title.innerText=p.name[currentLang];
-        const footer = document.createElement("div");
-        footer.className = "card-footer";
-        const btn=document.createElement("button");
-        btn.innerText=i18n[currentLang]["btn-travel"];
-        btn.onclick=()=>travelToDestination(p.id, img.src);
-        const infoBtn=document.createElement("button");
-        infoBtn.innerText=i18n[currentLang]["btn-details"];
-        infoBtn.style.background = "#6b7280";
-        infoBtn.onclick=()=>openModal(p.name[currentLang], p.desc[currentLang]);
-        footer.appendChild(btn);
-        footer.appendChild(infoBtn);
-        content.appendChild(title);
-        content.appendChild(footer);
-        card.appendChild(img);
-        card.appendChild(content);
-        container.appendChild(card);
-    });
-}
-
-// Initial Sync
-changeLanguage('en');
-    container.innerHTML="";
-
-    data.forEach((p,i)=>{
-        const card=document.createElement("div");
-        card.className="card";
-
-        const img=document.createElement("img");
-        const cityNameEn = p.name.en.split(",")[0];
-
-        fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${cityNameEn}`)
-        .then(res=>res.json())
-        .then(wikiData=>{
-            if(wikiData.thumbnail){
-                img.src = wikiData.thumbnail.source;
-            }else{
-                img.src = `https://picsum.photos/seed/${p.id}/600/400`;
-            }
-        })
-        .catch(()=>{
-            img.src = `https://picsum.photos/seed/${p.id}/600/400`;
-        });
+        
         img.alt = p.name[currentLang];
 
         const content=document.createElement("div");
@@ -319,18 +295,13 @@ changeLanguage('en');
 
         footer.appendChild(btn);
         footer.appendChild(infoBtn);
-
         content.appendChild(title);
         content.appendChild(footer);
-
         card.appendChild(img);
         card.appendChild(content);
-
         container.appendChild(card);
     });
 }
-
-render(places);
 
 function travelToDestination(id, imgSrc) {
     isStudioOpen = true;
@@ -507,3 +478,6 @@ window.onclick = function(event) {
     const modal = document.getElementById("modal");
     if (event.target == modal) closeModal();
 }
+
+// Initial Language Sync
+changeLanguage('en');
