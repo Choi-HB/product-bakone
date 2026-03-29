@@ -430,16 +430,25 @@ async function processUserPhoto(input) {
 function updateUserTransform() {
     const scale = document.getElementById("user-scale").value;
     const posX = document.getElementById("user-pos-x").value;
+    const posY = document.getElementById("user-pos-y").value;
     const canvas = document.getElementById("user-canvas");
     
-    // Scale and translate: posX is 0-100, we convert it to % for left position
+    // Position: posX and posY are used for left and bottom offsets
     canvas.style.left = `${posX}%`;
+    canvas.style.bottom = `${posY}%`;
+    // Transform: centerX with translateX and apply scale
     canvas.style.transform = `translateX(-50%) scale(${scale})`;
 }
 
 function resetTransform() {
-    document.getElementById("user-scale").value = 1.0;
-    document.getElementById("user-pos-x").value = 50;
+    const scale = document.getElementById("user-scale");
+    const posX = document.getElementById("user-pos-x");
+    const posY = document.getElementById("user-pos-y");
+    
+    if (scale) scale.value = 1.0;
+    if (posX) posX.value = 50;
+    if (posY) posY.value = 0;
+    
     updateUserTransform();
 }
 

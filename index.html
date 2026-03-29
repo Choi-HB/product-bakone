@@ -50,13 +50,17 @@
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <label style="font-size: 14px; font-weight: 500;">📏 Size:</label>
-                    <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()" style="width: 150px;">
+                    <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()" style="width: 120px;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;">↔️ Horizontal:</label>
-                    <input type="range" id="user-pos-x" min="0" max="100" step="1" value="50" oninput="updateUserTransform()" style="width: 150px;">
+                    <label style="font-size: 14px; font-weight: 500;">↔️ Horiz:</label>
+                    <input type="range" id="user-pos-x" min="0" max="100" step="1" value="50" oninput="updateUserTransform()" style="width: 120px;">
                 </div>
-                <button onclick="resetTransform()" style="padding: 5px 12px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px;">Reset Transform</button>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <label style="font-size: 14px; font-weight: 500;">↕️ Vert:</label>
+                    <input type="range" id="user-pos-y" min="-50" max="100" step="1" value="0" oninput="updateUserTransform()" style="width: 120px;">
+                </div>
+                <button onclick="resetTransform()" style="padding: 5px 12px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px;">Reset</button>
             </div>
         </div>
 
