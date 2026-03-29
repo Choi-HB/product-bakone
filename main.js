@@ -329,9 +329,31 @@ function travelToDestination(name, imgSrc) {
     const cityLabel = document.getElementById("selected-city-name");
     
     cityLabel.innerText = name;
-    compArea.style.backgroundImage = `url('${imgSrc}')`;
-    studio.style.display = "block";
-    studio.scrollIntoView({ behavior: 'smooth' });
+    
+    // Load image to get its natural dimensions
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = function() {
+        if (!isStudioOpen) return;
+        
+        // Calculate aspect ratio
+        const ratio = img.naturalWidth / img.naturalHeight;
+        compArea.style.aspectRatio = `${img.naturalWidth} / ${img.naturalHeight}`;
+        
+        // Adjust display based on horizontal or vertical
+        if (ratio < 1) {
+            // Vertical image: restrict width to prevent taking too much vertical space
+            compArea.style.width = "400px";
+        } else {
+            // Horizontal image: use full width up to max-width
+            compArea.style.width = "100%";
+        }
+        
+        compArea.style.backgroundImage = `url('${imgSrc}')`;
+        studio.style.display = "block";
+        studio.scrollIntoView({ behavior: 'smooth' });
+    };
+    img.src = imgSrc;
 }
 
 function closeStudio() {
