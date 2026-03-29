@@ -330,22 +330,17 @@ function travelToDestination(name, imgSrc) {
     
     cityLabel.innerText = name;
     
-    // Load image to get its natural dimensions
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.onload = function() {
         if (!isStudioOpen) return;
         
-        // Calculate aspect ratio
         const ratio = img.naturalWidth / img.naturalHeight;
         compArea.style.aspectRatio = `${img.naturalWidth} / ${img.naturalHeight}`;
         
-        // Adjust display based on horizontal or vertical
         if (ratio < 1) {
-            // Vertical image: restrict width to prevent taking too much vertical space
             compArea.style.width = "400px";
         } else {
-            // Horizontal image: use full width up to max-width
             compArea.style.width = "100%";
         }
         
@@ -357,17 +352,18 @@ function travelToDestination(name, imgSrc) {
 }
 
 function closeStudio() {
-    isStudioOpen = false; // This will trigger cancellation in processUserPhoto
+    isStudioOpen = false;
     document.getElementById("studio-section").style.display = "none";
     document.getElementById("loading-overlay").style.display = "none";
-    document.getElementById("user-photo-upload").value = ""; // Reset file input
+    document.getElementById("user-photo-upload").value = "";
+    document.getElementById("adjust-controls").style.display = "none";
     
-    // Clear the canvas to free memory/prevent ghosts
     const canvas = document.getElementById("user-canvas");
     if (canvas) {
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+    resetTransform();
 }
 
 async function processUserPhoto(input) {
@@ -387,20 +383,17 @@ async function processUserPhoto(input) {
 
                 const canvas = document.getElementById("user-canvas");
                 
-                // 1. Check if model is loaded
                 if (!net) {
                     await loadModel();
                     if (!isStudioOpen) return;
                 }
                 
-                // 2. Perform AI Background Removal
                 const segmentation = await net.segmentPerson(img, {
                     flipHorizontal: false,
                     internalResolution: 'medium',
                     segmentationThreshold: 0.7
                 });
 
-                // 3. Check again if user exited during AI processing
                 if (!isStudioOpen) {
                     overlay.style.display = "none";
                     return;
@@ -418,18 +411,36 @@ async function processUserPhoto(input) {
 
                 for (let i = 0; i < pixelData.length; i += 4) {
                     if (segmentation.data[i / 4] === 0) {
-                        pixelData[i + 3] = 0; // Make background transparent
+                        pixelData[i + 3] = 0;
                     }
                 }
 
                 ctx.putImageData(imageData, 0, 0);
                 overlay.style.display = "none";
                 document.getElementById("download-comp-btn").style.display = "inline-block";
+                document.getElementById("adjust-controls").style.display = "block";
+                resetTransform(); // Reset sliders to default for new photo
             };
             img.src = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+function updateUserTransform() {
+    const scale = document.getElementById("user-scale").value;
+    const posX = document.getElementById("user-pos-x").value;
+    const canvas = document.getElementById("user-canvas");
+    
+    // Scale and translate: posX is 0-100, we convert it to % for left position
+    canvas.style.left = `${posX}%`;
+    canvas.style.transform = `translateX(-50%) scale(${scale})`;
+}
+
+function resetTransform() {
+    document.getElementById("user-scale").value = 1.0;
+    document.getElementById("user-pos-x").value = 50;
+    updateUserTransform();
 }
 
 function captureComposition() {
