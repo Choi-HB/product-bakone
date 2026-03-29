@@ -159,6 +159,11 @@ function render(data){
         })
         .catch(()=> img.src = `https://picsum.photos/seed/${p.id}/600/400`);
         img.alt = p.name[currentLang];
+
+        const copyright = document.createElement("div");
+        copyright.className = "image-copyright";
+        copyright.innerText = "© Wikipedia / Creative Commons";
+
         const content=document.createElement("div");
         content.className="card-content";
         const title=document.createElement("h3");
