@@ -255,6 +255,13 @@ The city is famous for its vibrant atmosphere and desert gateway location.`}
 ];
 
 const container=document.getElementById("places");
+let net = null;
+
+async function loadModel() {
+    net = await bodyPix.load();
+    console.log("BodyPix Model Loaded");
+}
+loadModel();
 
 function render(data){
 container.innerHTML="";
@@ -266,7 +273,6 @@ card.className="card";
 const img=document.createElement("img");
 const city = p.name.split(",")[0];
 
-// Wikipedia API에서 실제 도시 이미지 가져오기
 fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${city}`)
 .then(res=>res.json())
 .then(data=>{
@@ -281,10 +287,6 @@ fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${city}`)
 });
 img.alt = p.name;
 
-const copyright = document.createElement("div");
-copyright.className = "image-copyright";
-copyright.innerText = "© Wikipedia / Creative Commons";
-
 const content=document.createElement("div");
 content.className="card-content";
 
@@ -294,25 +296,22 @@ title.innerText=p.name;
 const footer = document.createElement("div");
 footer.className = "card-footer";
 
-const fav=document.createElement("span");
-fav.innerHTML="❤";
-fav.className="favorite";
-fav.onclick=()=>{
-fav.classList.toggle("active");
-};
-
 const btn=document.createElement("button");
-btn.innerText="Explore Destination";
-btn.onclick=()=>openModal(p.name,p.desc);
+btn.innerText="Travel Here (Photo)";
+btn.onclick=()=>travelToDestination(p.name, img.src);
+
+const infoBtn=document.createElement("button");
+infoBtn.innerText="Details";
+infoBtn.style.background = "#6b7280";
+infoBtn.onclick=()=>openModal(p.name,p.desc);
 
 footer.appendChild(btn);
-footer.appendChild(fav);
+footer.appendChild(infoBtn);
 
 content.appendChild(title);
 content.appendChild(footer);
 
 card.appendChild(img);
-card.appendChild(copyright);
 card.appendChild(content);
 
 container.appendChild(card);
@@ -320,6 +319,80 @@ container.appendChild(card);
 }
 
 render(places);
+
+function travelToDestination(name, imgSrc) {
+    const studio = document.getElementById("studio-section");
+    const compArea = document.getElementById("composition-area");
+    const cityLabel = document.getElementById("selected-city-name");
+    
+    cityLabel.innerText = name;
+    compArea.style.backgroundImage = `url('${imgSrc}')`;
+    studio.style.display = "block";
+    studio.scrollIntoView({ behavior: 'smooth' });
+}
+
+function closeStudio() {
+    document.getElementById("studio-section").style.display = "none";
+}
+
+async function processUserPhoto(input) {
+    if (input.files && input.files[0]) {
+        const overlay = document.getElementById("loading-overlay");
+        overlay.style.display = "flex";
+        
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            const img = new Image();
+            img.onload = async () => {
+                const canvas = document.getElementById("user-canvas");
+                
+                if (!net) await loadModel();
+                
+                const segmentation = await net.segmentPerson(img, {
+                    flipHorizontal: false,
+                    internalResolution: 'medium',
+                    segmentationThreshold: 0.7
+                });
+
+                const width = img.width;
+                const height = img.height;
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+
+                const imageData = ctx.getImageData(0, 0, width, height);
+                const pixelData = imageData.data;
+
+                for (let i = 0; i < pixelData.length; i += 4) {
+                    if (segmentation.data[i / 4] === 0) {
+                        pixelData[i + 3] = 0;
+                    }
+                }
+
+                ctx.putImageData(imageData, 0, 0);
+                overlay.style.display = "none";
+                document.getElementById("download-comp-btn").style.display = "inline-block";
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function captureComposition() {
+    const area = document.getElementById("composition-area");
+    html2canvas(area, {
+        useCORS: true,
+        allowTaint: true
+    }).then(canvas => {
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.download = `my-travel-${Date.now()}.png`;
+        link.href = image;
+        link.click();
+    });
+}
 
 function openModal(title,desc){
 document.getElementById("modalTitle").innerText=title;
@@ -334,7 +407,6 @@ document.body.style.overflow = "auto";
 }
 
 function filterRegion(region, btn){
-// Remove active class from all buttons
 document.querySelectorAll('.filter-buttons button').forEach(b => b.classList.remove('active'));
 if(btn) btn.classList.add('active');
 
@@ -350,71 +422,9 @@ if(search) {
     });
 }
 
-// Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById("modal");
     if (event.target == modal) {
         closeModal();
     }
-}
-
-function setBackground(input) {
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.body.style.backgroundImage = `url('${e.target.result}')`;
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.backgroundAttachment = 'fixed';
-            document.body.style.backgroundPosition = 'center';
-            document.body.style.backgroundRepeat = 'no-repeat';
-            document.getElementById('bg-reset-btn').style.display = 'inline-block';
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-function resetBackground() {
-    document.body.style.backgroundImage = 'none';
-    document.body.style.backgroundColor = '#f4f7fb';
-    document.getElementById('bg-reset-btn').style.display = 'none';
-    document.getElementById('bg-upload').value = '';
-}
-
-function takeScreenshot() {
-    const btn = document.getElementById("screenshot-btn");
-    const originalText = btn.innerText;
-    btn.innerText = "📸 Capturing...";
-    btn.disabled = true;
-
-    // Use html2canvas to capture the main content area
-    html2canvas(document.body, {
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: document.body.style.backgroundImage ? null : "#f4f7fb",
-        scale: 1, 
-        logging: false,
-        onclone: (clonedDoc) => {
-            // Ensure background image is visible in clone
-            if (document.body.style.backgroundImage) {
-                clonedDoc.body.style.backgroundImage = document.body.style.backgroundImage;
-                clonedDoc.body.style.backgroundSize = 'cover';
-                clonedDoc.body.style.backgroundAttachment = 'scroll'; // Important for capture
-            }
-        }
-    }).then(canvas => {
-        const image = canvas.toDataURL("image/png");
-        const link = document.createElement("a");
-        link.download = "webpage-thumbnail.png";
-        link.href = image;
-        link.click();
-
-        btn.innerText = originalText;
-        btn.disabled = false;
-        alert("Thumbnail has been captured and downloaded!");
-    }).catch(err => {
-        console.error("Screenshot failed:", err);
-        btn.innerText = originalText;
-        btn.disabled = false;
-        alert("Failed to capture thumbnail. Please try again.");
-    });
 }
