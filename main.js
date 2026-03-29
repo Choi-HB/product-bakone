@@ -125,7 +125,7 @@ const i18n = {
     }
 };
 
-let currentLang = 'ko';
+let currentLang = 'en';
 
 const places = [
     {
@@ -183,19 +183,16 @@ const places = [
             zh: "拥有紫禁城和万里长城的悠久历史之城。"
         }
     }
-    // ... 추가 45개 여행지 데이터 구조 동일 (생략 가능 또는 순차 추가)
 ];
 
-// Fallback for missing cities in the simplified list above
+// Fallback for missing cities
 for(let i=0; i<45; i++) {
-    if(!places[i+5]) {
-        places.push({
-            id: `place-${i}`,
-            region: i%2==0 ? "Europe" : "America",
-            name: { ko: `여행지 ${i+6}`, en: `Destination ${i+6}`, ja: `目的地 ${i+6}`, zh: `目的地 ${i+6}` },
-            desc: { ko: "상세 설명 준비 중입니다.", en: "Detailed description coming soon.", ja: "詳細説明を準備中です。", zh: "详细说明正在准备中。" }
-        });
-    }
+    places.push({
+        id: `place-${i}`,
+        region: i%2==0 ? "Europe" : "America",
+        name: { ko: `여행지 ${i+6}`, en: `Destination ${i+6}`, ja: `目的地 ${i+6}`, zh: `目的地 ${i+6}` },
+        desc: { ko: "상세 설명 준비 중입니다.", en: "Detailed description coming soon.", ja: "詳細説明を準備中です。", zh: "详细说明正在准备中。" }
+    });
 }
 
 const container = document.getElementById("places");
@@ -219,26 +216,18 @@ function changeLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
     
-    // Update static UI text
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        if (i18n[lang][key]) {
-            el.innerText = i18n[lang][key];
-        }
+        if (i18n[lang][key]) el.innerText = i18n[lang][key];
     });
 
-    // Update placeholders
     document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
         const key = el.getAttribute("data-i18n-placeholder");
-        if (i18n[lang][key]) {
-            el.placeholder = i18n[lang][key];
-        }
+        if (i18n[lang][key]) el.placeholder = i18n[lang][key];
     });
 
-    // Re-render travel cards
     render(places);
     
-    // Update Studio Destination Name if open
     const selectedCity = document.getElementById("selected-city-name");
     if (selectedCity && selectedCity.getAttribute("data-place-id")) {
         const placeId = selectedCity.getAttribute("data-place-id");
@@ -248,6 +237,45 @@ function changeLanguage(lang) {
 }
 
 function render(data){
+    container.innerHTML="";
+    data.forEach((p,i)=>{
+        const card=document.createElement("div");
+        card.className="card";
+        const img=document.createElement("img");
+        const cityNameEn = p.name.en.split(",")[0];
+        fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${cityNameEn}`)
+        .then(res=>res.json())
+        .then(wikiData=>{
+            if(wikiData.thumbnail) img.src = wikiData.thumbnail.source;
+            else img.src = `https://picsum.photos/seed/${p.id}/600/400`;
+        })
+        .catch(()=> img.src = `https://picsum.photos/seed/${p.id}/600/400`);
+        img.alt = p.name[currentLang];
+        const content=document.createElement("div");
+        content.className="card-content";
+        const title=document.createElement("h3");
+        title.innerText=p.name[currentLang];
+        const footer = document.createElement("div");
+        footer.className = "card-footer";
+        const btn=document.createElement("button");
+        btn.innerText=i18n[currentLang]["btn-travel"];
+        btn.onclick=()=>travelToDestination(p.id, img.src);
+        const infoBtn=document.createElement("button");
+        infoBtn.innerText=i18n[currentLang]["btn-details"];
+        infoBtn.style.background = "#6b7280";
+        infoBtn.onclick=()=>openModal(p.name[currentLang], p.desc[currentLang]);
+        footer.appendChild(btn);
+        footer.appendChild(infoBtn);
+        content.appendChild(title);
+        content.appendChild(footer);
+        card.appendChild(img);
+        card.appendChild(content);
+        container.appendChild(card);
+    });
+}
+
+// Initial Sync
+changeLanguage('en');
     container.innerHTML="";
 
     data.forEach((p,i)=>{
