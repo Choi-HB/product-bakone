@@ -229,7 +229,7 @@ const places = [
     { id: "p43", region: "Asia", name: { ko: "교토, 일본", en: "Kyoto, Japan", ja: "京都・日本", zh: "京都，日本" } },
     { id: "p44", region: "America", name: { ko: "리우데자네이루, 브라질", en: "Rio de Janeiro, Brazil", ja: "リオデジャネイロ・ブラジル", zh: "里约热内卢，巴西" } },
     { id: "p45", region: "America", name: { ko: "로스앤젤레스, 미국", en: "Los Angeles, USA", ja: "ロサンゼルス・米国", zh: "洛杉矶，美国" } },
-    { id: "p46", region: "Asia", name: { ko: "홍콩", en: "Hong Kong, China", ja: "香港・中国", zh: "香港" } },
+    { id: "p46", region: "Asia", name: { ko: "홍콩", en: "Hong Kong", ja: "香港", zh: "香港" } },
     { id: "p47", region: "Europe", name: { ko: "마드리드, 스페인", en: "Madrid, Spain", ja: "マドリード・スペイン", zh: "马德里，西班牙" } },
     { id: "p48", region: "America", name: { ko: "밴쿠버, 캐나다", en: "Vancouver, Canada", ja: "バンクーバー・カナダ", zh: "温哥华，加拿大" } },
     { id: "p49", region: "Asia", name: { ko: "부산, 대한민국", en: "Busan, South Korea", ja: "釜山・韓国", zh: "釜山，韩国" } },
