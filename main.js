@@ -286,13 +286,24 @@ const places = [
         card.className="card";
         const img=document.createElement("img");
         const cityNameEn = p.name.en.split(",")[0];
+        
+        // 카드에는 썸네일을 표시하고, 버튼 클릭 시에는 고해상도를 사용하도록 데이터 저장
+        let highResUrl = `https://picsum.photos/seed/${p.id}/1920/1080`;
+        
         fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${cityNameEn}`)
         .then(res=>res.json())
         .then(wd=>{
-            if(wd.thumbnail) img.src = wd.thumbnail.source;
-            else img.src = `https://picsum.photos/seed/${p.id}/600/400`;
+            if(wd.thumbnail) {
+                img.src = wd.thumbnail.source;
+                highResUrl = wd.originalimage ? wd.originalimage.source : wd.thumbnail.source;
+            } else {
+                img.src = `https://picsum.photos/seed/${p.id}/600/400`;
+            }
         })
-        .catch(()=> img.src = `https://picsum.photos/seed/${p.id}/600/400`);
+        .catch(()=> {
+            img.src = `https://picsum.photos/seed/${p.id}/600/400`;
+        });
+
         img.alt = p.name[currentLang];
         const cp = document.createElement("div");
         cp.className = "image-copyright";
@@ -305,7 +316,7 @@ const places = [
         f.className = "card-footer";
         const b1=document.createElement("button");
         b1.innerText=i18n[currentLang]["btn-travel"];
-        b1.onclick=()=>travelToDestination(p.id, img.src);
+        b1.onclick=()=>travelToDestination(p.id, highResUrl);
         const b2=document.createElement("button");
         b2.innerText=i18n[currentLang]["btn-details"];
         b2.style.background = "#6b7280";
