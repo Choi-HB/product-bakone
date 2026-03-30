@@ -7,6 +7,7 @@ const i18n = {
         "ctrl-size": "📏 크기:", "ctrl-horiz": "↔️ 좌우:", "ctrl-vert": "↕️ 상하:", "ctrl-precision": "✨ 정밀도:",
         "btn-reset": "초기화", "btn-upload": "👤 내 사진 업로드", "btn-save": "💾 사진 저장", "btn-exit": "❌ 스튜디오 종료",
         "btn-close": "닫기", "btn-travel": "여기로 여행 (합성)", "btn-details": "상세 정보",
+        "btn-webcam-on": "📷 웹캠 사용", "btn-webcam-off": "🛑 웹캠 중지", "btn-capture": "📸 찰칵!",
         "search-placeholder": "도시 또는 목적지 검색...",
         "filter-all": "전체", "filter-asia": "아시아", "filter-europe": "유럽", "filter-america": "아메리카", "filter-other": "기타",
         "alert-error": "이미지 처리에 실패했습니다. 사진 크기를 줄이거나 다른 사진으로 시도해 주세요."
@@ -19,6 +20,7 @@ const i18n = {
         "ctrl-size": "📏 Size:", "ctrl-horiz": "↔️ Horiz:", "ctrl-vert": "↕️ Vert:", "ctrl-precision": "✨ Precision:",
         "btn-reset": "Reset", "btn-upload": "👤 Upload My Photo", "btn-save": "💾 Save Photo", "btn-exit": "❌ Exit Studio",
         "btn-close": "Close", "btn-travel": "Travel Here (Photo)", "btn-details": "Details",
+        "btn-webcam-on": "📷 Use Webcam", "btn-webcam-off": "🛑 Stop Webcam", "btn-capture": "📸 Capture!",
         "search-placeholder": "Search city or destination...",
         "filter-all": "All", "filter-asia": "Asia", "filter-europe": "Europe", "filter-america": "America", "filter-other": "Other",
         "alert-error": "Failed to process image. Please try a smaller photo or a different one."
@@ -317,6 +319,7 @@ const places = [
 
     function travelToDestination(id, imgSrc) {
     isStudioOpen = true;
+    resetStudioUI();
     const p = places.find(x => x.id === id);
     const s = document.getElementById("studio-section");
     const ca = document.getElementById("composition-area");
@@ -346,14 +349,14 @@ const places = [
             webcamStream.getTracks().forEach(t => t.stop());
             webcamStream = null;
             v.style.display = 'none';
-            b.innerText = currentLang === 'ko' ? '📷 웹캠 사용' : '📷 Use Webcam';
+            b.innerText = i18n[currentLang]["btn-webcam-on"];
             c.style.display = 'none';
         } else {
             try {
                 webcamStream = await navigator.mediaDevices.getUserMedia({ video: true });
                 v.srcObject = webcamStream;
                 v.style.display = 'block';
-                b.innerText = currentLang === 'ko' ? '🛑 웹캠 중지' : '🛑 Stop Webcam';
+                b.innerText = i18n[currentLang]["btn-webcam-off"];
                 c.style.display = 'inline-block';
             } catch (e) {
                 alert('Webcam access failed: ' + e.message);
@@ -381,9 +384,26 @@ const places = [
     isStudioOpen = false;
     document.getElementById("studio-section").style.display = "none";
     document.getElementById("loading-overlay").style.display = "none";
-    document.getElementById("adjust-controls").style.display = "none";
     document.body.style.overflow = "auto";
     currentUserImg = null;
+    if (webcamStream) {
+        webcamStream.getTracks().forEach(t => t.stop());
+        webcamStream = null;
+    }
+    resetStudioUI();
+    }
+
+    function resetStudioUI() {
+        const c = document.getElementById("user-canvas");
+        if (c) {
+            const ctx = c.getContext('2d');
+            ctx.clearRect(0, 0, c.width, c.height);
+        }
+        document.getElementById("adjust-controls").style.display = "none";
+        document.getElementById("download-comp-btn").style.display = "none";
+        document.getElementById("webcam-video").style.display = "none";
+        document.getElementById("capture-btn").style.display = "none";
+        resetTransform();
     }
 
     async function processUserPhoto(input) {
@@ -425,6 +445,7 @@ const places = [
         ctx.putImageData(idat, 0, 0);
         o.style.display = "none";
         document.getElementById("adjust-controls").style.display = "block";
+        document.getElementById("download-comp-btn").style.display = "inline-block";
     } catch (e) { console.error(e); o.style.display = "none"; alert(i18n[currentLang]["alert-error"]); }
     }
 
