@@ -114,7 +114,10 @@ const places = [
         ja: "道路の代わりに運河が流れ、車の代わりにゴンドラが行き交うロマンチックな水の都です.\n迷路のような水路に沿って広がる中世の建築物は、時間が止まったような風景を提供します.\nサン・マルコ広場でコーヒーを楽しみ、大聖堂の雄大さを全身で感じてください.\nリアルト橋の上から眺める夕日と運河の反映は、画家たちが愛した名場面です.\nガラス工芸で有名なムラーノ島と、色とりどりのブラーノ島を訪れてください。",
         zh: "运河代替道路，贡多拉代替汽车的浪漫水城. \n沿着迷宫般的航道展现的中世纪建筑，呈现出时间仿佛停滞般的风景. \n在圣马可广场享受一杯咖啡的悠闲，全身心感受圣堂的雄伟. \n从里亚托桥俯瞰的日落和运河倒影是画家们最爱的名场面. \n在以玻璃工艺闻名的穆拉诺岛和五彩缤纷的布拉诺岛留下异国风情的回忆。"
     }},
-    { id: "p11", region: "Asia", name: { ko: "싱가포르", en: "Singapore", ja: "シンガポール", zh: "新加坡" }, desc: {
+    { id: "p11", region: "Asia", name: { ko: "싱가포르", en: "Singapore", ja: "シンガポール", zh: "新加坡" }, 
+      customImage: "https://images.unsplash.com/photo-1525625239445-a2ce8b769ca1?q=80&w=1920&auto=format&fit=crop",
+      copyright: "© Unsplash / Hu Chen",
+      desc: {
         ko: "도시 전체가 거대한 정원 같은 청정 국가로, 다양한 문화가 공존하는 미식의 천국입니다.\n가든스 바이 더 베이의 슈퍼트리 쇼와 마리나 베이 샌즈의 야경은 미래 지향적입니다.\n유니버설 스튜디오가 있는 센토사 섬에서 가족과 함께 즐거운 시간을 보내보세요.\n차이나타운, 리틀 인디아, 아랍 스트리트에서 전 세계의 다채로운 문화를 체험하세요.\n창이 공항의 쥬얼 폭포는 여행의 시작과 끝을 화려하게 장식합니다.",
         en: "A clean garden city-state where diverse cultures and cuisines coexist perfectly.\nThe Supertree light show and Marina Bay Sands offer a futuristic vibe.\nHave a fun-filled day at Sentosa Island, home to Universal Studios Singapore.\nExplore the colorful heritage of Chinatown, Little India, and Arab Street.\nThe Jewel rain vortex at Changi Airport provides a spectacular travel experience.",
         ja: "街全体が巨大な庭園のようなクリーンな国で、多様な文化が共存する美食の天国です.\nガーデンズ・バイ・ザ・ベイのスーパーツリーショーと夜景は未来志向です.\nユニバーサル・スタジオがあるセントーサ島で家族と一緒に楽しい時間を過ごしてください.\nチャイナタウン、リトル・インディア、アラブ・ストリートで多彩な文化を体験してください.\nチャンギ空港の滝は、旅行の始まりと終わりを華やかに飾ります。",
@@ -288,26 +291,30 @@ const places = [
         const cityNameEn = p.name.en.split(",")[0];
         
         // 카드에는 썸네일을 표시하고, 버튼 클릭 시에는 고해상도를 사용하도록 데이터 저장
-        let highResUrl = `https://picsum.photos/seed/${p.id}/1920/1080`;
+        let highResUrl = p.customImage || `https://picsum.photos/seed/${p.id}/1920/1080`;
         
-        fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${cityNameEn}`)
-        .then(res=>res.json())
-        .then(wd=>{
-            if(wd.thumbnail) {
-                img.src = wd.thumbnail.source;
-                highResUrl = wd.originalimage ? wd.originalimage.source : wd.thumbnail.source;
-            } else {
+        if (p.customImage) {
+            img.src = p.customImage;
+        } else {
+            fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${cityNameEn}`)
+            .then(res=>res.json())
+            .then(wd=>{
+                if(wd.thumbnail) {
+                    img.src = wd.thumbnail.source;
+                    highResUrl = wd.originalimage ? wd.originalimage.source : wd.thumbnail.source;
+                } else {
+                    img.src = `https://picsum.photos/seed/${p.id}/600/400`;
+                }
+            })
+            .catch(()=> {
                 img.src = `https://picsum.photos/seed/${p.id}/600/400`;
-            }
-        })
-        .catch(()=> {
-            img.src = `https://picsum.photos/seed/${p.id}/600/400`;
-        });
+            });
+        }
 
         img.alt = p.name[currentLang];
         const cp = document.createElement("div");
         cp.className = "image-copyright";
-        cp.innerText = "© Wikipedia / Creative Commons";
+        cp.innerText = p.copyright || "© Wikipedia / Creative Commons";
         const cnt=document.createElement("div");
         cnt.className="card-content";
         const t=document.createElement("h3");
