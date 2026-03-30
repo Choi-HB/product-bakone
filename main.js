@@ -457,6 +457,62 @@ const places = [
     if (c) { c.style.left = `${x}%`; c.style.bottom = `${y}%`; c.style.transform = `translateX(-50%) scale(${s})`; }
     }
 
+    // Touch Interaction Logic
+    let lastTouchX = 0;
+    let lastTouchY = 0;
+    let initialPinchDist = 0;
+    let initialScale = 1.0;
+
+    function initTouchEvents() {
+        const ca = document.getElementById("composition-area");
+        const canvas = document.getElementById("user-canvas");
+        
+        ca.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                lastTouchX = e.touches[0].clientX;
+                lastTouchY = e.touches[0].clientY;
+            } else if (e.touches.length === 2) {
+                initialPinchDist = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                initialScale = parseFloat(document.getElementById("user-scale").value);
+            }
+        }, { passive: false });
+
+        ca.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (e.touches.length === 1) {
+                const touchX = e.touches[0].clientX;
+                const touchY = e.touches[0].clientY;
+                const dx = touchX - lastTouchX;
+                const dy = touchY - lastTouchY;
+
+                const posX = document.getElementById("user-pos-x");
+                const posY = document.getElementById("user-pos-y");
+                
+                // Sensitivity adjustment (dx / width * 100 for percentage)
+                posX.value = parseFloat(posX.value) + (dx / ca.clientWidth * 100);
+                posY.value = parseFloat(posY.value) - (dy / ca.clientHeight * 100);
+                
+                lastTouchX = touchX;
+                lastTouchY = touchY;
+                updateUserTransform();
+            } else if (e.touches.length === 2) {
+                const currentDist = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                if (initialPinchDist > 0) {
+                    const scaleInput = document.getElementById("user-scale");
+                    const zoomFactor = currentDist / initialPinchDist;
+                    scaleInput.value = Math.min(2.0, Math.max(0.1, initialScale * zoomFactor));
+                    updateUserTransform();
+                }
+            }
+        }, { passive: false });
+    }
+
     function resetTransform() {
     document.getElementById("user-scale").value = 1.0;
     document.getElementById("user-pos-x").value = 50;
@@ -504,4 +560,5 @@ const places = [
 
     window.onclick = (e) => { if (e.target == document.getElementById("modal")) closeModal(); }
 
+    initTouchEvents(); // 터치 이벤트 초기화
     changeLanguage('en');
