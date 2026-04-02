@@ -38,7 +38,7 @@ const i18n = {
         "alert-error": "画像の処理に失敗しました。写真のサイズを小さくするか、別の写真で試してください。"
     },
     zh: {
-        "nav-home": "首页", "nav-about": "关于我们", "nav-contact": "联系我们", "nav-privacy": "隐私政策", "nav-terms": "使用条款",
+        "nav-home": "首页", "nav-about": "关于", "nav-contact": "联系我们", "nav-privacy": "隐私政策", "nav-terms": "使用条款",
         "header-title": "终极梦想旅游", "header-subtitle": "虚拟摄影棚 - 点击一下即可环游世界！",
         "studio-title": "📸 虚拟摄影棚", "studio-selected": "选定的目的地:", "studio-processing": "正在移除背景... (AI)",
         "studio-tip": "* 人物照片越清晰，背景移除效果越好。",
