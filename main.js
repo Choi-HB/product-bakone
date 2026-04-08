@@ -10,7 +10,11 @@ const i18n = {
         "btn-webcam-on": "📷 웹캠 사용", "btn-webcam-off": "🛑 웹캠 중지", "btn-capture": "📸 찰칵!",
         "search-placeholder": "도시 또는 목적지 검색...",
         "filter-all": "전체", "filter-asia": "아시아", "filter-europe": "유럽", "filter-america": "아메리카", "filter-other": "기타",
-        "alert-error": "이미지 처리에 실패했습니다. 사진 크기를 줄이거나 다른 사진으로 시도해 주세요."
+        "alert-error": "이미지 처리에 실패했습니다. 사진 크기를 줄이거나 다른 사진으로 시도해 주세요.",
+        "guide-how-title": "💡 이용 방법",
+        "guide-how-list": "<li>원하는 여행지를 리스트에서 선택합니다.</li><li>"웹캠"을 켜거나 "사진 업로드" 버튼을 눌러 본인의 사진을 불러옵니다.</li><li>AI가 자동으로 배경을 제거하고 여행지에 합성해 드립니다.</li><li>슬라이더를 조절하여 크기와 위치를 알맞게 조정하세요.</li><li>"사진 저장"을 눌러 나만의 특별한 여행 사진을 간직하세요!</li>",
+        "guide-tips-title": "✈️ 여행 영감 & 팁",
+        "guide-tips-text": "전 세계 50개 이상의 랜드마크를 가상으로 탐험해 보세요. 파리의 에펠탑부터 아이슬란드의 오로라까지, 당신의 다음 여행지를 미리 체험할 수 있습니다. 각 장소의 상세 정보를 통해 역사와 문화적 배경도 함께 배워보세요. 가상 여행은 스트레스를 줄여주고 새로운 모험을 꿈꾸게 하는 훌륭한 방법입니다."
     },
     en: {
         "nav-home": "Home", "nav-about": "About", "nav-contact": "Contact", "nav-privacy": "Privacy", "nav-terms": "Terms",
@@ -19,15 +23,19 @@ const i18n = {
         "studio-tip": "* Clearer person photos yield better background removal results.",
         "ctrl-size": "📏 Size:", "ctrl-horiz": "↔️ Horiz:", "ctrl-vert": "↕️ Vert:", "ctrl-precision": "✨ Precision:",
         "btn-reset": "Reset", "btn-upload": "👤 Upload My Photo", "btn-save": "💾 Save Photo", "btn-exit": "❌ Exit Studio",
-        "btn-close": "Close", "btn-travel": "Travel Here (Photo)", "btn-details": "Details",
+        "btn-close": "Close", "btn-travel": "Travel Here", "btn-details": "Details",
         "btn-webcam-on": "📷 Use Webcam", "btn-webcam-off": "🛑 Stop Webcam", "btn-capture": "📸 Capture!",
-        "search-placeholder": "Search city or destination...",
+        "search-placeholder": "Search destination...",
         "filter-all": "All", "filter-asia": "Asia", "filter-europe": "Europe", "filter-america": "America", "filter-other": "Other",
-        "alert-error": "Failed to process image. Please try a smaller photo or a different one."
+        "alert-error": "Failed to process image. Please try a smaller photo or a different one.",
+        "guide-how-title": "💡 How to Use",
+        "guide-how-list": "<li>Select your desired destination from the list.</li><li>Turn on "Webcam" or click "Upload Photo" to load your image.</li><li>AI automatically removes the background and composites it with the destination.</li><li>Use sliders to adjust size and position.</li><li>Click "Save Photo" to keep your special memory!</li>",
+        "guide-tips-title": "✈️ Travel Inspiration & Tips",
+        "guide-tips-text": "Explore over 50 landmarks worldwide virtually. From the Eiffel Tower in Paris to the Northern Lights in Iceland, preview your next trip. Learn about history and culture through detailed information for each spot. Virtual travel is a great way to reduce stress and dream of new adventures."
     },
     ja: {
         "nav-home": "ホーム", "nav-about": "紹介", "nav-contact": "お問い合わせ", "nav-privacy": "個人情報保護", "nav-terms": "利用規約",
-        "header-title": "アルティメット・ドリーム・トラベル", "header-subtitle": "仮想フォトスタジオ - クリック一つで世界旅行！",
+        "header-title": "アルティメット・ド림・トラベル", "header-subtitle": "仮想フォトスタジオ - クリック一つで世界旅行！",
         "studio-title": "📸 仮想フォトスタジオ", "studio-selected": "選択された目的地:", "studio-processing": "背景を削除中... (AI)",
         "studio-tip": "* 人物写真が鮮明であるほど、背景削除の結果が良くなります。",
         "ctrl-size": "📏 サイズ:", "ctrl-horiz": "↔️ 左右:", "ctrl-vert": "↕️ 上下:", "ctrl-precision": "✨ 精度:",
@@ -35,7 +43,11 @@ const i18n = {
         "btn-close": "閉じる", "btn-travel": "ここへ旅行 (合成)", "btn-details": "詳細情報",
         "search-placeholder": "都市または目的地を検索...",
         "filter-all": "すべて", "filter-asia": "アジア", "filter-europe": "ヨーロッパ", "filter-america": "アメリカ", "filter-other": "その他",
-        "alert-error": "画像の処理に失敗しました。写真のサイズを小さくするか、別の写真で試してください。"
+        "alert-error": "画像の処理に失敗しました。写真のサイズを小さくするか、別の写真で試してください。",
+        "guide-how-title": "💡 利用方法",
+        "guide-how-list": "<li>リストから希望の目的地を選択します。</li><li>「ウェブカム」をオンにするか「写真をアップロード」ボタンを押して写真を読み込みます。</li><li>AIが自動的に背景を削除し、目的地に合成します。</li><li>スライダーを調節してサイズと位置を合わせます。</li><li>「写真を保存」を押して思い出を残しましょう！</li>",
+        "guide-tips-title": "✈️ 旅行のインスピレーションとヒント",
+        "guide-tips-text": "世界50以上のランドマークを仮想的に探索してください。各場所の詳細情報を通じて歴史や文化的背景を学ぶことができます。仮想旅行はストレスを軽減し、新しい冒険を夢見させる素晴らしい方法です。"
     },
     zh: {
         "nav-home": "首页", "nav-about": "关于", "nav-contact": "联系我们", "nav-privacy": "隐私政策", "nav-terms": "使用条款",
@@ -47,7 +59,11 @@ const i18n = {
         "btn-close": "关闭", "btn-travel": "去这里旅行 (合成)", "btn-details": "详细信息",
         "search-placeholder": "搜索城市 or 目的地...",
         "filter-all": "全部", "filter-asia": "亚洲", "filter-europe": "欧洲", "filter-america": "美洲", "filter-other": "其他",
-        "alert-error": "图片处理失败.请尝试缩小照片尺寸 or 使用其他照片。"
+        "alert-error": "图片处理失败.请尝试缩小照片尺寸 or 使用其他照片。",
+        "guide-how-title": "💡 使用方法",
+        "guide-how-list": "<li>从列表中选择您想要的目的地.</li><li>开启"摄像头"或点击"上传照片"加载您的图片.</li><li>AI自动移除背景并将其与目的地合成.</li><li>调整滑块以更改大小和位置.</li><li>点击"保存照片"留住您的特别回忆！</li>",
+        "guide-tips-title": "✈️ 旅游灵感与技巧",
+        "guide-tips-text": "虚拟探索全球50多个地标. 通过每个景点的详细信息了解历史和文化背景. 虚拟旅行是减轻压力和梦想新冒险的绝佳方式."
     }
 };
 
@@ -362,14 +378,163 @@ const extraPlaces = [
       copyright: "© Unsplash / Peter Cordes" }
 ];
 
+// Unique descriptions for destinations 26-50
+const extraDescs = {
+    p26: {
+        ko: "맥주 축제 옥토버페스트와 바이에른의 전통이 살아 숨 쉬는 활기찬 도시입니다.\n마리엔 광장의 시청사 시계탑 공연은 뮌헨 여행의 필수 코스입니다.\n세계 최고의 자동차 박물관인 BMW 박물관에서 독일의 기술력을 확인해 보세요.\n영국 정원에서 시원한 맥주 한 잔과 함께 진정한 휴식을 즐길 수 있습니다.\n알리안츠 아레나에서 바이에른 뮌헨의 열정적인 축구 열기를 느껴보세요.",
+        en: "A vibrant city home to the Oktoberfest and rich Bavarian traditions.\nThe Glockenspiel show at Marienplatz is a must-see for every visitor.\nExplore German engineering at the BMW Museum, a world-class automotive hub.\nEnjoy a refreshing beer and relaxation at the scenic English Garden.\nExperience the passion for football at the iconic Allianz Arena stadium.",
+        ja: "オクトーバーフェストとバイエルンの伝統が息づく活気ある街です.\nマリエン広場の市庁舎の仕掛け時計のパフォーマンスは、ミュンヘン旅行の必須コースです.\n世界最高の自動車博物館であるBMW博物館でドイツの技術力を確認してください.\n英国庭園で冷たいビールを片手に、真の休息を楽しめます.\nアリアンツ・アレーナでバイエルン・ミュンヘンの情熱的なサッカー熱を感じてください。",
+        zh: "慕尼黑啤酒节和巴伐利亚传统并存的充满活力的城市. \n玛利亚广场的市政厅钟楼表演是慕尼黑之旅的必经之路. \n在世界顶级汽车博物馆BMW博物馆见证德国的技术实力. \n在英国花园享受清凉啤酒，体验真正的休憩. \n在安联球场感受拜仁慕尼黑热情的足球氛围。"
+    },
+    p27: {
+        ko: "히말라야의 관문이자 수많은 사원들이 지키고 있는 신비로운 도시입니다.\n더르바르 광장에서 고대 왕국의 화려한 건축미와 역사를 만나보세요.\n스와얌부나트 사원의 "지혜의 눈"은 도시 전체를 굽어보며 평화를 기원합니다.\n복잡한 타멜 거리를 걸으며 네팔의 독특한 수공예품과 문화를 경험해 보세요.\n히말라야 산맥을 배경으로 하는 장엄한 풍경은 당신에게 깊은 영감을 줄 것입니다.",
+        en: "The gateway to the Himalayas, a mystical city guarded by countless temples.\nDiscover the grand architecture and history of ancient kingdoms at Durbar Square.\nThe "Eyes of Wisdom" at Swayambhunath watch over the city, praying for peace.\nStroll through the bustling Thamel district for unique Nepali crafts and culture.\nThe majestic backdrop of the Himalayan peaks will surely inspire your soul.",
+        ja: "ヒマラヤの玄関口であり、数多くの寺院が守っている神秘的な街です.\nダルバール広場で古代王国の華やかな建築美と歴史に出会ってください.\nスワヤンブナート寺院の「知恵の眼」は街全体を見守り、平和を祈願しています.\n賑やかなタ멜 거리를 걸으며 네팔의 독특한 수공예품과 문화를 경험해 보세요.\n히말라야 산맥을 배경으로 하는 장엄한 풍경은 당신에게 깊은 영감을 줄 것입니다.",
+        zh: "喜马拉雅山的门户，由无数寺庙守护的神秘城市. \n在杜巴广场邂逅古代王国华丽的建筑美与历史. \n斯瓦扬布纳特寺的“智慧之眼”俯瞰全城，祈求和平. \n漫步在繁忙的泰米尔街，体验尼泊尔独特的工艺品与文化. \n以喜马拉雅山脉为背景的壮丽景观将带给您深刻灵感。"
+    },
+    p28: {
+        ko: "현대 건축의 전시장이라 불리는 미시간 호숫가의 역동적인 도시입니다.\n밀레니엄 파크의 "클라우드 게이트"에서 재미있는 사진을 남겨보세요.\n시카고강을 따라가는 건축 크루즈는 이 도시의 예술성을 보여주는 최고의 방법입니다.\n유명한 딥디쉬 피자를 맛보며 시카고만의 미식 문화를 경험할 수 있습니다.\n윌리스 타워의 스카이덱에서 발아래 펼쳐지는 아찔한 도시 전경을 감상하세요.",
+        en: "A dynamic city on Lake Michigan, often called an architectural museum.\nTake a unique photo at the "Cloud Gate" sculpture in Millennium Park.\nAn architecture river cruise is the best way to witness the city"s artistic soul.\nExperience Chicago"s culinary identity with their world-famous deep-dish pizza.\nAdmire the breathtaking city views from the Skydeck at Willis Tower.",
+        ja: "現代建築の展示場と呼ばれるミシガン湖畔のダイナミックな街です.\nミレニアム・パークの「クラウド・ゲート」で面白い写真を残してください.\n시카고강을 따라가는 건축 크루즈는 이 도시의 예술성을 보여주는 최고의 방법입니다.\n有名なディープディッシュピザを味わい、シ카고만의 미식 문화를 경험할 수 있습니다.\nウィリス・タワーのスカイデッキから、足元に広がるスリリングな 街의 全景을 鑑賞하십시오.",
+        zh: "被称为现代建筑展览馆的密歇根湖畔动态城市. \n在千禧公园的“云门”留下有趣的照片. \n沿着芝加哥河进行的建筑巡游是见证这座城市艺术性的最佳方式. \n品尝著名的深盘披萨，体验芝加哥特有的饮食文化. \n在威利斯大厦的天际线观景台欣赏脚下展开的惊险城市全景。"
+    },
+    p29: {
+        ko: "북미에서 유럽의 낭만을 느낄 수 있는 고풍스러운 성곽 도시입니다.\n샤토 프롱트낙 호텔은 퀘벡의 상징이며 동화 같은 풍경을 완성해 줍니다.\n올드 퀘벡의 좁은 골목길을 걸으며 프랑스 문화의 흔적을 발견해 보세요.\n겨울철 열리는 윈터 카니발은 추위를 잊게 만드는 축제의 열기로 가득합니다.\n쁘띠 샹플랭 거리의 아기자기한 숍들은 여행자들의 마음을 설레게 합니다.",
+        en: "A charming fortified city where you can feel European romance in North America.\nThe Fairmont Le Château Frontenac is the icon that completes its fairytale skyline.\nStroll through the narrow streets of Old Quebec to discover French heritage.\nThe Winter Carnival fills the air with festive heat, making you forget the cold.\nThe boutique shops of Petit Champlain are sure to flutter any traveler"s heart.",
+        ja: "北米でヨーロッパのロマンを感じられる古風な城郭都市입니다.\n샤토 프롱트낙 호텔은 퀘벡의 상징이며 동화 같은 풍경을 완성해 줍니다.\n올드 퀘벡의 좁은 골목길을 걸으며 프랑스 문화의 흔적을 발견해 보세요.\n겨울철 열리는 윈터 카니발은 추위를 잊게 만드는 축제의 열기로 가득합니다.\n쁘띠 샹플랭 거리의 아기자기한 숍들은 여행자들의 마음을 설레게 합니다.",
+        zh: "在北美也能感受到欧洲浪漫气息的古老围城城市. \n芳堤娜城堡酒店是魁北克的象征，勾勒出童话般的风景. \n漫步在老魁北克的狭窄街道，发现法国文化的足迹. \n冬季举办的冬季狂欢节充满了让人忘却寒冷的节日热气. \n小香普兰街精致的商店让游客心旷神怡。"
+    },
+    p30: {
+        ko: "르네상스 예술의 꽃이 피어난 도시로, 거리 자체가 하나의 예술 작품입니다.\n두오모 성당의 웅장한 돔은 피렌체를 상징하는 최고의 건축물입니다.\n우피치 미술관에서 미켈란젤로와 다빈치의 걸작들을 직접 만나보세요.\n베키오 다리 위에서 보석 상점들을 구경하고 아르노 강의 일몰을 감상하세요.\n정통 티본 스테이크 "비스테카"를 맛보며 토스카나의 미식을 즐길 수 있습니다.",
+        en: "The birthplace of the Renaissance, where the streets are a living masterpiece.\nThe magnificent dome of the Duomo is Florence"s most iconic landmark.\nEncounter the masterpieces of Michelangelo and Da Vinci at the Uffizi Gallery.\nBrowse jewelry shops on Ponte Vecchio and enjoy the sunset over the Arno River.\nSavor a classic T-bone steak, "Bistecca alla Fiorentina," for a taste of Tuscany.",
+        ja: "ル네상스 예술의 꽃이 피어난 도시로, 거리 자체가 하나의 예술 작품입니다.\n두오모 성당의 웅장한 돔은 피렌체를 상징하는 최고의 건축물입니다.\n우피치 미술관에서 미켈란젤로와 다빈치의 걸작들을 직접 만나보세요.\n베키오 다리 위에서 보석 상점들을 구경하고 아르노 강의 일몰을 감상하세요.\n정통 티본 스테이크 "비스테카"를 맛보며 토스카나의 미식을 즐길 수 있습니다.",
+        zh: "文艺复兴艺术绽放的城市，街道本身就是一件艺术品. \n圣母百花大教堂宏伟的穹顶是象征佛罗伦萨的顶级建筑. \n在乌菲兹美术馆亲自邂逅米开朗基罗和达芬奇的杰作. \n在维琪奥桥观赏珠宝店，欣赏阿诺河的日落. \n品尝正宗的丁骨牛排，享受托斯卡纳的美食。"
+    },
+    p31: {
+        ko: "캐나다 로키 산맥의 심장부로, 비현실적인 에메랄드빛 호수들이 가득합니다.\n루이스 호수의 투명한 물결은 전 세계 여행자들에게 평온함을 선물합니다.\n밴프 국립공원의 웅장한 설산과 야생 동물을 만나는 특별한 경험을 해보세요.\n설퍼산 곤돌라를 타고 올라가 내려다보는 로키의 파노라마는 압권입니다.\n어퍼 핫 스프링스에서 따뜻한 온천욕을 즐기며 대자연의 품에서 휴식하세요.",
+        en: "The heart of the Canadian Rockies, filled with surreal emerald lakes.\nThe crystal-clear waters of Lake Louise offer a sense of peace to every visitor.\nExperience the majestic snow-capped peaks and wildlife of Banff National Park.\nThe panoramic view of the Rockies from the Sulphur Mountain gondola is breathtaking.\nSoak in the Upper Hot Springs for ultimate relaxation amidst the great outdoors.",
+        ja: "캐나다 로키 산맥의 심장부로, 비현실적인 에메랄드빛 호수들이 가득합니다.\n루이스 호수의 투명한 물결은 전 세계 여행자들에게 평온함을 선물합니다.\n밴프 국립공원의 웅장한 설산과 야생 동물을 만나는 특별한 경험을 해보세요.\n설퍼산 곤돌라를 타고 올라가 내려다보는 로키의 파노라마는 압권입니다.\n어퍼 핫 스프링스에서 따뜻한 온천욕을 즐기며 대자연의 품에서 휴식하세요.",
+        zh: "加拿大落基山脉的心脏，充满了超现实的翡翠色湖泊. \n露易丝湖透明的水波带给全球游客宁静. \n在班夫国家公园体验邂逅雄伟雪山 and 野生动物的特别经历. \n乘坐硫磺山缆车俯瞰的落基山脉全景令人叹为观止. \n在上温泉享受温暖的泉水，在大自然的怀抱中休憩。"
+    },
+    p32: {
+        ko: "커피와 예술, 그리고 스포츠가 어우러진 호주의 문화 수도입니다.\n호시어 레인의 화려한 그라피티는 이 도시의 자유로운 예술 정신을 보여줍니다.\n세계에서 가장 아름다운 해안 도로인 그레이트 오션 로드로의 여행을 시작해 보세요.\n카페 골목마다 퍼지는 고소한 플랫 화이트의 향기는 여행의 즐거움입니다.\n야라 강변의 세련된 레스토랑에서 즐기는 저녁은 멜버른의 매력을 더해줍니다.",
+        en: "Australia"s cultural capital where coffee, art, and sports intertwine.\nThe vibrant street art of Hosier Lane showcases the city"s free artistic spirit.\nStart your journey to the Great Ocean Road, the world"s most scenic coastal drive.\nThe aroma of authentic Flat Whites in narrow laneways is a true traveler"s delight.\nA dinner at a trendy restaurant by the Yarra River adds to Melbourne"s charm.",
+        ja: "커피와 예술, 그리고 스포츠가 어우러진 호주의 문화 수도입니다.\n호시어 레인의 화려한 그라피티는 이 도시의 자유로운 예술 정신을 보여줍니다.\n세계에서 가장 아름다운 해안 도로인 그레이트 오션 로드로의 여행을 시작해 보세요.\n카페 골목마다 퍼지는 고소한 플랫 화이트의 향기는 여행의 즐거움입니다.\n야라 강변의 세련된 레스토랑에서 즐기는 저녁은 멜버른의 매력을 더해줍니다.",
+        zh: "咖啡、艺术和体育交织的澳大利亚文化之都. \n霍希尔巷华丽的涂鸦展示了这座城市自由的艺术精神. \n开启前往大洋路的旅程，这是世界上最美丽的海岸公路. \n小巷咖啡馆散发出的香醇馥芮白气息是旅行的一大乐事. \n在雅拉河畔干练的餐厅享用晚餐，增添了墨尔本的魅力。"
+    },
+    p33: {
+        ko: "금문교와 가파른 언덕, 그리고 케이블카가 상징인 낭만적인 항구 도시입니다.\n피셔맨스 워프에서 신선한 해산물 요리와 바다사자들의 재롱을 즐겨보세요.\n예술적인 지그재그 길인 롬바드 스트리트에서 꽃과 함께 예쁜 사진을 찍어보세요.\n알카트라즈 섬 투어를 통해 과거 감옥이었던 신비로운 역사를 체험할 수 있습니다.\n언덕 위 "페인티드 레이디스" 하우스들은 샌프란시스코의 고전적인 미를 보여줍니다.",
+        en: "A romantic harbor city iconic for the Golden Gate Bridge and steep hills.\nEnjoy fresh seafood and playful sea lions at Fisherman"s Wharf.\nTake a beautiful photo with flowers at the winding Lombard Street.\nExperience the mysterious history of the former prison at Alcatraz Island.\nThe "Painted Ladies" Victorian houses showcase the city"s classic beauty.",
+        ja: "금문교와 가파른 언덕, 그리고 케이블카가 상징인 낭만적인 항구 도시입니다.\n피셔맨스 워프에서 신선한 해산물 요리와 바다사자들의 재롱을 즐겨보세요.\n예술적인 지그재그 길인 롬바드 스트리트에서 꽃과 함께 예쁜 사진을 찍어보세요.\n알카트라즈 섬 투어를 통해 과거 감옥이었던 신비로운 역사를 체험할 수 있습니다.\n언덕 위 "페인티드 레이디스" 하우스들은 샌프란시스코의 고전적인 미를 보여줍니다.",
+        zh: "以金门大桥、陡峭山坡和电缆车为象征的浪漫港口城市. \n在渔人码头享受新鲜海鲜料理和海狮的表演. \n在艺术性的之字形街道伦巴底街与鲜花合影. \n通过阿尔卡特拉斯岛之旅体验曾作为监狱的神秘历史. \n山坡上的“彩绘女士”展现了旧金山的古典美。"
+    },
+    p34: {
+        ko: "정열적인 플라멩코와 오렌지 향기가 가득한 안달루시아의 심장부입니다.\n세비야 대성당의 히랄다 탑에 올라 도시의 아름다운 전경을 감상하세요.\n에스파냐 광장의 화려한 타일 장식은 스페인에서 가장 아름다운 광장 중 하나입니다.\n좁은 유대인 거리 산타 크루즈 지구를 산책하며 중세의 정취를 느껴보세요.\n밤마다 열리는 타파스 투어는 현지인들의 활발한 미식 문화를 체험하게 해줍니다.",
+        en: "The heart of Andalusia, filled with passionate Flamenco and the scent of oranges.\nClimb the Giralda tower of the Seville Cathedral for a stunning city view.\nThe Plaza de España, with its grand tiled decor, is one of the most beautiful in Spain.\nStroll through the narrow streets of the Santa Cruz district for a medieval vibe.\nNightly tapas tours offer an authentic look into the local culinary scene.",
+        ja: "정열적인 플라멩코와 오렌지 향기가 가득한 안달루시아의 심장부입니다.\n세비야 대성당의 히랄다 탑에 올라 도시의 아름다운 전경을 감상하세요.\n에스파냐 광장의 화려한 타일 장식은 스페인에서 가장 아름다운 광장 중 하나입니다.\n좁은 유대인 거리 산타 크루즈 지구를 산책하며 중세의 정취를 느껴보세요.\n밤마다 열리는 타파스 투어는 현지인들의 활발한 미식 문화를 체험하게 해줍니다.",
+        zh: "充满热情的弗拉门戈和橙子香气的安达卢西亚中心地带. \n登上塞维利亚大教堂的希拉尔达塔，欣赏美丽的城市全景. \n西班牙广场华丽的瓷砖装饰是西班牙最美的广场之一. \n漫步在狭窄的犹太区圣十字区，感受中世纪风情. \n每晚举办的塔帕斯巡游让您体验当地活跃的饮食文化。"
+    },
+    p35: {
+        ko: "천년의 역사를 간직한 베트남의 수도로, 동양과 서양의 매력이 어우러져 있습니다.\n호안끼엠 호수의 평화로운 산책로에서 현지인들의 일상을 엿보세요.\n올드 쿼터의 복잡한 골목길에서 먹는 정통 쌀국수 "포"의 맛은 일품입니다.\n프랑스 식민지 시절의 건축물들은 하노이만의 독특한 분위기를 만들어냅니다.\n수상 인형극 공연을 통해 베트남 전통 문화의 재미와 깊이를 느껴보세요.",
+        en: "Vietnam"s capital with a thousand-year history, blending East and West.\nObserve local life at the serene walking paths around Hoan Kiem Lake.\nTasting authentic "Pho" in the bustling alleys of the Old Quarter is a must.\nFrench colonial-style architecture creates a unique atmosphere in Hanoi.\nExperience the charm and depth of traditional culture through a water puppet show.",
+        ja: "천년의 역사를 간직한 베트남의 수도로, 동양과 서양의 매력이 어우러져 있습니다.\n호안끼엠 호수의 평화로운 산책로에서 현지인들의 일상을 엿보세요.\n올드 쿼터의 복잡한 골목길에서 먹는 정통 쌀국수 "포"의 맛은 일품입니다.\n프랑스 식민지 시절의 건축물들은 하노이만의 독특한 분위기를 만들어냅니다.\n수상 인형극 공연을 통해 베트남 전통 문화의 재미와 깊이를 느껴보세요.",
+        zh: "拥有千年历史的越南首都，融合了东方与西方的魅力. \n在还剑湖宁静的步道上窥探当地人的日常生活. \n在老城区的复杂小巷中品尝正宗越南河粉，味道极佳. \n法国殖民时期的建筑营造出河内特有的独特氛围. \n通过水上木偶戏表演，感受越南传统文化的趣味与深度。"
+    },
+    p36: {
+        ko: "창의적인 예술과 파란만장한 역사가 공존하는 유럽의 힙한 수도입니다.\n이스트 사이드 갤러리의 베를린 장벽 벽화들은 자유의 소중함을 말해줍니다.\n웅장한 브란덴부르크 문은 독일 통일의 상징이자 필수 방문 장소입니다.\n박물관 섬에서 인류 문명의 소중한 보물들을 깊이 있게 감상해 보세요.\n밤이면 활발한 클럽 문화와 다양한 길거리 음식이 당신을 기다립니다.",
+        en: "A creative and historic hub, known as one of Europe"s coolest capitals.\nThe murals on the Berlin Wall at the East Side Gallery speak of freedom.\nThe grand Brandenburg Gate is an essential landmark and a symbol of unity.\nExplore priceless human treasures at the world-renowned Museum Island.\nAt night, vibrant club scenes and diverse street foods await your discovery.",
+        ja: "창의적인 예술과 파란만장한 역사가 공존하는 유럽의 힙한 수도입니다.\n이스트 사이드 갤러리의 베를린 장벽 벽화들은 자유의 소중함을 말해줍니다.\n웅장한 브란덴부르크 문은 독일 통일의 상징이자 필수 방문 장소입니다.\n박물관 섬에서 인류 문명의 소중한 보물들을 깊이 있게 감상해 보세요.\n밤이면 활발한 클럽 문화와 다양한 길거리 음식이 당신을 기다립니다.",
+        zh: "创意艺术与波澜壮阔的历史并存的欧洲时尚之都. \n东边画廊柏林墙上的壁画诉说着自由的珍贵. \n宏伟的勃兰登堡门是德国统一的象征，也是必游之地. \n在博物馆岛深度欣赏人类文明的珍贵瑰宝. \n夜晚活跃的俱乐部 culture 和 多样 街头 小吃 正 等着 您。"
+    },
+    p37: {
+        ko: "운하가 도시를 감싸고 자전거가 가득한 자유롭고 평화로운 도시입니다.\n반 고흐 미술관에서 그의 열정적인 작품 세계를 직접 느껴보세요.\n운하 크루즈를 타고 수변을 따라 늘어선 예쁜 집들을 감상하는 것은 큰 즐거움입니다.\n봄이면 근교 쾨켄호프에서 펼쳐지는 튤립의 향연은 장관을 연출합니다.\n안네 프랑크 하우스를 방문하여 역사적 교훈과 감동을 느껴보세요.",
+        en: "A free-spirited and peaceful city defined by its canals and bicycles.\nImmerse yourself in Van Gogh"s passionate world at his namesake museum.\nA canal cruise is the best way to admire the charming waterfront houses.\nIn spring, the tulip blooms at the nearby Keukenhof provide a stunning view.\nVisit the Anne Frank House for a moving experience and historical insight.",
+        ja: "운하가 도시를 감싸고 자전거가 가득한 자유롭고 평화로운 도시입니다.\n반 고흐 미술관에서 그의 열정적인 작품 세계를 직접 느껴보세요.\n운하 크루즈를 타고 수변을 따라 늘어선 예쁜 집들을 감상하는 것은 큰 즐거움입니다.\n봄이면 근교 쾨켄호프에서 펼쳐지는 튤립의 향연은 장관을 연출합니다.\n안네 프랑크 하우스를 방문하여 역사적 교훈과 감동을 느껴보세요.",
+        zh: "运河环绕城市，自行车随处可见的自由和平的城市. \n在梵高博物馆亲自感受他热情的作品世界. \n乘坐运河巡游，欣赏沿岸鳞次罢比的漂亮房子，是一大乐事. \n春季近郊库肯霍夫公园展现的郁金香盛宴美轮美奂. \n参观安妮·弗兰克故居，感受历史教训与感动。"
+    },
+    p38: {
+        ko: "서양 문명의 발상지이며 고대 유적들이 살아 숨 쉬는 역사적인 도시입니다.\n아크로폴리스 위의 파르테논 신전은 고대 건축의 정수를 보여줍니다.\n플라카 지구의 좁은 골목들을 산책하며 그리스 정통 음식을 즐겨보세요.\n파나티나이코 경기장에서 첫 번째 현대 올림픽의 열기를 상상해 볼 수 있습니다.\n리카베투스 언덕에서 내려다보는 아테네의 야경은 로맨틱한 분위기를 자아냅니다.",
+        en: "The cradle of Western civilization, a historic city where ancient ruins live.\nThe Parthenon atop the Acropolis showcases the pinnacle of ancient architecture.\nStroll through the narrow streets of the Plaka district and enjoy Greek cuisine.\nImagine the heat of the first modern Olympics at the Panathenaic Stadium.\nThe night view of Athens from Lycabettus Hill creates a romantic ambiance.",
+        ja: "서양 문명의 발상지이며 고대 유적들이 살아 숨 쉬는 역사적인 도시입니다.\n아크로폴리스 위의 파르테논 신전은 고대 건축의 정수를 보여줍니다.\n플라카 지구의 좁은 골목들을 산책하며 그리스 정통 음식을 즐겨보세요.\n파나티나이코 경기장에서 첫 번째 현대 올림픽의 열기를 상상해 볼 수 있습니다.\n리카베투스 언덕에서 내려다보는 아테네의 야경은 로맨틱한 분위기를 자아냅니다.",
+        zh: "西方文明的发祥地，古代遗迹并存的历史城市. \n雅典卫城顶端的帕特农神庙展示了古代建筑的精髓. \n漫步在普拉卡区的狭窄街道，享受希腊正宗美食. \n在泛雅典体育场可以想象第一届现代奥运会的热潮. \n从利卡维多斯山俯瞰的雅典夜景营造出浪漫氛围。"
+    },
+    p39: {
+        ko: "7개의 언덕 위에 세워진 노란색 트램이 달리는 낭만적인 도시입니다.\n벨렝 탑에서 대항해 시대의 영광과 바다의 웅장함을 느껴보세요.\n알파마 지구의 미로 같은 골목을 걸으며 애절한 파두 음악을 들어보세요.\n전통적인 에그 타르트 "나타"의 달콤한 유혹은 리스본 여행의 필수입니다.\n상 조르제 성에서 바라보는 주황빛 지붕들과 테주 강의 풍경은 아름답습니다.",
+        en: "A romantic city built on seven hills, famous for its iconic yellow trams.\nFeel the glory of the Age of Discovery at the historic Belém Tower.\nWander through the labyrinthine streets of Alfama to hear soulful Fado music.\nThe sweet temptation of a traditional "Pastel de Nata" is a must for every trip.\nThe view of orange rooftops and the Tagus River from São Jorge Castle is stunning.",
+        ja: "7개의 언덕 위에 세워진 노란색 트램이 달리는 낭만적인 도시입니다.\n벨렝 탑에서 대항해 시대의 영광과 바다의 웅장함을 느껴보세요.\n알파마 지구의 미로 같은 골목을 걸으며 애절한 파두 음악을 들어보세요.\n전통적인 에그 타르트 "나타"의 달콤한 유혹은 리스본 여행의 필수입니다.\n상 조르제 성에서 바라보는 주황빛 지붕들과 테주 강의 풍경은 아름답습니다.",
+        zh: "建在7座山丘之上，黄色有轨电车穿梭其中的浪漫城市. \n在贝伦塔感受大航海时代的辉煌与大海의 雄伟. \n漫步在阿尔法玛区迷宫般的小巷，听一段哀婉的法多音乐. \n传统蛋挞的甜蜜诱惑是里斯本之旅的必备. \n从圣乔治城堡看到的橙色屋顶和特茹河风光美不胜收。"
+    },
+    p40: {
+        ko: "중세의 아름다움을 고스란히 간직한 "유럽의 지붕 없는 박물관"입니다.\n카를교 위에서 버스킹 음악을 들으며 조각상들과 함께 성의 야경을 감상하세요.\n구시가지 광장의 천문 시계탑 쇼는 매시간 여행자들을 즐겁게 합니다.\n프라하 성의 웅장한 성 비투스 대성당은 고딕 건축의 걸작입니다.\n시원한 체코 맥주와 굴라시를 맛보며 프라하의 밤을 만끽해 보세요.",
+        en: "An open-air museum of Europe, perfectly preserving its medieval beauty.\nListen to buskers on Charles Bridge while admiring the castle at night.\nThe Astronomical Clock show in the Old Town Square delights tourists hourly.\nThe majestic St. Vitus Cathedral within Prague Castle is a Gothic masterpiece.\nEnjoy the Prague night with a refreshing Czech beer and a bowl of goulash.",
+        ja: "중세의 아름다움을 고스란히 간직한 "유럽의 지붕 없는 박물관"입니다.\n카를교 위에서 버스킹 음악을 들으며 조각상들과 함께 성의 야경을 감상하세요.\n구시가지 광장의 천문 시계탑 쇼는 매시간 여행자들을 즐겁게 합니다.\n프라하 성의 웅장한 성 비투스 대성당은 고딕 건축의 걸작입니다.\n시원한 체코 맥주와 굴라시를 맛보며 프라하의 밤을 만끽해 보세요.",
+        zh: "完整保留中世纪美感的“欧洲露天博物馆”. \n在查理大桥上听着街头音乐，欣赏城堡的夜景. \n老城广场的天文钟表演每小时都会带给游客欢乐. \n布拉格城堡内宏伟的圣维特大教堂是哥特式建筑的杰作. \n品尝清凉的捷克啤酒和红烩牛肉，尽情享受布拉格之夜。"
+    },
+    p41: {
+        ko: "붉은색 건물들과 이국적인 향기가 가득한 신비로운 오아시스 같은 도시입니다.\n제마 엘 프나 광장의 북적이는 시장과 길거리 공연은 생동감이 넘칩니다.\n마조렐 정원의 강렬한 파란색 건축과 식물들은 평화로운 휴식을 제공합니다.\n복잡한 수크(시장)를 탐험하며 독특한 카펫과 향신료를 구경하는 재미가 있습니다.\n전통 가옥 "리야드"에서 머물며 모로코의 환대 문화를 직접 경험해 보세요.",
+        en: "A mystical oasis city filled with red buildings and exotic aromas.\nThe vibrant atmosphere of Jemaa el-Fnaa square with its street shows is lively.\nThe striking Majorelle Blue architecture and gardens offer a peaceful escape.\nExplore the maze of souks to find unique carpets, lanterns, and spices.\nStay at a traditional "Riad" to experience true Moroccan hospitality.",
+        ja: "붉은색 건물들과 이국적인 향기가 가득한 신비로운 오아시스 같은 도시입니다.\n제마 엘 프나 광장의 북적이는 시장과 길거리 공연은 생동감이 넘칩니다.\n마조렐 정원의 강렬한 파란색 건축과 식물들은 평화로운 휴식을 제공합니다.\n복잡한 수크(시장)를 탐험하며 독특한 카펫과 향신료를 구경하는 재미가 있습니다.\n전통 가옥 "리야드"에서 머물며 모로코의 환대 문화를 직접 경험해 보세요.",
+        zh: "充满红色建筑和异国香气的神秘绿洲城市. \n德吉玛广场繁忙的市场和街头表演充满生机. \n马若雷尔花园强烈的蓝色建筑和植物提供了宁静的休憩. \n探索复杂的露天市场，观赏独特的地毯和香料，乐趣十足. \n入住传统民居“里亚德”，亲自体验摩洛哥的款待文化。"
+    },
+    p42: {
+        ko: "유럽과 아시아가 만나는 지점으로, 동서양의 조화가 화려한 역사 도시입니다.\n블루 모스크의 거대한 돔과 아름다운 타일 장식은 감탄을 자아냅니다.\n보스포루스 해협 크루즈를 타며 두 대륙의 경치를 동시에 즐겨보세요.\n그랜드 바자르의 수천 개의 상점들 속에서 이국적인 보물들을 찾아보세요.\n아야 소피아의 웅장한 내부는 이 도시가 가진 긴 역사를 묵묵히 말해줍니다.",
+        en: "The historic meeting point of Europe and Asia, a city of East-West harmony.\nThe Blue Mosque"s grand domes and tilework leave every visitor in awe.\nTake a Bosphorus cruise to enjoy the views of two continents simultaneously.\nFind exotic treasures among thousands of shops in the Grand Bazaar.\nThe majestic interior of Hagia Sophia silently speaks of the city"s long history.",
+        ja: "유럽과 아시아가 만나는 지점으로, 동서양의 조화가 화려한 역사 도시입니다.\n블루 모스크의 거대한 돔과 아름다운 타일 장식은 감탄을 자아냅니다.\n보스포루스 해협 크루즈를 타며 두 대륙의 경치를 동시에 즐겨보세요.\n그랜드 바자르의 수천 개의 상점들 속에서 이국적인 보물들을 찾아보세요.\n아야 소피아의 웅장한 내부는 이 도시가 가진 긴 역사를 묵묵히 말해줍니다.",
+        zh: "欧洲与亚洲的交汇点，东西方和谐共存的华丽历史城市. \n蓝色清真寺巨大的穹顶和美丽的瓷砖装饰令人叹为观止. \n乘坐博斯普鲁斯海峡巡游，同时欣赏两个大陆的景色. \n在大巴扎的数千家商店中寻找异国瑰宝. \n圣索菲亚大教堂宏伟的内部默默诉说着这座城市的悠久历史。"
+    },
+    p43: {
+        ko: "일본의 옛 정취가 그대로 살아있는 천년 고도이며 사찰의 도시입니다.\n금각사의 화려한 황금빛 반영은 연못과 어우러져 장관을 연출합니다.\n기온 거리의 좁은 골목을 걸으며 전통 의상을 입은 게이샤를 만나보세요.\n아라시야마의 대나무 숲을 산책하며 마음의 평화를 얻을 수 있습니다.\n기요미즈데라의 나무 무대에서 내려다보는 교토의 전경은 계절마다 아름답습니다.",
+        en: "A thousand-year capital preserving old Japan, famous for its many temples.\nThe golden reflection of Kinkaku-ji on the pond is a spectacular sight.\nWalk through the narrow streets of Gion to catch a glimpse of a geisha.\nFind inner peace while strolling through the bamboo groves of Arashiyama.\nThe view from the wooden stage of Kiyomizu-dera is stunning in every season.",
+        ja: "일본의 옛 정취가 그대로 살아있는 천년 고도이며 사찰의 도시입니다.\n금각사의 화려한 황금빛 반영은 연못과 어우러져 장관을 연출합니다.\n기온 거리의 좁은 골목을 걸으며 전통 의상을 입은 게이샤를 만나보세요.\n아라시야마의 대나무 숲을 산책하며 마음의 평화를 얻을 수 있습니다.\n기요미즈데라의 나무 무대에서 내려다보는 교토의 전경은 계절마다 아름답습니다.",
+        zh: "完整保留日本昔日情调的千年古都，是一座寺庙之城. \n金阁寺华丽的金光倒映 in 池水中，美轮美奂. \n漫步在祇园的狭窄小巷，邂逅身着传统服饰的艺妓. \n漫步在岚山的竹林中，获得内心的平静. \n从清水寺的木质舞台俯瞰的京都全景在每个季节都非常美丽。"
+    },
+    p44: {
+        ko: "거대한 예수상이 도시를 지켜보는 열정적인 삼바와 축제의 도시입니다.\n코파카바나 해변의 하얀 모래사장 위에서 브라질의 태양을 만끽하세요.\n슈거로프 마운틴의 케이블카를 타고 올라가 감상하는 야경은 환상적입니다.\n화려한 셀라론 계단에서 형형색색의 타일들과 함께 멋진 사진을 찍어보세요.\n축제 기간 열리는 카니발은 전 세계에서 가장 화려한 에너지를 선사합니다.",
+        en: "A city of passionate Samba and festivals, watched over by Christ the Redeemer.\nSoak up the Brazilian sun on the white sands of Copacabana Beach.\nThe night view from the Sugarloaf Mountain cable car is truly fantastic.\nTake a vibrant photo among the colorful tiles of the Selarón Steps.\nThe world-famous Carnival offers the most colorful energy on the planet.",
+        ja: "거대한 예수상이 도시를 지켜보는 열정적인 삼바와 축제의 도시입니다.\n코파카바나 해변의 하얀 모래사장 위에서 브라질의 태양을 만끽하세요.\n슈거로프 마운틴의 케이블카를 타고 올라가 감상하는 야경은 환상적입니다.\n화려한 셀라론 계단에서 형형색색의 타일들과 함께 멋진 사진을 찍어보세요.\n축제 기간 열리는 카니발은 전 세계에서 가장 화려한 에너지를 선사합니다.",
+        zh: "巨型基督像俯瞰全城的充满热情的桑巴和节日之都. \n在科帕卡巴纳海滩洁白的沙滩上尽情享受巴西的阳光. \n乘坐糖面包山缆车欣赏到的夜景梦幻至极. \n在华丽的塞勒隆阶梯与五彩缤纷的瓷砖合影. \n节日期间举办的狂欢节展现了全球最绚丽的活力。"
+    },
+    p45: {
+        ko: "할리우드 사인이 반겨주는 영화와 엔터테인먼트의 세계적 중심지입니다.\n산타 모니카 피어의 놀이공원에서 바다를 배경으로 즐거운 시간을 보내세요.\n그리피스 천문대에서 내려다보는 끝없는 도시의 불빛은 장관입니다.\n베벌리 힐스의 세련된 거리와 해변의 활기를 동시에 느낄 수 있습니다.\n유니버설 스튜디오 할리우드에서 영화 속 장면들을 직접 체험해 보세요.",
+        en: "The global hub of film and entertainment, iconic for the Hollywood Sign.\nHave a fun-filled day by the ocean at the Santa Monica Pier amusement park.\nThe endless city lights from the Griffith Observatory provide a stunning view.\nExperience the glamour of Beverly Hills and the energy of the beaches.\nStep into movie scenes at Universal Studios Hollywood for a unique experience.",
+        ja: "할리우드 사인이 반겨주는 영화와 엔터테인먼트의 세계적 중심지입니다.\n산타 모니카 피어의 놀이공원에서 바다를 배경으로 즐거운 시간을 보내세요.\n그리피스 천문대에서 내려다보는 끝없는 도시의 불빛은 장관입니다.\n베벌리 힐스의 세련된 거리와 해변의 활기를 동시에 느낄 수 있습니다.\n유니버설 스튜디오 할리우드에서 영화 속 장면들을 직접 체험해 보세요.",
+        zh: "好莱坞标志迎接您的全球电影与娱乐中心. \n在圣莫尼卡码头的游乐园，以大海为背景度过愉快时光. \n从格里菲斯天文台俯瞰的无尽城市灯火壮观至极. \n同时感受比弗利山庄干练的街道和海滩的活力. \n在好莱坞环球影城亲自体验电影中的场景。"
+    },
+    p46: {
+        ko: "화려한 고층 빌딩 숲과 활기찬 시장이 공존하는 아시아의 다이내믹한 도시입니다.\n빅토리아 피크에서 내려다보는 야경은 세계 3대 야경으로 손꼽힙니다.\n스타 페리를 타고 침사추이 해변을 감상하며 홍콩의 에너지를 느껴보세요.\n딤섬과 완탕면 등 미식의 천국 홍콩에서 진정한 맛의 여행을 떠나보세요.\n밤이면 템플 스트리트 야시장에서 현지의 북적이는 분위기를 즐길 수 있습니다.",
+        en: "A dynamic Asian metropolis where skyscrapers and vibrant markets coexist.\nThe night view from Victoria Peak is celebrated as one of the world"s best.\nRide the Star Ferry and enjoy the Tsim Sha Tsui waterfront to feel the city"s energy.\nEmbark on a culinary journey in Hong Kong, a paradise for Dim Sum lovers.\nEnjoy the bustling local atmosphere at the Temple Street Night Market at night.",
+        ja: "화려한 고층 빌딩 숲과 활기찬 시장이 공존하는 아시아의 다이내믹한 도시입니다.\n빅토리아 피크에서 내려다보는 야경은 세계 3대 야경으로 손꼽힙니다.\n스타 페리를 타고 침사추이 해변을 감상하며 홍콩의 에너지를 느껴보세요.\n딤섬과 완탕면 등 미식의 천국 홍콩에서 진정한 맛의 여행을 떠나보세요.\n밤이면 템플 스트리트 야시장에서 현지의 북적이는 분위기를 즐길 수 있습니다.",
+        zh: "华丽摩天大楼林立与繁忙市场并存的亚洲动态城市. \n从太平山顶俯瞰的夜景被誉为世界三大夜景之一. \n乘坐天星小轮欣赏尖沙咀海滨，感受香港的活力. \n在点心和云吞面的美食天堂香港开启一场真正的美味之旅. \n夜晚在庙街夜市可以感受当地繁忙的氛围。"
+    },
+    p47: {
+        ko: "풍부한 예술 유산과 열정적인 밤 문화가 가득한 스페인의 세련된 수도입니다.\n프라도 미술관에서 고야와 벨라스케스의 걸작들을 깊이 있게 감상해 보세요.\n솔 광장의 활기찬 분위기 속에서 마드리드의 에너지를 느껴볼 수 있습니다.\n산 미구엘 시장에서 신선한 타파스와 와인을 즐기며 미식의 기쁨을 누리세요.\n레티로 공원의 호수에서 보트를 타며 도심 속의 여유로운 휴식을 즐기세요.",
+        en: "A sophisticated capital rich in artistic heritage and vibrant nightlife.\nAdmire the masterpieces of Goya and Velázquez at the Prado Museum.\nFeel the energy of Madrid in the bustling atmosphere of Puerta del Sol.\nIndulge in culinary delights with fresh tapas and wine at San Miguel Market.\nEnjoy a relaxing break at Retiro Park, rowing a boat on its scenic lake.",
+        ja: "풍부한 예술 유산과 열정적인 밤 문화가 가득한 스페인의 세련된 수도입니다.\n프라도 미술관에서 고야와 벨라스케스의 걸작들을 깊이 있게 감상해 보세요.\n솔 광장의 활기찬 분위기 속에서 마드리드의 에너지를 느껴볼 수 있습니다.\n산 미구엘 시장에서 신선한 타파스와 와인을 즐기며 미식의 기쁨을 누리세요.\n레티로 공원의 호수에서 보트를 타며 도심 속의 여유로운 휴식을 즐기세요.",
+        zh: "拥有丰富艺术遗产和热情夜生活的西班牙时尚之都. \n在普拉多博物馆深度欣赏戈雅和委拉斯开兹的杰作. \n在太阳门广场活跃的氛围中感受马德里的活力. \n在圣米格尔市场享受新鲜塔帕斯和美酒，获得美食的快乐. \n在丽池公园的湖上划船，享受城市中的悠闲休憩。"
+    },
+    p48: {
+        ko: "현대적인 도심과 웅장한 대자연이 완벽한 조화를 이루는 살기 좋은 도시입니다.\n스탠리 파크의 해안 산책로를 자전거로 달리며 상쾌한 바닷바람을 느껴보세요.\n캐필라노 서스펜션 브리지 위에서 아찔한 높이와 숲의 전경을 감상해 보세요.\n그랜빌 아일랜드의 퍼블릭 마켓에서 신선한 현지 식재료와 예술품을 만나보세요.\n겨울철 인근 휘슬러에서 즐기는 스키는 세계적으로 유명한 겨울 스포츠의 정수입니다.",
+        en: "A livable city where modern urban life meets majestic nature in perfect harmony.\nFeel the fresh sea breeze while cycling along the Stanley Park Seawall.\nAdmire the heights and forest views from the Capilano Suspension Bridge.\nDiscover fresh local ingredients and crafts at the Granville Island Public Market.\nSkiing at nearby Whistler is a world-renowned experience for winter sports fans.",
+        ja: "현대적인 도심과 웅장한 대자연이 완벽한 조화를 이루는 살기 좋은 도시입니다.\n스탠리 파크의 해안 산책로를 자전거로 달리며 상쾌한 바닷바람을 느껴보세요.\n캐필라노 서스펜션 브리지 위에서 아찔한 높이와 숲의 전경을 감상해 보세요.\n그랜빌 아일랜드의 퍼블릭 마켓에서 신선한 현지 식재료와 예술품을 만나보세요.\n겨울철 인근 휘슬러에서 즐기는 스키는 세계적으로 유명한 겨울 스포츠의 정수입니다.",
+        zh: "现代都市与雄伟自然完美和谐共存的宜居城市. \n骑行在斯坦利公园的海岸步道，感受清爽的海风. \n在卡皮拉诺吊桥上欣赏惊险的高度和森林全景. \n在格兰维尔岛公共市场邂逅新鲜的当地食材和艺术品. \n冬季在附近的惠斯勒雪是享誉全球의 冬季 运动 精髓。"
+    },
+    p49: {
+        ko: "푸른 바다와 활기찬 에너지가 넘치는 대한민국 최고의 항구 도시입니다.\n해운대와 광안리 해변의 화려한 야경은 부산 여행의 하이라이트입니다.\n감천 문화마을의 알록달록한 집들 사이를 산책하며 예술적 감성을 느껴보세요.\n자갈치 시장에서 신선한 해산물을 맛보며 부산 사람들의 활기찬 삶을 체험하세요.\n동백섬의 산책로에서 바라보는 바다 전경은 마음의 여유를 선물해 줍니다.",
+        en: "South Korea"s top harbor city, overflowing with blue oceans and vibrant energy.\nThe dazzling night views of Haeundae and Gwangalli beaches are trip highlights.\nFeel the artistic vibe while wandering through the colorful Gamcheon Culture Village.\nExperience local life while tasting fresh seafood at the Jagalchi Market.\nThe ocean panorama from the Dongbaek Island path offers a true sense of peace.",
+        ja: "푸른 바다와 활기찬 에너지가 넘치는 대한민국 최고의 항구 도시입니다.\n해운대와 광안리 해변의 화려한 야경은 부산 여행의 하이라이트입니다.\n감천 문화마을의 알록달록한 집들 사이를 산책하며 예술적 감성을 느껴보세요.\n자갈치 시장에서 신선한 해산물을 맛보며 부산 사람들의 활기찬 삶을 체험하세요.\n동백섬의 산책로에서 바라보는 바다 전경은 마음의 여유를 선물해 줍니다.",
+        zh: "充满蓝色大海和活力的韩国顶级港口城市. \n海云台和广安里海滩华丽的夜景是釜山之旅的高光时刻. \n漫步在甘川洞文化村五彩缤纷的房子间，感受艺术感性. \n在札嘎其市场品尝新鲜海鲜，体验釜山人充满活力的生活. \n从冬柏岛步道俯瞰的大海全景带给您心灵의 悠闲。"
+    },
+    p50: {
+        ko: "고전적인 성곽과 미스터리한 매력이 가득한 스코틀랜드의 역사적인 수도입니다.\n에든버러 성은 도시 어디에서나 보이는 상징적인 랜드마크입니다.\n로열 마일의 고풍스러운 건물들 사이를 걸으며 중세 시대로 여행을 떠나보세요.\n아서스 시트 언덕에 올라가 내려다보는 도시의 전경은 장엄한 전율을 느끼게 합니다.\n매년 열리는 에든버러 페스티벌은 전 세계 예술가들의 열기로 가득합니다.",
+        en: "The historic capital of Scotland, full of classic castles and mystery.\nEdinburgh Castle is an iconic landmark visible from every corner of the city.\nStep back in time while walking through the historic buildings along the Royal Mile.\nThe view of the city from Arthur"s Seat provides a sense of majestic awe.\nThe annual Edinburgh Festival fills the city with the energy of global artists.",
+        ja: "고전적인 성곽과 미스터리한 매력이 가득한 스코틀랜드의 역사적인 수도입니다.\n에든버러 성은 도시 어디에서나 보이는 상징적인 랜드마크입니다.\n로열 마일의 고풍스러운 건물들 사이를 걸으며 중세 시대로 여행을 떠나보세요.\n아서스 시트 언덕에 올라가 내려다보는 도시의 전경은 장엄한 전율을 느끼게 합니다.\n매년 열리는 에든버러 페스티벌은 전 세계 예술가들의 열기로 가득합니다.",
+        zh: "充满古典城堡和神秘魅力的苏格兰历史首都. \n爱丁堡城堡是从城市随处可见的象征性地标. \n漫步在皇家英里大道古色古香的建筑间，开启一场中世纪之旅. \n登上亚瑟王座俯瞰的城市全景令人感到宏伟震撼. \n每年举办的爱丁堡艺术节充满了全球艺术家的热情。"
+    }
+};
+
 extraPlaces.forEach(p => {
-    const defaultDesc = {
-        ko: `${p.name.ko}는 풍부한 문화유산과 아름다운 자연경관을 자랑하는 최고의 여행지입니다.\n이곳에서만 느낄 수 있는 독특한 분위기와 현지의 맛있는 요리를 꼭 경험해 보세요.\n도시 곳곳에 숨겨진 명소들을 탐방하며 나만의 특별한 여행 지도를 만들어보세요.\n친절한 사람들 속에서 그들의 삶과 문화를 배우는 소중한 시간이 될 것입니다.\n가상 사진관을 통해 이 멋진 장소에서의 추억을 지금 바로 남겨보세요!`,
-        en: `${p.name.en} is a premier destination boasting rich cultural heritage and breathtaking landscapes.\nDon't miss the chance to experience its unique local atmosphere and delicious cuisine.\nExplore hidden gems scattered throughout the city to create your own special travel map.\nIt will be a precious time to learn about the lives and cultures of the friendly locals.\nCapture your memories at this amazing place right now via our virtual studio!`,
-        ja: `${p.name.ja}は豊かな文化遺産と美しい自然景観を誇る、最高の旅行先です.\n여기서만 느낄 수 있는 독특한 분위기와 현지의 맛있는 요리를 꼭 경험해 보세요.\n街のあちこちに隠れた名所を探索し、自分だけの特別な旅行地図を作ってみてください.\n親切な人々の中で彼らの生活と文化を学ぶ、貴重な時間になるでしょう.\n仮想写真館を通じて、この素晴らしい場所での思い出を今すぐ残してください！`,
-        zh: `${p.name.zh}是拥有丰富文化遗产和美丽自然景观的顶级旅游目的地. \n请务必在这里体验独特的氛围和当地的美味佳肴. \n探索城市各处隐藏의 景点，绘制属于您自己的特别旅行地图. \n在友善的人群中学习他们的生活与文化，将是一段宝贵的时光. \n通过虚拟影棚，现在就留下在这个绝佳地点的好回忆吧！`
-    };
-    places.push({ ...p, desc: defaultDesc });
+    places.push({ ...p, desc: extraDescs[p.id] });
+});
 });
 
 const container = document.getElementById("places");
