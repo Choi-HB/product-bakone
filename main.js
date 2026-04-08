@@ -370,7 +370,7 @@ const extraPlaces = [
     { id: "p48", region: "America", name: { ko: "밴쿠버, 캐나다", en: "Vancouver, Canada", ja: "バンクーバー・カナダ", zh: "温哥华, 加拿大" },     
       customImage: "https://images.unsplash.com/photo-1559511260-66a654ae982a?q=80&w=1920&auto=format&fit=crop",
       copyright: "© Unsplash / Mike Benna" },
-    { id: "p49", region: "Asia", name: { ko: "부산, 대한민국", en: "Busan, South Korea", ja: "釜山・한국", zh: "釜山, 韩国" },
+    { id: "p49", region: "Asia", name: { ko: "부산, 대한민국", en: "Busan, South Korea", ja: "釜山・韓国", zh: "釜山, 韩国" },
       customImage: "https://images.unsplash.com/photo-1728694885300-f884d8f63943?q=80&w=1920&auto=format&fit=crop",
       copyright: "© Unsplash / Shibin Joseph" },
     { id: "p50", region: "Europe", name: { ko: "에든버러, 영국", en: "Edinburgh, UK", ja: "エディンバラ・イギリス", zh: "爱丁堡, 英国" },     
