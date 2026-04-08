@@ -552,7 +552,10 @@ function changeLanguage(lang) {
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        if (i18n[lang][key]) el.innerText = i18n[lang][key];
+        if (i18n[lang][key]) {
+            if (key === 'guide-how-list') el.innerHTML = i18n[lang][key];
+            else el.innerText = i18n[lang][key];
+        }
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
         const key = el.getAttribute("data-i18n-placeholder");
