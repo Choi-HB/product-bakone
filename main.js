@@ -12,7 +12,7 @@ const i18n = {
         "filter-all": "전체", "filter-asia": "아시아", "filter-europe": "유럽", "filter-america": "아메리카", "filter-other": "기타",
         "alert-error": "이미지 처리에 실패했습니다. 사진 크기를 줄이거나 다른 사진으로 시도해 주세요.",
         "guide-how-title": "💡 이용 방법",
-        "guide-how-list": `<li>원하는 여행지를 리스트에서 선택합니다.</li><li>'웹캠'을 켜거나 '사진 업로드' 버튼을 눌러 본인의 사진을 불러옵니다.</li><li>AI가 자동으로 배경을 제거하고 여행지에 합성해 드립니다.</li><li>슬라이더를 조절하여 크기와 위치를 알맞게 조정하세요.</li><li>'사진 저장'을 눌러 나만의 특별한 여행 사진을 간직하세요!</li>`,
+        "guide-how-list": `<li>원하는 여행지를 리스트에서 선택합니다</li><li>'웹캠'을 켜거나 '사진 업로드' 버튼을 눌러 본인의 사진을 불러옵니다</li><li>AI가 자동으로 배경을 제거하고 여행지에 합성해 드립니다</li><li>슬라이더를 조절하여 크기와 위치를 알맞게 조정하세요</li><li>'사진 저장'을 눌러 나만의 특별한 여행 사진을 간직하세요</li>`,
         "guide-tips-title": "✈️ 여행 영감 & 팁",
         "guide-tips-text": "전 세계 50개 이상의 랜드마크를 가상으로 탐험해 보세요. 파리의 에펠탑부터 아이슬란드의 오로라까지, 당신의 다음 여행지를 미리 체험할 수 있습니다. 각 장소의 상세 정보를 통해 역사와 문화적 배경도 함께 배워보세요. 가상 여행은 스트레스를 줄여주고 새로운 모험을 꿈꾸게 하는 훌륭한 방법입니다."
     },
@@ -29,7 +29,7 @@ const i18n = {
         "filter-all": "All", "filter-asia": "Asia", "filter-europe": "Europe", "filter-america": "America", "filter-other": "Other",
         "alert-error": "Failed to process image. Please try a smaller photo or a different one.",
         "guide-how-title": "💡 How to Use",
-        "guide-how-list": `<li>Select your desired destination from the list.</li><li>Turn on 'Webcam' or click 'Upload Photo' to load your image.</li><li>AI automatically removes the background and composites it with the destination.</li><li>Use sliders to adjust size and position.</li><li>Click 'Save Photo' to keep your special memory!</li>`,
+        "guide-how-list": `<li>Select your desired destination from the list</li><li>Turn on 'Webcam' or click 'Upload Photo' to load your image</li><li>AI automatically removes the background and composites it with the destination</li><li>Use sliders to adjust size and position</li><li>Click 'Save Photo' to keep your special memory</li>`,
         "guide-tips-title": "✈️ Travel Inspiration & Tips",
         "guide-tips-text": "Explore over 50 landmarks worldwide virtually. From the Eiffel Tower in Paris to the Northern Lights in Iceland, preview your next trip. Learn about history and culture through detailed information for each spot. Virtual travel is a great way to reduce stress and dream of new adventures."
     },
@@ -45,7 +45,7 @@ const i18n = {
         "filter-all": "すべて", "filter-asia": "アジア", "filter-europe": "ヨーロッパ", "filter-america": "アメリカ", "filter-other": "その他",
         "alert-error": "画像の処理に失敗しました。写真의 사이즈를 축소하거나 다른 사진으로 시도해 주세요.",
         "guide-how-title": "💡 利用方法",
-        "guide-how-list": `<li>リストから希望の目的地を選択します.</li><li>'ウェブカム'をオンにするか'写真をアップロード'ボタンを押して写真を読み込みます.</li><li>AI가 자동으로 배경을 제거하고 여행지에 합성해 드립니다.</li><li>슬라이더를 조절하여 크기와 위치를 알맞게 조정하세요.</li><li>'사진 저장'을 눌러 나만의 특별한 여행 사진을 간직하세요!</li>`,
+        "guide-how-list": `<li>リストから希望の目的地を選択します</li><li>'ウェブカム'をオンにするか'写真をアップロード'ボタンを押して写真を読み込みます</li><li>AI가 자동으로 배경을 제거하고 여행지에 합성해 드립니다</li><li>슬라이더를 조절하여 크기와 위치를 알맞게 조정하세요</li><li>'사진 저장'을 눌러 나만의 특별한 여행 사진을 간직하세요</li>`,
         "guide-tips-title": "✈️ 旅行のインスピレーションとヒント",
         "guide-tips-text": "世界50以上のランドマークを仮想的に探索してください。各場所の詳細情報を通じて歴史や文化的背景を学ぶことができます。仮想旅行はストレスを軽減し、新しい冒험을 夢見させる素晴らしい方法です。"
     },
@@ -61,7 +61,7 @@ const i18n = {
         "filter-all": "全部", "filter-asia": "亚洲", "filter-europe": "欧洲", "filter-america": "美洲", "filter-other": "其他",
         "alert-error": "图片处理失败.请尝试缩小照片尺寸 or 使用其他照片。",
         "guide-how-title": "💡 使用方法",
-        "guide-how-list": `<li>从列表中选择您想要的目的地.</li><li>开启'摄像头'或点击'上传照片'加载您的图片.</li><li>AI自动移除背景并将其与目的地合成.</li><li>调整滑块以更改大小和位置.</li><li>点击'保存照片'留住您的特别回忆！</li>`,
+        "guide-how-list": `<li>从列表中选择您想要的目的地</li><li>开启'摄像头'或点击'上传照片'加载您的图片</li><li>AI自动移除背景并将其与目的地合成</li><li>调整滑块以更改大小和位置</li><li>点击'保存照片'留住您的特别回忆</li>`,
         "guide-tips-title": "✈️ 旅游灵感与技巧",
         "guide-tips-text": "虚拟探索全球50多个地标. 通过每个景点的详细信息了解历史和文化背景. 虚拟旅行是减轻压力 and 梦想新冒险的绝佳方式."
     }
