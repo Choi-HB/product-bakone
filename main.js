@@ -561,8 +561,10 @@ function changeLanguage(lang) {
         const key = el.getAttribute("data-i18n-placeholder");
         if (i18n[lang][key]) el.placeholder = i18n[lang][key];
     });
-    const langSelect = document.getElementById("lang-select");
-    if(langSelect) langSelect.value = lang;
+    const langRadios = document.querySelectorAll('input[name="lang"]');
+    langRadios.forEach(radio => {
+        if (radio.value === lang) radio.checked = true;
+    });
     render(places);
     const sc = document.getElementById("selected-city-name");
     if (sc && sc.getAttribute("data-place-id")) {

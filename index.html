@@ -61,12 +61,10 @@
         <a href="https://seoulmarket-es1.pages.dev/" target="_blank" class="nav-orange">Seoul Market Place</a>
     </div>
     <div class="lang-selector">
-        <select id="lang-select" onchange="changeLanguage(this.value)">
-            <option value="en" selected>English</option>
-            <option value="ko">한국어</option>
-            <option value="ja">日本語</option>
-            <option value="zh">中文</option>
-        </select>
+        <label class="radio-label"><input type="radio" name="lang" value="en" checked onclick="changeLanguage('en')"> EN</label>
+        <label class="radio-label"><input type="radio" name="lang" value="ko" onclick="changeLanguage('ko')"> KO</label>
+        <label class="radio-label"><input type="radio" name="lang" value="ja" onclick="changeLanguage('ja')"> JP</label>
+        <label class="radio-label"><input type="radio" name="lang" value="zh" onclick="changeLanguage('zh')"> CN</label>
     </div>
 </nav>
 
@@ -213,7 +211,8 @@
 
 <style>
 nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.lang-selector select { padding: 5px 10px; border-radius: 5px; border: 1px solid #ddd; font-family: inherit; }
+.lang-selector { display: flex; gap: 10px; }
+.radio-label { cursor: pointer; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
 .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #6366f1; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 </style>
