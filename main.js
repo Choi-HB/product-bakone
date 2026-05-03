@@ -672,10 +672,11 @@ let currentUserImg = null;
 let isStudioOpen = false;
 
 async function loadModel() {
+    if (typeof bodyPix === 'undefined') return;
     if (net) return;
     net = await bodyPix.load({ architecture: 'MobileNetV1', outputStride: 16, multiplier: 0.75, quantBytes: 2 });
 }
-loadModel();
+if (typeof bodyPix !== "undefined") loadModel();
 
 function changeLanguage(lang) {
     currentLang = lang;
@@ -841,10 +842,14 @@ function resetStudioUI() {
         const ctx = c.getContext('2d');
         ctx.clearRect(0, 0, c.width, c.height);
     }
-    document.getElementById("adjust-controls").style.display = "none";
-    document.getElementById("download-comp-btn").style.display = "none";
-    document.getElementById("webcam-video").style.display = "none";
-    document.getElementById("capture-btn").style.display = "none";
+    const ac = document.getElementById("adjust-controls");
+    if (ac) ac.style.display = "none";
+    const dcb = document.getElementById("download-comp-btn");
+    if (dcb) dcb.style.display = "none";
+    const wv = document.getElementById("webcam-video");
+    if (wv) wv.style.display = "none";
+    const cb = document.getElementById("capture-btn");
+    if (cb) cb.style.display = "none";
     resetTransform();
 }
 
@@ -864,10 +869,11 @@ async function reprocessPhoto() { if (currentUserImg && isStudioOpen) await perf
 
 async function performBackgroundRemoval(img) {
     const o = document.getElementById("loading-overlay");
-    o.style.display = "flex";
+    if (o) o.style.display = "flex";
     try {
         const c = document.getElementById("user-canvas");
-        const th = parseFloat(document.getElementById("user-threshold").value) || 0.6;
+        const thEl = document.getElementById("user-threshold");
+        const th = thEl ? (parseFloat(thEl.value) || 0.6) : 0.6;
         if (!net) await loadModel();
         const max = 1000;
         let tw = img.width, thh = img.height;
@@ -877,26 +883,37 @@ async function performBackgroundRemoval(img) {
         const octx = os.getContext('2d');
         octx.drawImage(img, 0, 0, tw, thh);
         const seg = await net.segmentPerson(os, { internalResolution: 'medium', segmentationThreshold: th });
-        if (!isStudioOpen) { o.style.display = "none"; return; }
-        c.width = tw; c.height = thh;
-        const ctx = c.getContext('2d');
-        ctx.drawImage(os, 0, 0);
-        const idat = ctx.getImageData(0, 0, tw, thh);
-        const pdat = idat.data;
-        for (let i = 0; i < pdat.length; i += 4) { if (seg.data[i / 4] === 0) pdat[i + 3] = 0; }
-        ctx.putImageData(idat, 0, 0);
-        o.style.display = "none";
-        document.getElementById("adjust-controls").style.display = "block";
-        document.getElementById("download-comp-btn").style.display = "inline-block";
-    } catch (e) { console.error(e); o.style.display = "none"; alert(i18n[currentLang]["alert-error"]); }
+        if (!isStudioOpen) { if (o) o.style.display = "none"; return; }
+        if (c) {
+            c.width = tw; c.height = thh;
+            const ctx = c.getContext('2d');
+            ctx.drawImage(os, 0, 0);
+            const idat = ctx.getImageData(0, 0, tw, thh);
+            const pdat = idat.data;
+            for (let i = 0; i < pdat.length; i += 4) { if (seg.data[i / 4] === 0) pdat[i + 3] = 0; }
+            ctx.putImageData(idat, 0, 0);
+        }
+        if (o) o.style.display = "none";
+        const ac = document.getElementById("adjust-controls");
+        if (ac) ac.style.display = "block";
+        const dcb = document.getElementById("download-comp-btn");
+        if (dcb) dcb.style.display = "inline-block";
+    } catch (e) { console.error(e); if (o) o.style.display = "none"; alert(i18n[currentLang]["alert-error"]); }
 }
 
 function updateUserTransform() {
-    const s = document.getElementById("user-scale").value;
-    const x = document.getElementById("user-pos-x").value;
-    const y = document.getElementById("user-pos-y").value;
+    const sEl = document.getElementById("user-scale");
+    const xEl = document.getElementById("user-pos-x");
+    const yEl = document.getElementById("user-pos-y");
     const c = document.getElementById("user-canvas");
-    if (c) { c.style.left = `${x}%`; c.style.bottom = `${y}%`; c.style.transform = `translateX(-50%) scale(${s})`; }
+    if (sEl && xEl && yEl && c) {
+        const s = sEl.value;
+        const x = xEl.value;
+        const y = yEl.value;
+        c.style.left = `${x}%`;
+        c.style.bottom = `${y}%`;
+        c.style.transform = `translateX(-50%) scale(${s})`;
+    }
 }
 
 // Mouse Interaction Logic
@@ -905,7 +922,8 @@ let lastMouseX = 0;
 let lastMouseY = 0;
 
 function initMouseEvents() {
-    const ca = document.getElementById("composition-area");
+    const ca = document.getElementById("composition-area"); if (!ca) return;
+    if (!ca) return;
     
     ca.addEventListener('mousedown', (e) => {
         isDragging = true;
@@ -923,8 +941,10 @@ function initMouseEvents() {
         const posX = document.getElementById("user-pos-x");
         const posY = document.getElementById("user-pos-y");
         
-        posX.value = parseFloat(posX.value) + (dx / ca.clientWidth * 100);
-        posY.value = parseFloat(posY.value) - (dy / ca.clientHeight * 100);
+        if (posX && posY) {
+            posX.value = parseFloat(posX.value) + (dx / ca.clientWidth * 100);
+            posY.value = parseFloat(posY.value) - (dy / ca.clientHeight * 100);
+        }
         
         lastMouseX = e.clientX;
         lastMouseY = e.clientY;
@@ -940,6 +960,7 @@ function initMouseEvents() {
     ca.addEventListener('wheel', (e) => {
         e.preventDefault();
         const scaleInput = document.getElementById("user-scale");
+        if (!scaleInput) return;
         let currentScale = parseFloat(scaleInput.value);
         const delta = e.deltaY > 0 ? -0.05 : 0.05;
         scaleInput.value = Math.min(2.0, Math.max(0.1, currentScale + delta));
@@ -954,7 +975,8 @@ let initialPinchDist = 0;
 let initialScale = 1.0;
 
 function initTouchEvents() {
-    const ca = document.getElementById("composition-area");
+    const ca = document.getElementById("composition-area"); if (!ca) return;
+    if (!ca) return;
     const canvas = document.getElementById("user-canvas");
     
     ca.addEventListener('touchstart', (e) => {
@@ -966,7 +988,8 @@ function initTouchEvents() {
                 e.touches[0].clientX - e.touches[1].clientX,
                 e.touches[0].clientY - e.touches[1].clientY
             );
-            initialScale = parseFloat(document.getElementById("user-scale").value);
+            const scaleInput = document.getElementById("user-scale");
+            initialScale = scaleInput ? parseFloat(scaleInput.value) : 1.0;
         }
     }, { passive: false });
 
@@ -981,8 +1004,10 @@ function initTouchEvents() {
             const posX = document.getElementById("user-pos-x");
             const posY = document.getElementById("user-pos-y");
             
-            posX.value = parseFloat(posX.value) + (dx / ca.clientWidth * 100);
-            posY.value = parseFloat(posY.value) - (dy / ca.clientHeight * 100);
+            if (posX && posY) {
+                posX.value = parseFloat(posX.value) + (dx / ca.clientWidth * 100);
+                posY.value = parseFloat(posY.value) - (dy / ca.clientHeight * 100);
+            }
             
             lastTouchX = touchX;
             lastTouchY = touchY;
@@ -994,24 +1019,32 @@ function initTouchEvents() {
             );
             if (initialPinchDist > 0) {
                 const scaleInput = document.getElementById("user-scale");
-                const zoomFactor = currentDist / initialPinchDist;
-                scaleInput.value = Math.min(2.0, Math.max(0.1, initialScale * zoomFactor));
-                updateUserTransform();
+                if (scaleInput) {
+                    const zoomFactor = currentDist / initialPinchDist;
+                    scaleInput.value = Math.min(2.0, Math.max(0.1, initialScale * zoomFactor));
+                    updateUserTransform();
+                }
             }
         }
     }, { passive: false });
 }
 
 function resetTransform() {
-    document.getElementById("user-scale").value = 1.0;
-    document.getElementById("user-pos-x").value = 50;
-    document.getElementById("user-pos-y").value = 0;
-    document.getElementById("user-threshold").value = 0.6;
+    const s = document.getElementById("user-scale");
+    const x = document.getElementById("user-pos-x");
+    const y = document.getElementById("user-pos-y");
+    const t = document.getElementById("user-threshold");
+    if (s) s.value = 1.0;
+    if (x) x.value = 50;
+    if (y) y.value = 0;
+    if (t) t.value = 0.6;
     updateUserTransform();
 }
 
-function captureComposition() {
+function captureComposition() { if (typeof html2canvas === 'undefined') return;
+    if (typeof html2canvas === 'undefined') return;
     const ca = document.getElementById("composition-area");
+    if (!ca) return;
     html2canvas(ca, { useCORS: true, allowTaint: true }).then(cv => {
         const link = document.createElement("a");
         link.download = `travel-${Date.now()}.png`;
@@ -1049,7 +1082,10 @@ if(searchInput) {
 
 window.onclick = (e) => { if (e.target == document.getElementById("modal")) closeModal(); }
 
-initMouseEvents();
-initTouchEvents();
+try {
+    initMouseEvents();
+    initTouchEvents();
+} catch (e) { console.error("Event init skipped", e); }
+
 const savedLang = localStorage.getItem('preferredLang') || 'ko';
 changeLanguage(savedLang);

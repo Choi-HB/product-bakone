@@ -473,8 +473,25 @@ footer {
 @media(max-width: 600px) {
     .studio-container {
         padding: 15px;
+        margin: 10px;
+        width: calc(100% - 20px);
     }
     .studio-controls {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .composition-area {
+        min-height: 250px;
+        max-height: 60vh;
+        margin-top: 50px;
+    }
+    #webcam-video {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 10px;
+    }
+    .btn-exit {
+        top: 10px;
+        right: 10px;
     }
 }
