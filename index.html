@@ -5,51 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987431890843095"
      crossorigin="anonymous"></script>
-<title id="site-title">Ultimate Dream Travel - AI Virtual Photo Studio & 50+ Destinations</title>
-<meta name="description" content="Explore 50+ world-famous destinations and take virtual photos with our AI background removal studio. Travel the world in one click!">
-<meta name="keywords" content="Virtual Travel, AI Photo Studio, Background Removal, Virtual Photography, World Travel, Travel from home">
+<title>Ultimate Dream Travel - Virtual Photo Studio & Travel Guide</title>
+<meta name="description" content="Travel the world in a click! Use our AI Virtual Photo Studio to place yourself in 50+ world landmarks. Explore cultures and plan your next dream trip.">
 <link rel="canonical" href="https://product-bakone.pages.dev/" />
-
-<!-- Multilingual SEO -->
-<link rel="alternate" hreflang="x-default" href="https://product-bakone.pages.dev/" />
-<link rel="alternate" hreflang="ko" href="https://product-bakone.pages.dev/?lang=ko" />
-<link rel="alternate" hreflang="en" href="https://product-bakone.pages.dev/?lang=en" />
-<link rel="alternate" hreflang="ja" href="https://product-bakone.pages.dev/?lang=ja" />
-<link rel="alternate" hreflang="zh" href="https://product-bakone.pages.dev/?lang=zh" />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://product-bakone.pages.dev/">
-<meta property="og:title" content="Ultimate Dream Travel - AI Virtual Photo Studio">
-<meta property="og:description" content="Travel 50+ destinations virtually and take your photo using AI background removal.">
-<meta property="og:image" content="https://picsum.photos/seed/travel/1200/630">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Ultimate Dream Travel Virtual Studio",
-  "url": "https://product-bakone.pages.dev/",
-  "description": "AI-powered virtual travel photo studio with 50 world destinations.",
-  "applicationCategory": "TravelApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0"
-  }
-}
-</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
-<!-- TensorFlow.js and BodyPix for background removal -->
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.0"></script>
+<!-- Libraries for Virtual Studio -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
-
 <body>
 
 <nav>
@@ -58,10 +25,10 @@
         <a href="about.html" data-i18n="nav-about">About</a>
         <a href="contact.html" data-i18n="nav-contact">Contact</a>
         <a href="privacy.html" data-i18n="nav-privacy">Privacy</a>
-        <a href="https://seoulmarket-es1.pages.dev/" target="_blank" class="nav-orange">Seoul Market Place</a>
+        <a href="https://seoulmarket-es1.pages.dev/" target="_blank" class="nav-orange" data-i18n="nav-seoul-market">Seoul Market Place</a>
     </div>
     <div class="lang-selector">
-        <label class="radio-label"><input type="radio" name="lang" value="en" checked onclick="changeLanguage('en')"> EN</label>
+        <label class="radio-label"><input type="radio" name="lang" value="en" onclick="changeLanguage('en')"> EN</label>
         <label class="radio-label"><input type="radio" name="lang" value="ko" onclick="changeLanguage('ko')"> KO</label>
         <label class="radio-label"><input type="radio" name="lang" value="ja" onclick="changeLanguage('ja')"> JP</label>
         <label class="radio-label"><input type="radio" name="lang" value="zh" onclick="changeLanguage('zh')"> CN</label>
@@ -69,161 +36,119 @@
 </nav>
 
 <header>
-<h1 data-i18n="header-title">얼티밋 드림 트래블</h1>
-<p data-i18n="header-subtitle">가상 포토 스튜디오 - 클릭 한 번으로 세계 여행!</p>
+    <h1 data-i18n="header-title">Ultimate Dream Travel</h1>
+    <p data-i18n="header-subtitle">Virtual Photo Studio - Travel the World in a Click!</p>
 </header>
 
-<!-- Virtual Studio Section -->
-<section id="studio-section">
+<!-- Studio Section (Modal-like full screen) -->
+<section id="studio-section" class="studio-overlay" style="display:none;">
     <div class="studio-container">
-        <h2 data-i18n="studio-title">📸 가상 포토 스튜디오</h2>
-        <p><span data-i18n="studio-selected">선택된 여행지:</span> <strong id="selected-city-name">-</strong></p>
+        <button class="btn-exit" onclick="closeStudio()" data-i18n="btn-exit">❌ Exit Studio</button>
+        <h2 data-i18n="studio-title">📸 Virtual Photo Studio</h2>
+        <p><span data-i18n="studio-selected">Selected Destination:</span> <strong id="selected-city-name"></strong></p>
         
-        <div id="composition-area" style="position: relative; width: 100%; max-width: 100%; height: auto; min-height: 300px; max-height: 60vh; background: #eee; border-radius: 15px; overflow: hidden; margin-top: 20px; background-size: cover; background-position: center; background-repeat: no-repeat; margin-left: auto; margin-right: auto; transition: aspect-ratio 0.3s;">
-            <!-- User photo will be placed here -->
-            <canvas id="user-canvas" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scale(1); max-height: 95%; pointer-events: none; transition: transform 0.1s ease-out; filter: drop-shadow(0 0 2px rgba(0,0,0,0.1)); z-index: 2;"></canvas>
-            
-            <video id="webcam-video" autoplay playsinline style="display:none; position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.6; z-index: 1;"></video>
-
-            <div id="loading-overlay" style="display:none; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(255,255,255,0.8); align-items: center; justify-content: center; flex-direction: column; z-index: 10;">
+        <div id="composition-area" class="composition-area">
+            <!-- Background is set via JS -->
+            <canvas id="user-canvas" class="user-canvas"></canvas>
+            <div id="loading-overlay" class="loading-overlay" style="display:none;">
                 <div class="spinner"></div>
-                <p style="margin-top: 10px; font-weight: 500;" data-i18n="studio-processing">배경 제거 중... (AI)</p>
+                <p data-i18n="studio-processing">Removing Background... (AI)</p>
             </div>
         </div>
 
-        <!-- Adjust Controls -->
-        <div id="adjust-controls" style="margin-top: 20px; display: none; background: #f9fafb; padding: 15px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-size">📏 크기:</label>
-                    <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()" style="width: 80px;">
+        <div class="studio-controls">
+            <div class="upload-zone">
+                <button class="btn-primary" onclick="document.getElementById('user-upload').click()" data-i18n="btn-upload">👤 Upload My Photo</button>
+                <input type="file" id="user-upload" hidden accept="image/*" onchange="processUserPhoto(this)">
+                
+                <div class="webcam-controls">
+                    <button id="webcam-btn" class="btn-secondary" onclick="toggleWebcam()" data-i18n="btn-webcam-on">📷 Use Webcam</button>
+                    <button id="capture-btn" class="btn-capture" onclick="takeSnapshot()" style="display:none;" data-i18n="btn-capture">📸 Capture</button>
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-horiz">↔️ 좌우:</label>
-                    <input type="range" id="user-pos-x" min="0" max="100" step="1" value="50" oninput="updateUserTransform()" style="width: 80px;">
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-vert">↕️ 상하:</label>
-                    <input type="range" id="user-pos-y" min="-50" max="100" step="1" value="0" oninput="updateUserTransform()" style="width: 80px;">
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <label style="font-size: 14px; font-weight: 500;" data-i18n="ctrl-precision">✨ 정밀도:</label>
-                    <input type="range" id="user-threshold" min="0.2" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()" style="width: 80px;">
-                </div>
-                <button onclick="resetTransform()" style="padding: 5px 12px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px;" data-i18n="btn-reset">초기화</button>
+                <video id="webcam-video" autoplay playsinline style="display:none;"></video>
             </div>
-        </div>
 
-        <div style="margin-top: 25px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <button id="webcam-btn" onclick="toggleWebcam()" style="background: #ef4444; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;" data-i18n="btn-webcam-on">📷 웹캠 사용</button>
-            <button id="capture-btn" onclick="takeSnapshot()" style="display:none; background: #f59e0b; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;" data-i18n="btn-capture">📸 찰칵!</button>
-            
-            <button onclick="document.getElementById('user-photo-upload').click()" style="background: #6366f1; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;" data-i18n="btn-upload">👤 내 사진 업로드</button>
-            <input type="file" id="user-photo-upload" accept="image/*" style="display:none" onchange="processUserPhoto(this)">
-            
-            <button id="download-comp-btn" onclick="captureComposition()" style="background: #10b981; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer; display:none;" data-i18n="btn-save">💾 사진 저장</button>
-            <button onclick="closeStudio()" style="background: #6b7280; color: white; padding: 12px 24px; border-radius: 10px; border:none; cursor:pointer;" data-i18n="btn-exit">❌ 스튜디오 종료</button>
-        </div>
+            <div id="adjust-controls" class="adjust-controls" style="display:none;">
+                <div class="control-row">
+                    <label data-i18n="ctrl-size">📏 Size:</label>
+                    <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()">
+                </div>
+                <div class="control-row">
+                    <label data-i18n="ctrl-horiz">↔️ Horiz:</label>
+                    <input type="range" id="user-pos-x" min="0" max="100" step="1" value="50" oninput="updateUserTransform()">
+                </div>
+                <div class="control-row">
+                    <label data-i18n="ctrl-vert">↕️ Vert:</label>
+                    <input type="range" id="user-pos-y" min="0" max="100" step="1" value="0" oninput="updateUserTransform()">
+                </div>
+                <div class="control-row">
+                    <label data-i18n="ctrl-precision">✨ Precision:</label>
+                    <input type="range" id="user-threshold" min="0.1" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()">
+                </div>
+                <button class="btn-reset" onclick="resetTransform()" data-i18n="btn-reset">Reset</button>
+            </div>
 
-        <p style="font-size: 12px; color: #666; margin-top: 15px;" data-i18n="studio-tip">* 인물 사진이 선명할수록 배경 제거 결과가 좋습니다.</p>
+            <button id="download-comp-btn" class="btn-save" onclick="captureComposition()" style="display:none;" data-i18n="btn-save">💾 Save Photo</button>
+        </div>
+        <p class="studio-tip" data-i18n="studio-tip">* Clearer person photos yield better background removal results</p>
     </div>
 </section>
-
-<!-- Additional Content for SEO and User Value -->
-<section id="guide-section" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-        <div class="content-box" style="background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h3 style="color: #6366f1; margin-top: 0;" data-i18n="guide-how-title">💡 이용 방법</h3>
-            <ul style="padding-left: 20px; line-height: 1.8; color: #4b5563;" data-i18n="guide-how-list">
-                <li>원하는 여행지를 리스트에서 선택합니다.</li>
-                <li>'웹캠'을 켜거나 '사진 업로드' 버튼을 눌러 본인의 사진을 불러옵니다.</li>
-                <li>AI가 자동으로 배경을 제거하고 여행지에 합성해 드립니다.</li>
-                <li>슬라이더를 조절하여 크기와 위치를 알맞게 조정하세요.</li>
-                <li>'사진 저장'을 눌러 나만의 특별한 여행 사진을 간직하세요!</li>
-            </ul>
-        </div>
-        <div class="content-box" style="background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h3 style="color: #10b981; margin-top: 0;" data-i18n="guide-tips-title">✈️ 여행 영감 & 팁</h3>
-            <p style="color: #4b5563; line-height: 1.8;" data-i18n="guide-tips-text">
-                전 세계 50개 이상의 랜드마크를 가상으로 탐험해 보세요. 파리의 에펠탑부터 아이슬란드의 오로라까지, 당신의 다음 여행지를 미리 체험할 수 있습니다. 각 장소의 상세 정보를 통해 역사와 문화적 배경도 함께 배워보세요. 가상 여행은 스트레스를 줄여주고 새로운 모험을 꿈꾸게 하는 훌륭한 방법입니다.
-            </p>
-        </div>
-    </div>
-</section>
-
 
 <main>
-    <div class="search-bar">
-        <input type="text" id="search" placeholder="도시 또는 목적지 검색..." data-i18n-placeholder="search-placeholder">
+    <section class="search-filter">
+        <input type="text" id="search" data-i18n-placeholder="search-placeholder" placeholder="Search destination...">
+        <div class="filter-buttons">
+            <button class="active" onclick="filterRegion('all', this)" data-i18n="filter-all">All</button>
+            <button onclick="filterRegion('Asia', this)" data-i18n="filter-asia">Asia</button>
+            <button onclick="filterRegion('Europe', this)" data-i18n="filter-europe">Europe</button>
+            <button onclick="filterRegion('America', this)" data-i18n="filter-america">America</button>
+            <button onclick="filterRegion('Other', this)" data-i18n="filter-other">Other</button>
+        </div>
+    </section>
+
+    <div id="places" class="grid">
+        <!-- Cards generated by main.js -->
     </div>
 
-    <!-- AdSense Top -->
-    <div style="max-width: 1400px; margin: 20px auto; text-align: center; min-height: 100px; overflow: hidden; display: none;">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8987431890843095"
-             data-ad-slot="8987431890" 
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <div class="filter-buttons">
-        <button class="active" onclick="filterRegion('all', this)" data-i18n="filter-all">전체</button>
-        <button onclick="filterRegion('Asia', this)" data-i18n="filter-asia">아시아</button>
-        <button onclick="filterRegion('Europe', this)" data-i18n="filter-europe">유럽</button>
-        <button onclick="filterRegion('America', this)" data-i18n="filter-america">아메리카</button>
-        <button onclick="filterRegion('Other', this)" data-i18n="filter-other">기타</button>
-    </div>
-
-    <div class="container" id="places"></div>
-
-    <!-- AdSense Bottom -->
-    <div style="max-width: 1400px; margin: 40px auto; text-align: center; min-height: 100px; overflow: hidden; display: none;">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8987431890843095"
-             data-ad-slot="8987431891"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    <!-- How it works guide -->
+    <section class="guide-section">
+        <div class="guide-card">
+            <h3 data-i18n="guide-how-title">💡 How to Use</h3>
+            <ul data-i18n="guide-how-list">
+                <li>Select your desired destination from the list</li>
+                <li>Turn on 'Webcam' or click 'Upload Photo' to load your image</li>
+                <li>AI automatically removes the background and composites it with the destination</li>
+                <li>Use sliders to adjust size and position</li>
+                <li>Click 'Save Photo' to keep your special memory</li>
+            </ul>
+        </div>
+        <div class="guide-card">
+            <h3 data-i18n="guide-tips-title">✈️ Travel Inspiration & Tips</h3>
+            <p data-i18n="guide-tips-text">Explore over 50 landmarks worldwide virtually. From the Eiffel Tower in Paris to the Northern Lights in Iceland, preview your next trip. Learn about history and culture through detailed information for each spot. Virtual travel is a great way to reduce stress and dream of new adventures.</p>
+        </div>
+    </section>
 </main>
 
-<div class="modal" id="modal">
+<!-- Info Modal -->
+<div id="modal" class="modal">
     <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
         <h2 id="modalTitle"></h2>
         <p id="modalDesc"></p>
-        <button class="close-btn" onclick="closeModal()" data-i18n="btn-close">닫기</button>
+        <button class="btn-primary" onclick="closeModal()" data-i18n="btn-close">Close</button>
     </div>
 </div>
 
 <footer>
     <div class="policy-links">
-        <a href="index.html" data-i18n="nav-home">홈</a> |
-        <a href="about.html" data-i18n="nav-about">소개</a> |
-        <a href="contact.html" data-i18n="nav-contact">문의</a> |
-        <a href="privacy.html" data-i18n="nav-privacy">개인정보보호</a> |
-        <a href="terms.html" data-i18n="nav-terms">이용약관</a>
+        <a href="index.html" data-i18n="nav-home">Home</a> |
+        <a href="about.html" data-i18n="nav-about">About</a> |
+        <a href="contact.html" data-i18n="nav-contact">Contact</a> |
+        <a href="privacy.html" data-i18n="nav-privacy">Privacy Policy</a> |
+        <a href="terms.html" data-i18n="nav-terms">Terms of Service</a>
     </div>
-    <p>© 2026 Ultimate Dream Travel. All rights reserved.</p>
+    <p data-i18n="footer-copyright">© 2026 Ultimate Dream Travel. All rights reserved.</p>
 </footer>
-
-<style>
-nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-wrap: wrap; gap: 15px; }
-.nav-links { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-.lang-selector { display: flex; gap: 10px; justify-content: center; }
-.radio-label { cursor: pointer; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
-.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #6366f1; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-@media (max-width: 600px) {
-    nav { justify-content: center; padding: 15px 10px; }
-    .nav-links { width: 100%; order: 2; margin-top: 5px; font-size: 0.9rem; }
-    .lang-selector { width: 100%; order: 1; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-    nav a { margin: 0 5px !important; }
-}
-</style>
 
 <script src="main.js"></script>
 

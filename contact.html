@@ -5,110 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987431890843095"
      crossorigin="anonymous"></script>
-<title>Contact - Ultimate Dream Travel</title>
-<meta name="description" content="Have questions or just want to say hi? Reach out to the Ultimate Dream Travel team. We'd love to hear from you!">
-<link rel="canonical" href="https://product-bakone.pages.dev/contact.html" />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://product-bakone.pages.dev/contact.html">
-<meta property="og:title" content="Contact - Ultimate Dream Travel">
-<meta property="og:description" content="Reach out to us for any questions or just to share your travel dreams.">
-
+<title>Contact Us - Ultimate Dream Travel</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-    .content-page {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 40px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-    .content-page h1 { margin-top: 0; }
-    .contact-form { margin-top: 30px; }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
-    .form-group input, .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-family: inherit;
-    }
-    .submit-btn {
-        background: #6366f1;
-        color: white;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: background 0.3s;
-    }
-    .submit-btn:hover { background: #4f46e5; }
-</style>
 </head>
 <body>
 
 <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="https://seoulmarket-es1.pages.dev/" target="_blank" class="nav-orange">Seoul Market Place</a>
+    <div class="nav-links">
+        <a href="index.html" data-i18n="nav-home">Home</a>
+        <a href="about.html" data-i18n="nav-about">About</a>
+        <a href="contact.html" data-i18n="nav-contact">Contact</a>
+        <a href="privacy.html" data-i18n="nav-privacy">Privacy</a>
+        <a href="https://seoulmarket-es1.pages.dev/" target="_blank" class="nav-orange" data-i18n="nav-seoul-market">Seoul Market Place</a>
+    </div>
+    <div class="lang-selector">
+        <label class="radio-label"><input type="radio" name="lang" value="en" onclick="changeLanguage('en')"> EN</label>
+        <label class="radio-label"><input type="radio" name="lang" value="ko" onclick="changeLanguage('ko')"> KO</label>
+        <label class="radio-label"><input type="radio" name="lang" value="ja" onclick="changeLanguage('ja')"> JP</label>
+        <label class="radio-label"><input type="radio" name="lang" value="zh" onclick="changeLanguage('zh')"> CN</label>
+    </div>
 </nav>
 
 <header>
-    <h1>Say Hello!</h1>
+    <h1 data-i18n="contact-header">Say Hello!</h1>
 </header>
 
 <main>
-    <section class="content-page">
-        <!-- AdSense Top of Content -->
-        <div style="margin-bottom: 30px; text-align: center; display: none;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-8987431890843095"
-                 data-ad-slot="8987431890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
-        <p>We'd love to hear from you! If you have any questions, feedback, or just want to share your favorite virtual travel destination, please drop us a line below.</p>
+    <div class="content-page">
+        <p data-i18n="contact-intro">We'd love to hear from you! If you have any questions, feedback, or just want to share your favorite virtual travel destination, please drop us a line below.</p>
         
-        <div class="contact-form">
-            <form action="https://formspree.io/f/mkopwvag" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+        <form action="#">
+            <div class="form-group">
+                <label for="name" data-i18n="contact-name-label">Name</label>
+                <input type="text" id="name" data-i18n-placeholder="contact-name-placeholder" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email" data-i18n="contact-email-label">Your Email</label>
+                <input type="email" id="email" data-i18n-placeholder="contact-email-placeholder" placeholder="Your Email Address" required>
+            </div>
+            <div class="form-group">
+                <label for="message" data-i18n="contact-message-label">Message</label>
+                <textarea id="message" data-i18n-placeholder="contact-message-placeholder" placeholder="What's on your mind?" required></textarea>
+            </div>
+            <button type="submit" class="btn-send" data-i18n="contact-btn-send">Send Message</button>
+        </form>
+    </div>
 </main>
 
 <footer>
     <div class="policy-links">
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="contact.html">Contact</a> |
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms of Service</a>
+        <a href="index.html" data-i18n="nav-home">Home</a> |
+        <a href="about.html" data-i18n="nav-about">About</a> |
+        <a href="contact.html" data-i18n="nav-contact">Contact</a> |
+        <a href="privacy.html" data-i18n="nav-privacy">Privacy Policy</a> |
+        <a href="terms.html" data-i18n="nav-terms">Terms of Service</a>
     </div>
-    <p>© 2026 Ultimate Dream Travel. All rights reserved.</p>
+    <p data-i18n="footer-copyright">© 2026 Ultimate Dream Travel. All rights reserved.</p>
 </footer>
+
+<script src="main.js"></script>
 
 </body>
 </html>
