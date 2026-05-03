@@ -825,8 +825,10 @@ function takeSnapshot() {
 
 function closeStudio() {
     isStudioOpen = false;
-    document.getElementById("studio-section").style.display = "none";
-    document.getElementById("loading-overlay").style.display = "none";
+    const s = document.getElementById("studio-section");
+    const o = document.getElementById("loading-overlay");
+    if (s) s.style.display = "none";
+    if (o) o.style.display = "none";
     document.body.style.overflow = "auto";
     currentUserImg = null;
     if (webcamStream) {
@@ -1039,6 +1041,7 @@ function resetTransform() {
     if (y) y.value = 0;
     if (t) t.value = 0.6;
     updateUserTransform();
+    if (currentUserImg) reprocessPhoto();
 }
 
 function captureComposition() { if (typeof html2canvas === 'undefined') return;

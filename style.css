@@ -361,6 +361,7 @@ footer {
     color: white;
     cursor: pointer;
     font-weight: 600;
+    z-index: 4000;
 }
 
 .composition-area {
@@ -380,6 +381,7 @@ footer {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    transform-origin: bottom center;
 }
 
 .loading-overlay {
