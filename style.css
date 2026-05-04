@@ -459,10 +459,40 @@ footer {
     background: #94a3b8;
     color: white;
     border: none;
-    padding: 5px 15px;
-    border-radius: 5px;
+    padding: 8px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+    flex: 1;
+}
+
+.btn-clear {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    flex: 1;
+}
+
+.control-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-exit-inner {
+    background: #4b5563;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .studio-tip {

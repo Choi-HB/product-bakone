@@ -66,6 +66,7 @@
                     <button id="capture-btn" class="btn-capture" onclick="takeSnapshot()" style="display:none;" data-i18n="btn-capture">📸 Capture</button>
                 </div>
                 <video id="webcam-video" autoplay playsinline style="display:none;"></video>
+                <button class="btn-exit-inner" onclick="closeStudio()" data-i18n="btn-exit">❌ Exit Studio</button>
             </div>
 
             <div id="adjust-controls" class="adjust-controls" style="display:none;">
@@ -85,7 +86,10 @@
                     <label data-i18n="ctrl-precision">✨ Precision:</label>
                     <input type="range" id="user-threshold" min="0.1" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()">
                 </div>
-                <button class="btn-reset" onclick="resetTransform()" data-i18n="btn-reset">Reset</button>
+                <div class="control-btns">
+                    <button class="btn-reset" onclick="resetTransform()" data-i18n="btn-reset-pos">Reset Pos</button>
+                    <button class="btn-clear" onclick="clearUserPhoto()" data-i18n="btn-reset">Clear Photo</button>
+                </div>
             </div>
 
             <button id="download-comp-btn" class="btn-save" onclick="captureComposition()" style="display:none;" data-i18n="btn-save">💾 Save Photo</button>

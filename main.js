@@ -6,7 +6,7 @@ const i18n = {
         "studio-title": "📸 가상 포토 스튜디오", "studio-selected": "선택된 여행지:", "studio-processing": "배경 제거 중... (AI)",
         "studio-tip": "* 인물 사진이 선명할수록 배경 제거 결과가 좋습니다",
         "ctrl-size": "📏 크기:", "ctrl-horiz": "↔️ 좌우:", "ctrl-vert": "↕️ 상하:", "ctrl-precision": "✨ 정밀도:",
-        "btn-reset": "초기화", "btn-upload": "👤 내 사진 업로드", "btn-save": "💾 사진 저장", "btn-exit": "❌ 스튜디오 종료",
+        "btn-reset-pos": "위치 초기화", "btn-reset": "사진 삭제", "btn-upload": "👤 내 사진 업로드", "btn-save": "💾 사진 저장", "btn-exit": "❌ 스튜디오 종료",
         "btn-close": "닫기", "btn-travel": "여기로 여행 (합성)", "btn-details": "상세 정보",
         "btn-webcam-on": "📷 웹캠 사용", "btn-webcam-off": "🛑 웹캠 중지", "btn-capture": "📸 찰칵",
         "search-placeholder": "도시 또는 목적지 검색...",
@@ -852,6 +852,20 @@ function resetStudioUI() {
     if (wv) wv.style.display = "none";
     const cb = document.getElementById("capture-btn");
     if (cb) cb.style.display = "none";
+    resetTransform();
+}
+
+function clearUserPhoto() {
+    currentUserImg = null;
+    const c = document.getElementById("user-canvas");
+    if (c) {
+        const ctx = c.getContext('2d');
+        ctx.clearRect(0, 0, c.width, c.height);
+    }
+    const ac = document.getElementById("adjust-controls");
+    if (ac) ac.style.display = "none";
+    const dcb = document.getElementById("download-comp-btn");
+    if (dcb) dcb.style.display = "none";
     resetTransform();
 }
 
