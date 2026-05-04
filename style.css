@@ -73,8 +73,9 @@ nav a:hover {
 .nav-orange {
     background-color: #ff9800;
     color: white !important;
-    padding: 6px 12px;
-    border-radius: 20px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .content-page {
@@ -523,7 +524,6 @@ footer {
         border-radius: 10px;
     }
     .btn-exit {
-        top: 10px;
-        right: 10px;
+        display: none;
     }
 }

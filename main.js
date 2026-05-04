@@ -1,7 +1,7 @@
 const i18n = {
     ko: {
         "nav-home": "홈", "nav-about": "소개", "nav-contact": "문의", "nav-privacy": "개인정보보호", "nav-terms": "이용약관",
-        "nav-seoul-market": "서울 마켓 플레이스",
+        "nav-seoul-market": "서울 전통 시장",
         "header-title": "포토 드림 트래블", "header-subtitle": "가상 포토 스튜디오 - 클릭 한 번으로 세계 여행!",
         "studio-title": "📸 가상 포토 스튜디오", "studio-selected": "선택된 여행지:", "studio-processing": "배경 제거 중... (AI)",
         "studio-tip": "* 인물 사진이 선명할수록 배경 제거 결과가 좋습니다",
@@ -50,7 +50,7 @@ const i18n = {
     },
     en: {
         "nav-home": "Home", "nav-about": "About", "nav-contact": "Contact", "nav-privacy": "Privacy", "nav-terms": "Terms",
-        "nav-seoul-market": "Seoul Marketplace",
+        "nav-seoul-market": "Seoul Traditional Market",
         "header-title": "Photo Dream Travel", "header-subtitle": "Virtual Photo Studio - Travel the World in a Click!",
         "studio-title": "📸 Virtual Photo Studio", "studio-selected": "Selected Destination:", "studio-processing": "Removing Background... (AI)",
         "studio-tip": "* Clearer person photos yield better background removal results",
@@ -99,7 +99,7 @@ const i18n = {
     },
     ja: {
         "nav-home": "ホーム", "nav-about": "紹介", "nav-contact": "お問い合わせ", "nav-privacy": "個人情報保護", "nav-terms": "利用規約",
-        "nav-seoul-market": "ソウルマーケットプレイス",
+        "nav-seoul-market": "ソウル伝統市場",
         "header-title": "フォト・ドリーム・トラベル", "header-subtitle": "仮想フォトスタジオ - クリック一つで世界旅行！",
         "studio-title": "📸 仮想フォトスタジオ", "studio-selected": "選択された目的地:", "studio-processing": "背景を 削除中... (AI)",
         "studio-tip": "* 人物写真が鮮明であるほど、背景削除の結果が良くなります",
@@ -148,7 +148,7 @@ const i18n = {
     },
     zh: {
         "nav-home": "首页", "nav-about": "关于", "nav-contact": "联系我们", "nav-privacy": "隐私政策", "nav-terms": "使用条款",
-        "nav-seoul-market": "首尔市场",
+        "nav-seoul-market": "首尔传统市场",
         "header-title": "拍照梦想旅游", "header-subtitle": "虚拟摄影棚 - 点击一下即可环游世界！",
         "studio-title": "📸 虚拟摄影棚", "studio-selected": "选定的目的地:", "studio-processing": "正在移除背景... (AI)",
         "studio-tip": "* 人物照片越清晰，背景移除效果越好",
