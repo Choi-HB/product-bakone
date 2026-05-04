@@ -900,6 +900,7 @@ async function performBackgroundRemoval(img) {
         if (ac) ac.style.display = "block";
         const dcb = document.getElementById("download-comp-btn");
         if (dcb) dcb.style.display = "inline-block";
+        updateUserTransform();
     } catch (e) { console.error(e); if (o) o.style.display = "none"; alert(i18n[currentLang]["alert-error"]); }
 }
 
