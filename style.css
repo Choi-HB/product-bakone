@@ -170,8 +170,20 @@ nav a:hover {
 }
 
 .card-content h3 {
-    margin: 0 0 15px 0;
+    margin: 0 0 10px 0;
     font-size: 1.25rem;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 15px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
 }
 
 .card-footer {

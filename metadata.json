@@ -1,0 +1,6 @@
+{
+  "name": "Photo Dream Travel",
+  "description": "Virtual Photo Studio & Travel Guide with AI Background Removal",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

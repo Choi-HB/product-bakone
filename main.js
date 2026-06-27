@@ -17,6 +17,17 @@ const i18n = {
         "guide-tips-title": "✈️ 여행 영감 & 팁",
         "guide-tips-text": "전 세계 50개 이상의 랜드마크를 가상으로 탐험해 보세요 파리의 에펠탑부터 아이슬란드의 오로라까지 당신의 다음 여행지를 미리 체험할 수 있습니다 각 장소의 상세 정보를 통해 역사와 문화적 배경도 함께 배워보세요 가상 여행은 스트레스를 줄여주고 새로운 모험을 꿈꾸게 하는 훌륭한 방법입니다",
         "footer-copyright": "© 2026 포토 드림 트래블. 모든 권리 보유.",
+        "seo-title-1": "AI 기반 가상 여행으로 세상을 경험하세요",
+        "seo-desc-1": "포토 드림 트래블에 오신 것을 환영합니다! 집을 떠나지 않고도 세상을 경험할 수 있는 최고의 여행지입니다. 혁신적인 AI 기반 가상 포토 스튜디오를 통해 여러분의 모습을 50개 이상의 숨막히는 전 세계 랜드마크와 매끄럽게 합성할 수 있습니다. 파리의 에펠탑 앞에 서거나, 로마의 유서 깊은 거리를 탐험하거나, 아이슬란드의 오로라를 목격하는 꿈을 꾸신다면, 우리의 첨단 배경 제거 기술을 통해 단 몇 번의 클릭만으로 그 꿈을 이룰 수 있습니다.",
+        "seo-title-2": "AI 배경 제거 기술의 원리",
+        "seo-desc-2": "우리는 웹 브라우저에서 직접 최첨단 기계 학습 모델을 활용합니다. TensorFlow.js와 BodyPix 모델을 사용하여 인물을 정확하게 감지하고 높은 정밀도로 배경을 매끄럽게 추출합니다. 외부 서버에 이미지를 업로드하지 않고 모든 처리 과정이 기기 내에서 안전하게 이루어지므로 개인 정보가 완벽하게 보호됩니다. 그 결과 크기 조정과 즉시 저장이 가능한 깔끔하고 사실적인 합성 사진이 완성됩니다.",
+        "seo-title-3": "가상 여행의 이점",
+        "seo-desc-3": "가상 여행은 단순한 사진 편집 도구 그 이상입니다. 이는 글로벌 교육, 문화적 이해, 그리고 정신적 웰빙을 위한 관문입니다. 각 여행지에 대한 자세한 정보를 탐색함으로써 역사적 의미와 문화 유산에 대해 배울 수 있습니다. 또한 향후 실제 휴가를 위한 훌륭한 계획 도구이자, 물리적 또는 재정적 제약에 관계없이 여행에 대한 갈증을 해소할 수 있는 스트레스 없는 완벽한 방법입니다.",
+        "seo-title-4": "완벽한 가상 사진을 위한 팁",
+        "seo-tip-1": "<strong>적절한 조명 사용:</strong> 얼굴과 몸이 밝게 비춰지는지 확인하세요. 자연광은 AI가 배경에서 여러분을 정확하게 구분하는 데 큰 도움이 됩니다.",
+        "seo-tip-2": "<strong>깔끔한 배경 권장:</strong> AI 기술이 뛰어나지만, 단색이거나 복잡하지 않은 배경에서 시작할 때 가장 선명한 윤곽을 얻을 수 있습니다.",
+        "seo-tip-3": "<strong>각도 맞추기:</strong> 가장 사실적인 합성을 위해 목적지 사진의 원근감과 카메라 각도를 비슷하게 맞춰보세요.",
+        "seo-tip-4": "<strong>정밀도 조절:</strong> 윤곽선 주위에 부자연스러운 부분이 보이면 정밀도 슬라이더를 사용하여 경계선 인식을 미세하게 조정하세요.",
         "about-header": "포토 드림 트래블을 즐겨보세요",
         "about-title": "포토 드림 트래블 소개",
         "about-mission-title": "우리의 미션",
@@ -66,6 +77,17 @@ const i18n = {
         "guide-tips-title": "✈️ Travel Inspiration & Tips",
         "guide-tips-text": "Explore over 50 landmarks worldwide virtually From the Eiffel Tower in Paris to the Northern Lights in Iceland preview your next trip Learn about history and culture through detailed information for each spot Virtual travel is a great way to reduce stress and dream of new adventures",
         "footer-copyright": "© 2026 Photo Dream Travel. All rights reserved.",
+        "seo-title-1": "Experience the World with AI-Powered Virtual Travel",
+        "seo-desc-1": "Welcome to Photo Dream Travel, your ultimate destination for experiencing the world without leaving your home. Our innovative AI-powered virtual photo studio allows you to seamlessly integrate your portraits into over 50 breathtaking global landmarks. Whether you dream of standing before the Eiffel Tower in Paris, exploring the historic streets of Rome, or witnessing the Northern Lights in Iceland, our advanced background removal technology makes it possible in just a few clicks.",
+        "seo-title-2": "How Our AI Background Removal Works",
+        "seo-desc-2": "We utilize state-of-the-art machine learning models directly in your browser. Using TensorFlow.js and the BodyPix model, our platform accurately detects human figures and smoothly extracts the background with high precision. This ensures that your privacy is completely protected—no images are uploaded to external servers for processing; everything happens securely on your own device. The result is a clean, realistic composite photo that you can adjust, scale, and save instantly.",
+        "seo-title-3": "Benefits of Virtual Travel",
+        "seo-desc-3": "Virtual travel is more than just a fun photo editing tool; it is a gateway to global education, cultural appreciation, and mental well-being. By exploring detailed information about each destination, users can learn about historical significance and cultural heritage. It serves as an excellent planning tool for future real-world vacations and provides a stress-free, accessible way to satisfy your wanderlust, regardless of physical or financial constraints.",
+        "seo-title-4": "Tips for the Perfect Virtual Photo",
+        "seo-tip-1": "<strong>Use Good Lighting:</strong> Ensure your face and body are well-lit. Natural light works best for helping the AI distinguish you from your background.",
+        "seo-tip-2": "<strong>Avoid Cluttered Backgrounds:</strong> While our AI is highly capable, starting with a plain or uncluttered background yields the sharpest edges.",
+        "seo-tip-3": "<strong>Match the Angle:</strong> Try to match your camera angle with the perspective of the destination photo for the most realistic composite.",
+        "seo-tip-4": "<strong>Adjust Precision:</strong> Use our precision slider to fine-tune the edge detection if you notice any artifacts around your silhouette.",
         "about-header": "Enjoy Photo Dream Travel",
         "about-title": "About Photo Dream Travel",
         "about-mission-title": "Our Mission",
@@ -115,6 +137,17 @@ const i18n = {
         "guide-tips-title": "✈️ 旅行のインスピレーションとヒント",
         "guide-tips-text": "世界50以上のランドマークを仮想的に探索してください 各場所の詳細情報を通じて歴史や文化的背景を学ぶことができます 仮想旅行はストレスを軽減し、新しい冒険を夢見させる素晴らしい方法です",
         "footer-copyright": "© 2026 フォト・ドリーム・トラベル. All rights reserved.",
+        "seo-title-1": "AIを活用したバーチャルトラベルで世界を体験",
+        "seo-desc-1": "フォト・ドリーム・トラベルへようこそ！自宅にいながら世界を体験できる最高の目的地です。革新的なAIバーチャルフォトスタジオを使えば、50以上の息を呑むような世界のランドマークにあなたのポートレートをシームレスに合成できます。パリのエッフェル塔の前に立ったり、ローマの歴史的な街並みを探索したり、アイスランドのオーロラを見たりと、高度な背景除去技術によってわずか数クリックで夢が叶います。",
+        "seo-title-2": "AI背景除去技術の仕組み",
+        "seo-desc-2": "最先端の機械学習モデルをブラウザ上で直接活用しています。TensorFlow.jsとBodyPixモデルを使用して人物を正確に検出し、高い精度で背景をスムーズに抽出します。画像が外部サーバーにアップロードされることはなく、すべてデバイス上で安全に処理されるため、プライバシーは完全に保護されます。その結果、サイズ調整や即時保存が可能な、きれいでリアルな合成写真が完成します。",
+        "seo-title-3": "バーチャルトラベルのメリット",
+        "seo-desc-3": "バーチャルトラベルは、単なる楽しい写真編集ツール以上のものです。グローバルな教育、文化への理解、そして精神的な健康への入り口でもあります。各目的地の詳細情報を探索することで、歴史的意義や文化遺産について学ぶことができます。将来の実際の休暇のための素晴らしい計画ツールとして機能し、物理的または経済的な制약に関係なく、旅行への欲求を満たすストレスフリーでアクセスしやすい方法を提供します。",
+        "seo-title-4": "完璧なバーチャル写真のためのヒント",
+        "seo-tip-1": "<strong>適切な照明を使用する:</strong> 顔や体が明るく照らされていることを確認してください。自然光は、AIが背景からあなたを区別するのに最適です。",
+        "seo-tip-2": "<strong>ごちゃごちゃした背景を避ける:</strong> AI技術は優れていますが、無地またはごちゃごちゃしていない背景から始めると、最もシャープな輪郭が得られます。",
+        "seo-tip-3": "<strong>角度を合わせる:</strong> 最もリアルな合成にするには、カメラの角度を目的地の写真の遠近感に合わせてみてください。",
+        "seo-tip-4": "<strong>精度を調整する:</strong> シルエットの周りに不自然な部分がある場合は、精度スライダーを使用して境界線の認識を微調整してください。",
         "about-header": "フォト・ドリーム・トラベルをお楽しみください",
         "about-title": "フォト・ドリーム・トラベルについて",
         "about-mission-title": "私たちのミッション",
@@ -164,6 +197,17 @@ const i18n = {
         "guide-tips-title": "✈️ 旅游灵感与技巧",
         "guide-tips-text": "虚拟探索全球50多个地标 通过每个景点的详细信息了解历史 and 文化背景 虚拟旅行是减轻压力 and 梦想新冒险的绝佳方式",
         "footer-copyright": "© 2026 拍照梦想旅游. 版权所有.",
+        "seo-title-1": "体验由人工智能驱动的虚拟旅行",
+        "seo-desc-1": "欢迎来到“拍照片梦想旅行”，这是您足不出户体验世界的终极目的地。我们创新的AI虚拟摄影棚允许您将人像无缝融入全球50多个令人叹为观止的地标建筑中。无论您是梦想站在巴黎埃菲尔铁塔前，探索罗马的历史街道，还是见证冰岛的北极光，我们先进的背景移除技术都能只需点击几下即可实现。",
+        "seo-title-2": "AI背景移除技术如何工作",
+        "seo-desc-2": "我们直接在您的浏览器中利用最先进的机器学习模型。使用TensorFlow.js和BodyPix模型，我们的平台可以准确检测人物轮廓，并以高精度平滑地提取背景。这确保了您的隐私得到完全保护——没有图像会被上传到外部服务器进行处理；一切都在您自己的设备上安全地进行。结果是一张干净、逼真的合成照片，您可以立即调整、缩放并保存。",
+        "seo-title-3": "虚拟旅行的好处",
+        "seo-desc-3": "虚拟旅行不仅仅是一个有趣的照片编辑工具；它是通往全球教育、文化欣赏和心理健康的门户。通过探索每个目的地的详细信息，用户可以了解历史意义和文化遗产。它是未来现实度假的绝佳规划工具，并提供了一种无压力、可访问的方式来满足您的漫游欲望，无论身体或财务状况如何。",
+        "seo-title-4": "完美虚拟照片的提示",
+        "seo-tip-1": "<strong>使用良好的照明：</strong>确保您的脸部和身体光线充足。自然光最有助于AI将您与背景区分开来。",
+        "seo-tip-2": "<strong>避免杂乱的背景：</strong>虽然我们的AI技术非常强大，但从纯色或不杂乱的背景开始，可以获得最清晰的边缘。",
+        "seo-tip-3": "<strong>匹配角度：</strong>尝试将您的相机角度与目的地照片的视角相匹配，以获得最逼真的合成效果。",
+        "seo-tip-4": "<strong>调整精度：</strong>如果您注意到轮廓周围有任何瑕疵，请使用精度滑块微调边缘检测。",
         "about-header": "享受拍照梦想旅游",
         "about-title": "关于拍照梦想旅游",
         "about-mission-title": "我们的使命",
@@ -685,7 +729,7 @@ function changeLanguage(lang) {
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (i18n[lang][key]) {
-            if (key === 'guide-how-list' || key === 'about-regards' || key === 'about-closing') {
+            if (key === 'guide-how-list' || key === 'about-regards' || key === 'about-closing' || key.startsWith('seo-tip-')) {
                 el.innerHTML = i18n[lang][key];
             } else {
                 el.innerText = i18n[lang][key];
@@ -745,6 +789,12 @@ function render(data){
         cnt.className="card-content";
         const t=document.createElement("h3");
         t.innerText=p.name[currentLang];
+        
+        // Add description to the DOM for SEO and value content
+        const descP = document.createElement("p");
+        descP.innerText = p.desc[currentLang];
+        descP.className = "card-desc";
+        
         const f = document.createElement("div");
         f.className = "card-footer";
         const b1=document.createElement("button");
@@ -755,7 +805,7 @@ function render(data){
         b2.style.background = "#6b7280";
         b2.onclick=()=>openModal(p.name[currentLang], p.desc[currentLang]);
         f.appendChild(b1); f.appendChild(b2);
-        cnt.appendChild(t); cnt.appendChild(f);
+        cnt.appendChild(t); cnt.appendChild(descP); cnt.appendChild(f);
         card.appendChild(img); card.appendChild(cp); card.appendChild(cnt);
         container.appendChild(card);
     });
