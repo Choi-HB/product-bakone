@@ -163,25 +163,28 @@
                     <button id="capture-btn" class="btn-capture" onclick="takeSnapshot()" style="display:none;" data-i18n="btn-capture">📸 Capture</button>
                 </div>
                 <video id="webcam-video" autoplay playsinline style="display:none;"></video>
+                <button id="download-comp-btn" class="btn-save" onclick="captureComposition()" style="display:none;" data-i18n="btn-save">💾 Save Photo</button>
                 <button class="btn-exit-inner" onclick="closeStudio()" data-i18n="btn-exit">❌ Exit Studio</button>
             </div>
 
             <div id="adjust-controls" class="adjust-controls" style="display:none;">
-                <div class="control-row">
-                    <label data-i18n="ctrl-size">📏 Size:</label>
-                    <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()">
-                </div>
-                <div class="control-row">
-                    <label data-i18n="ctrl-horiz">↔️ Horiz:</label>
-                    <input type="range" id="user-pos-x" min="-100" max="200" step="1" value="50" oninput="updateUserTransform()">
-                </div>
-                <div class="control-row">
-                    <label data-i18n="ctrl-vert">↕️ Vert:</label>
-                    <input type="range" id="user-pos-y" min="-100" max="100" step="1" value="0" oninput="updateUserTransform()">
-                </div>
-                <div class="control-row">
-                    <label data-i18n="ctrl-precision">✨ Precision:</label>
-                    <input type="range" id="user-threshold" min="0.1" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()">
+                <div class="sliders-grid">
+                    <div class="control-row">
+                        <label data-i18n="ctrl-size">📏 Size:</label>
+                        <input type="range" id="user-scale" min="0.1" max="2.0" step="0.05" value="1.0" oninput="updateUserTransform()">
+                    </div>
+                    <div class="control-row">
+                        <label data-i18n="ctrl-precision">✨ Precision:</label>
+                        <input type="range" id="user-threshold" min="0.1" max="0.9" step="0.05" value="0.6" onchange="reprocessPhoto()">
+                    </div>
+                    <div class="control-row">
+                        <label data-i18n="ctrl-horiz">↔️ Horiz:</label>
+                        <input type="range" id="user-pos-x" min="-100" max="200" step="1" value="50" oninput="updateUserTransform()">
+                    </div>
+                    <div class="control-row">
+                        <label data-i18n="ctrl-vert">↕️ Vert:</label>
+                        <input type="range" id="user-pos-y" min="-100" max="100" step="1" value="0" oninput="updateUserTransform()">
+                    </div>
                 </div>
                 
                 <!-- Photo Tone Filter Options -->
@@ -213,8 +216,6 @@
                     <button class="btn-clear" onclick="clearUserPhoto()" data-i18n="btn-reset">Clear Photo</button>
                 </div>
             </div>
-
-            <button id="download-comp-btn" class="btn-save" onclick="captureComposition()" style="display:none;" data-i18n="btn-save">💾 Save Photo</button>
         </div>
         <p class="studio-tip" data-i18n="studio-tip">* Clearer person photos yield better background removal results</p>
     </div>

@@ -343,24 +343,28 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.88);
     z-index: 3000;
     overflow-y: auto;
-    padding: 20px;
+    overflow-x: hidden;
+    padding: 20px 15px;
     display: none;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Prevents overflow from pushing top of content off-screen */
+    -webkit-overflow-scrolling: touch;
 }
 
 .studio-container {
-    max-width: 900px;
+    max-width: 920px;
     width: 100%;
-    margin: auto;
+    margin: 15px auto 40px auto;
     background: white;
-    padding: 30px;
+    padding: 24px 28px;
     border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     position: relative;
+    box-sizing: border-box;
 }
 
 .btn-exit {
@@ -379,13 +383,15 @@ footer {
 
 .composition-area {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 15px;
     background-size: cover;
     background-position: center;
     position: relative;
     border-radius: 15px;
     overflow: hidden;
-    min-height: 400px;
+    min-height: 260px;
+    max-height: 48vh;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .user-canvas {
@@ -395,6 +401,8 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     transform-origin: bottom center;
+    max-height: 90%;
+    object-fit: contain;
 }
 
 .loading-overlay {
@@ -425,47 +433,67 @@ footer {
 }
 
 .studio-controls {
-    margin-top: 30px;
+    margin-top: 18px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 20px;
+    align-items: start;
 }
 
 .btn-primary, .btn-secondary, .btn-save, .btn-capture {
-    padding: 12px 20px;
+    padding: 10px 16px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
     font-weight: 600;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-primary:active, .btn-secondary:active, .btn-save:active {
+    transform: scale(0.98);
 }
 
 .btn-primary { background: #2563eb; color: white; }
 .btn-secondary { background: #64748b; color: white; }
-.btn-save { background: #10b981; color: white; font-size: 1.1rem; }
+.btn-save { background: #10b981; color: white; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }
 .btn-capture { background: #f59e0b; color: white; }
 
 .adjust-controls {
     background: #f8fafc;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+}
+
+.sliders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 14px;
+    margin-bottom: 8px;
 }
 
 .control-row {
-    margin-bottom: 15px;
+    margin-bottom: 0;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
 }
 
 .control-row label {
-    width: 80px;
-    font-size: 14px;
+    width: 68px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #475569;
+    flex-shrink: 0;
 }
 
 .control-row input {
     flex: 1;
+    height: 6px;
+    cursor: pointer;
 }
 
 .btn-reset {
@@ -518,17 +546,20 @@ footer {
 @media(max-width: 600px) {
     .studio-container {
         padding: 15px;
-        margin: 10px;
-        width: calc(100% - 20px);
+        margin: 10px auto 30px auto;
+        width: calc(100% - 10px);
     }
     .studio-controls {
         grid-template-columns: 1fr;
         gap: 15px;
     }
     .composition-area {
-        min-height: 250px;
-        max-height: 60vh;
-        margin-top: 50px;
+        min-height: 220px;
+        max-height: 45vh;
+        margin-top: 15px;
+    }
+    .sliders-grid {
+        grid-template-columns: 1fr;
     }
     #webcam-video {
         width: 100% !important;

@@ -1064,6 +1064,7 @@ function travelToDestination(id, imgSrc) {
         ca.style.aspectRatio = `${img.naturalWidth}/${img.naturalHeight}`;
         ca.style.backgroundImage = `url('${imgSrc}')`;
         s.style.display = "flex";
+        s.scrollTop = 0;
         document.body.style.overflow = "hidden";
     };
     img.src = imgSrc;
@@ -1324,8 +1325,10 @@ async function performBackgroundRemoval(img) {
         const ac = document.getElementById("adjust-controls");
         if (ac) ac.style.display = "block";
         const dcb = document.getElementById("download-comp-btn");
-        if (dcb) dcb.style.display = "inline-block";
+        if (dcb) dcb.style.display = "block";
         updateUserTransform();
+        const s = document.getElementById("studio-section");
+        if (s) s.scrollTop = 0;
     } catch (e) { console.error(e); if (o) o.style.display = "none"; alert(i18n[currentLang]["alert-error"]); }
 }
 
