@@ -630,6 +630,71 @@ footer {
     contain: layout style;
 }
 
+/* Google AdSense High-Visibility Display Units (Auto-collapse when no ad is served) */
+.ad-unit-wrapper {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-height: 0; /* Prevents empty blank gaps before or without ads */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Ad label only displays when ad is actually filled */
+.ad-unit-wrapper .ad-label {
+    display: none;
+    font-size: 10px;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    user-select: none;
+}
+
+.ad-unit-wrapper.has-ad .ad-label {
+    display: block;
+}
+
+.ad-unit-wrapper.has-ad {
+    margin: 25px auto;
+    padding: 10px 0;
+}
+
+.ad-unit-wrapper ins.adsbygoogle {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* If Google returns unfilled, collapse the wrapper completely */
+.ad-unit-wrapper:has(ins[data-ad-status="unfilled"]),
+.ad-unit-wrapper.is-empty {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .ad-unit-wrapper {
+        margin: 15px auto;
+    }
+    .ad-unit-wrapper.has-ad {
+        margin: 18px auto;
+        padding: 6px 0;
+    }
+}
+
 /* Travel Style & Smart Discovery Planner */
 .travel-planner-section {
     max-width: 1200px;

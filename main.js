@@ -37,6 +37,7 @@ const i18n = {
         "link-lotto": "맞춤형 무료 로또 자동 생성기",
         "link-billiards": "당구사이트에서 당구연습, AI와 맞대결",
         "link-seoul": "서울전통시장 맛거리,볼거리 구경하기, 놀이와 추억도 함께",
+        "link-personalcolor": "AI진단 퍼스널컬러 - 나만의 퍼스널컬러 찾기",
         "about-header": "포토 드림 트래블을 즐겨보세요",
         "about-title": "포토 드림 트래블 소개",
         "about-mission-title": "우리의 미션",
@@ -150,6 +151,7 @@ const i18n = {
         "link-lotto": "Custom Free Lotto Number Generator",
         "link-billiards": "Billiards Practice & Play against AI",
         "link-seoul": "Explore Seoul Traditional Market's Food and Sights",
+        "link-personalcolor": "AI Personal Color Analysis - Find Your Colors",
         "about-header": "Enjoy Photo Dream Travel",
         "about-title": "About Photo Dream Travel",
         "about-mission-title": "Our Mission",
@@ -263,6 +265,7 @@ const i18n = {
         "link-lotto": "カスタマイズ無料ロト自動生成器",
         "link-billiards": "ビリヤード練習＆AI対戦サイト",
         "link-seoul": "ソウル伝統市場のグルメと見どころを探索",
+        "link-personalcolor": "AIパーソナルカラー診断 - 自分に似合う色を見つける",
         "about-header": "フォト・ドリーム・トラベルをお楽しみください",
         "about-title": "フォト・ドリーム・トラベルについて",
         "about-mission-title": "私たちのミッション",
@@ -376,6 +379,7 @@ const i18n = {
         "link-lotto": "定制免费彩票自动生成器",
         "link-billiards": "台球练习及AI对战网站",
         "link-seoul": "探索首尔传统市场的美食与景点",
+        "link-personalcolor": "AI个人色彩诊断 - 寻找适合我的专属色调",
         "about-header": "享受拍照梦想旅游",
         "about-title": "关于拍照梦想旅游",
         "about-mission-title": "我们的使命",
@@ -1540,4 +1544,61 @@ window.captureComposition = captureComposition;
 window.selectTheme = selectTheme;
 window.setFilter = setFilter;
 window.setStamp = setStamp;
+
+// Google AdSense: Safely push and monitor display ad units
+function initAdSenseUnits() {
+    if (typeof window === 'undefined') return;
+    try {
+        const adElements = document.querySelectorAll('ins.adsbygoogle');
+        adElements.forEach(ins => {
+            const wrapper = ins.closest('.ad-unit-wrapper');
+            
+            // Monitor status changes (e.g. filled vs unfilled)
+            if (wrapper && !ins._observed) {
+                ins._observed = true;
+                const checkAdStatus = () => {
+                    const status = ins.getAttribute('data-ad-status');
+                    const hasIframe = ins.querySelector('iframe');
+                    const isRendered = (status === 'filled') || (hasIframe && ins.offsetHeight > 20);
+                    
+                    if (status === 'unfilled') {
+                        wrapper.classList.add('is-empty');
+                        wrapper.classList.remove('has-ad');
+                    } else if (isRendered) {
+                        wrapper.classList.add('has-ad');
+                        wrapper.classList.remove('is-empty');
+                    }
+                };
+
+                // Observer for attribute changes on ins
+                const observer = new MutationObserver(checkAdStatus);
+                observer.observe(ins, { attributes: true, childList: true, subtree: true });
+                
+                // Backup check after delays
+                setTimeout(checkAdStatus, 1500);
+                setTimeout(checkAdStatus, 3500);
+            }
+
+            if (!ins.getAttribute('data-adsbygoogle-status')) {
+                try {
+                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (err) {
+                    // AdSense handles duplicate calls or pending state gracefully
+                }
+            }
+        });
+    } catch (e) {
+        console.warn('AdSense init notice:', e);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAdSenseUnits);
+} else {
+    initAdSenseUnits();
+}
+window.addEventListener('load', () => setTimeout(initAdSenseUnits, 600));
+window.initAdSenseUnits = initAdSenseUnits;
+
+
 
