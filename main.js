@@ -1297,6 +1297,23 @@ async function processUserPhoto(input) {
     }
 }
 
+async function loadSampleAiModel() {
+    const o = document.getElementById("loading-overlay");
+    if (o) o.style.display = "flex";
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = async () => {
+        currentUserImg = img;
+        await performBackgroundRemoval(img);
+    };
+    img.onerror = () => {
+        if (o) o.style.display = "none";
+        alert("AI 샘플 이미지를 불러올 수 없습니다.");
+    };
+    img.src = "/promo/scene1_room_selfie.jpg";
+}
+window.loadSampleAiModel = loadSampleAiModel;
+
 async function reprocessPhoto() { if (currentUserImg && isStudioOpen) await performBackgroundRemoval(currentUserImg); }
 
 async function performBackgroundRemoval(img) {
@@ -1599,6 +1616,43 @@ if (document.readyState === 'loading') {
 }
 window.addEventListener('load', () => setTimeout(initAdSenseUnits, 600));
 window.initAdSenseUnits = initAdSenseUnits;
+
+function openPromoModal() {
+    const m = document.getElementById("promo-modal");
+    if (m) m.style.display = "flex";
+}
+
+function closePromoModal() {
+    const m = document.getElementById("promo-modal");
+    if (m) m.style.display = "none";
+}
+
+async function downloadPromoAsset(url, filename) {
+    try {
+        const fullUrl = url + (url.includes('?') ? '&' : '?') + 't=' + Date.now();
+        const res = await fetch(fullUrl, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Fetch failed: ' + res.status);
+        const blob = await res.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+            if (a.parentNode) a.parentNode.removeChild(a);
+            URL.revokeObjectURL(blobUrl);
+        }, 1500);
+    } catch (err) {
+        console.warn('Blob download fallback:', err);
+        window.open(url + '?t=' + Date.now(), '_blank');
+    }
+}
+
+window.openPromoModal = openPromoModal;
+window.closePromoModal = closePromoModal;
+window.downloadPromoAsset = downloadPromoAsset;
 
 
 
